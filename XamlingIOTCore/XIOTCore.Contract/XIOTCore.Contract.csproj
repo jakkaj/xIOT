@@ -36,7 +36,9 @@
   <ItemGroup>
     <Compile Include="Dto\XPinValue.cs" />
     <Compile Include="Interface\IXGpio.cs" />
-    <Compile Include="Interface\IXGpioLed.cs" />
+    <Compile Include="Interface\IXLed.cs" />
+    <Compile Include="Interface\IXIOTCoreFactory.cs" />
+    <Compile Include="Platforms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

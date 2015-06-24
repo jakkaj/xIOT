@@ -1,12 +1,13 @@
-﻿using XIOTCore.Contract.Interface;
+﻿using XIOTCore.Contract.Dto;
+using XIOTCore.Contract.Interface;
 
 namespace XIOTCore.Components.Gpio
 {
-    public class XGpioLed : IXGpioLed
+    public class IxLed : IXLed
     {
         private readonly IXGpio _gpio;
 
-        public XGpioLed(IXGpio gpio)
+        public IxLed(IXGpio gpio)
         {
             _gpio = gpio;
         }
@@ -19,6 +20,22 @@ namespace XIOTCore.Components.Gpio
         public void Off()
         {
             _gpio.SetLow();
+        }
+
+        public bool State
+        {
+            get { return _gpio.GetValue() == XPinValue.High; }
+            set
+            {
+                if (value)
+                {
+                    On();
+                }
+                else
+                {
+                    Off();
+                }
+            }
         }
     }
 }

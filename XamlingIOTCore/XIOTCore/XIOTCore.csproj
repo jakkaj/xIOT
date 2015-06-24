@@ -110,7 +110,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Factory\XIOTCoreFactory.cs" />
-    <Compile Include="Platforms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -134,6 +133,10 @@
     <ProjectReference Include="..\XamlingIOTCore.RaspberryPI\XIOTCore.RaspberryPI.csproj">
       <Project>{8BC1B215-8C4A-4FAD-B139-2049410C7BE9}</Project>
       <Name>XIOTCore.RaspberryPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XIOTCore.Contract\XIOTCore.Contract.csproj">
+      <Project>{9F92ABA8-71DC-4583-BD4D-349DCBB6BD87}</Project>
+      <Name>XIOTCore.Contract</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

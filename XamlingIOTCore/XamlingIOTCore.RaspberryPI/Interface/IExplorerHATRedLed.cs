@@ -2,7 +2,7 @@
 
 namespace XCore.RaspberryPI.Interface
 {
-    public interface IExplorerHatRedLed : IXGpioLed
+    public interface IExplorerHatRedLed : IXLed
     {
     }
 }

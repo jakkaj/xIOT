@@ -3,14 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.Bluetooth.Advertisement;
 using Autofac;
 using XCore.RaspberryPI.Modules;
+using XIOTCore.Contract;
+using XIOTCore.Contract.Interface;
 
 namespace XIOTCore.Factory
 {
-    public class XIOTCoreFactory
+    public class XIOTCoreFactory : IXIOTCoreFactory
     {
-        public void Initialise(Platforms platforms)
+        public static IXIOTCoreFactory Create(Platforms platforms)
+        {
+            return new XIOTCoreFactory(platforms);
+        }
+
+        private IContainer _container;
+
+        public XIOTCoreFactory(Platforms platforms)
+        {
+            _init(platforms);
+        }
+
+        void _init(Platforms platforms)
         {
             var builder = new ContainerBuilder();
 
@@ -26,7 +41,12 @@ namespace XIOTCore.Factory
                 builder.RegisterModule<ExplorerHatProModule>();
             }
 
+            _container = builder.Build();
+        }
 
+        public T GetComponent<T>()
+        {
+            return _container.Resolve<T>();
         }
     }
 }

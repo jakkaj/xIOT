@@ -11,14 +11,14 @@ namespace XCore.RaspberryPI.Modules
         protected override void Load(ContainerBuilder builder)
         {
             builder.Register(_ =>
-                new XGpioLed(
+                new IxLed(
                     new XGpio(27,
                         GpioController.GetDefault(),
                         GpioSharingMode.Exclusive,
                         GpioPinDriveMode.Output))).As<IExplorerHatRedLed>();
 
             builder.Register(_ =>
-                new XGpioLed(
+                new IxLed(
                     new XGpio(5,
                         GpioController.GetDefault(),
                         GpioSharingMode.Exclusive,

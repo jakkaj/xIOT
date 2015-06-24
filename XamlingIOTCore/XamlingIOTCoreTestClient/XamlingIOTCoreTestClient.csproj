@@ -105,6 +105,7 @@
     </AppxManifest>
     <None Include="ApplicationInsights.config" />
     <None Include="packages.config" />
+    <None Include="XamlingIOTCoreTestClient_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />
@@ -133,6 +134,20 @@
       <HintPath>..\packages\Microsoft.ApplicationInsights.0.14.3-build00177\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll</HintPath>
       <Private>True</Private>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XamlingIOTCore.RaspberryPI\XIOTCore.RaspberryPI.csproj">
+      <Project>{8BC1B215-8C4A-4FAD-B139-2049410C7BE9}</Project>
+      <Name>XIOTCore.RaspberryPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XIOTCore.Contract\XIOTCore.Contract.csproj">
+      <Project>{9F92ABA8-71DC-4583-BD4D-349DCBB6BD87}</Project>
+      <Name>XIOTCore.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XIOTCore\XIOTCore.csproj">
+      <Project>{F7606D33-4FE8-46A3-8F4E-745A86800D82}</Project>
+      <Name>XIOTCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
