@@ -3,11 +3,11 @@ using XIOTCore.Contract.Interface;
 
 namespace XIOTCore.Components.Gpio
 {
-    public class IxLed : IXLed
+    public class XGpioLed : IXLed
     {
         private readonly IXGpio _gpio;
 
-        public IxLed(IXGpio gpio)
+        public XGpioLed(IXGpio gpio)
         {
             _gpio = gpio;
         }
