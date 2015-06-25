@@ -3,5 +3,6 @@
     public interface IXIOTCoreFactory
     {
         T GetComponent<T>();
+        void Init();
     }
 }

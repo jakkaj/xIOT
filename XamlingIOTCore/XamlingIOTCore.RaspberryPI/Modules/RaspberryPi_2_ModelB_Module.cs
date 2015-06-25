@@ -2,7 +2,7 @@
 
 namespace XCore.RaspberryPI.Modules
 {
-    public class RaspberryPi2ModelBModule : Module
+    public class RaspberryPi_2_ModelB_Module : Module
     {
         protected override void Load(ContainerBuilder builder)
         {

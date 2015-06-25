@@ -13,40 +13,45 @@ namespace XIOTCore.Factory
 {
     public class XIOTCoreFactory : IXIOTCoreFactory
     {
+        private readonly Platforms _platforms;
+
+
         public static IXIOTCoreFactory Create(Platforms platforms)
         {
             return new XIOTCoreFactory(platforms);
         }
 
-        private IContainer _container;
-
         public XIOTCoreFactory(Platforms platforms)
         {
-            _init(platforms);
+            _platforms = platforms;
+            Builder = new ContainerBuilder();
         }
 
-        void _init(Platforms platforms)
+        public void Init()
         {
-            var builder = new ContainerBuilder();
-
-            if (platforms.HasFlag(Platforms.RaspberryPi2ModelB))
+            if (_platforms.HasFlag(Platforms.RaspberryPi2ModelB))
             {
-                builder.RegisterModule<RaspberryPi2ModelBModule>();
+                Builder.RegisterModule<RaspberryPi_2_ModelB_Module>();
             }
 
-            if (platforms.HasFlag(Platforms.RaspberryPi2ExporerHatPro))
+            if (_platforms.HasFlag(Platforms.RaspberryPi2ExporerHatPro))
             {
                 //Register the pi2 anyway, doesn't matter if it's already registered above
-                builder.RegisterModule<RaspberryPi2ModelBModule>();
-                builder.RegisterModule<ExplorerHatProModule>();
+                Builder.RegisterModule<RaspberryPi_2_ModelB_Module>();
+                Builder.RegisterModule<ExplorerHat_Pro_Module>();
             }
 
-            _container = builder.Build();
+            Container = Builder.Build();
         }
 
         public T GetComponent<T>()
         {
-            return _container.Resolve<T>();
+            return Container.Resolve<T>();
         }
+
+
+        public IContainer Container { get; private set; }
+
+        public ContainerBuilder Builder { get; }
     }
 }

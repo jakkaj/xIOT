@@ -35,6 +35,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Dto\XPinValue.cs" />
+    <Compile Include="Enum\Gain.cs" />
+    <Compile Include="Enum\SamplesPerSecond.cs" />
+    <Compile Include="Interface\IADS1015.cs" />
     <Compile Include="Interface\IXGpio.cs" />
     <Compile Include="Interface\IXLed.cs" />
     <Compile Include="Interface\IXIOTCoreFactory.cs" />

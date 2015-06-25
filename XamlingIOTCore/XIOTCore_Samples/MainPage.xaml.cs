@@ -32,12 +32,13 @@ namespace XIOTCore_Samples
 
         private IXLed _redLed;
         private IXLed _greenLed;
+
         public MainPage()
         {
             this.InitializeComponent();
 
-            _redLed = _factory.GetComponent<IExplorerHatRedLed>();
-            _greenLed = _factory.GetComponent<IExplorerHatGreenLed>();
+            _redLed = _factory.GetComponent<IExplorerHat_RedLed>();
+            _greenLed = _factory.GetComponent<IExplorerHat_GreenLed>();
 
             _cycle();
         }
