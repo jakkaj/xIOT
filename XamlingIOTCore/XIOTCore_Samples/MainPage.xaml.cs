@@ -66,24 +66,24 @@ namespace XIOTCore_Samples
 
             while (true)
             {
-               // _redLed.State = state;
-               // _greenLed.State = !state;
+                // _redLed.State = state;
+                // _greenLed.State = !state;
 
-               // state = !state;
-               
+                // state = !state;
+
 
                 var v1 = await _plug1.MeasurePercentage();
                 var v4 = await _plug4.MeasurePercentage();
 
                 if (v1 > v4 + 5)
                 {
-                    _greenLed.State = true;
-                    _redLed.State = false;
+                    _greenLed.State = false;
+                    _redLed.State = true;
                 }
                 else if (v4 > v1 + 5)
                 {
-                    _greenLed.State = false;
-                    _redLed.State = true;
+                    _greenLed.State = true;
+                    _redLed.State = false;
                 }
                 else
                 {
@@ -93,8 +93,24 @@ namespace XIOTCore_Samples
 
                 Debug.WriteLine($"Plug 1: {v1}, Plug 4: {v4}");
 
+                _moveEllipse(v1, v4);
+
                 await Task.Yield();
             }
+        }
+
+        void _moveEllipse(double left, double right)
+        {
+            left = left * 8;
+            right = right * 8;
+
+            double pos = 0;
+            pos = pos - left;
+            pos = pos + right;
+
+
+
+            ThingCompositeTransform.TranslateX = pos;
         }
     }
 }

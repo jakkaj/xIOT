@@ -8,6 +8,10 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        
+        <Ellipse x:Name="ThingEllipse" Width="50" Height="50" Fill="Red">
+            <Ellipse.RenderTransform>
+                <CompositeTransform x:Name="ThingCompositeTransform"></CompositeTransform>
+            </Ellipse.RenderTransform>
+        </Ellipse>
     </Grid>
 </Page>
