@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -27,32 +28,72 @@ namespace XIOTCore_Samples
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private IXIOTCoreFactory _factory =
+        private readonly IXIOTCoreFactory _factory =
             XIOTCoreFactory.Create(Platforms.RaspberryPi2ModelB | Platforms.RaspberryPi2ExporerHatPro);
 
-        private IXLed _redLed;
-        private IXLed _greenLed;
+        private readonly IXLed _redLed;
+        private readonly IXLed _greenLed;
+
+        private readonly IExplorerHat_AnaloguePlug _plug1;
+        private readonly IExplorerHat_AnaloguePlug _plug4;
 
         public MainPage()
         {
             this.InitializeComponent();
 
+            _factory.Init();
+
             _redLed = _factory.GetComponent<IExplorerHat_RedLed>();
             _greenLed = _factory.GetComponent<IExplorerHat_GreenLed>();
+
+            _plug1 = _factory.GetComponent<IExplorerHat_AnaloguePlug1>();
+            _plug4 = _factory.GetComponent<IExplorerHat_AnaloguePlug4>();
 
             _cycle();
         }
 
         async void _cycle()
         {
-            var state = true;
+            var init4 = await _plug4.Init();
+            var init1 = await _plug1.Init();
+
+            if (!init1 || !init4)
+            {
+                throw new InvalidOperationException("Could not init one of the devices");
+            }
+
+            //var state = true;
 
             while (true)
             {
-                _redLed.State = state;
-                _greenLed.State = !state;
-                state = !state;
-                await Task.Delay(500);
+               // _redLed.State = state;
+               // _greenLed.State = !state;
+
+               // state = !state;
+               
+
+                var v1 = await _plug1.MeasurePercentage();
+                var v4 = await _plug4.MeasurePercentage();
+
+                if (v1 > v4 + 5)
+                {
+                    _greenLed.State = true;
+                    _redLed.State = false;
+                }
+                else if (v4 > v1 + 5)
+                {
+                    _greenLed.State = false;
+                    _redLed.State = true;
+                }
+                else
+                {
+                    _greenLed.State = true;
+                    _redLed.State = true;
+                }
+
+                Debug.WriteLine($"Plug 1: {v1}, Plug 4: {v4}");
+
+                await Task.Yield();
             }
         }
     }

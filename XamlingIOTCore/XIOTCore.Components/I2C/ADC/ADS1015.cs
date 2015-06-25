@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Chat;
 using Windows.Devices.Enumeration;
 using Windows.Devices.I2c;
 using XamlingCore.Portable.Util.Lock;
@@ -22,21 +23,24 @@ namespace XIOTCore.Components.I2C.ADC
 
         XAsyncLock _locker = new XAsyncLock();
 
+
+
         public ADS1015(int address, string controllerName)
         {
             _address = address;
             _controllerName = controllerName;
         }
 
-        public async Task Init()
+        public async Task<bool> Init()
         {
-            var settings = new I2cConnectionSettings(_address) { BusSpeed = I2cBusSpeed.StandardMode };
+            if (_i2Cdevice != null)
+            {
+                return true;
+            }
 
-            var aqs = I2cDevice.GetDeviceSelector(_controllerName);
+            _i2Cdevice = await I2CDeviceCache.GetDevice(_address, _controllerName);
 
-            var dis = await DeviceInformation.FindAllAsync(aqs);
-
-            _i2Cdevice = await I2cDevice.FromIdAsync(dis[0].Id, settings);
+            return _i2Cdevice != null;
         }
 
         protected async Task<double> GetMillivolts(ushort channel, ushort gain, ushort samplesPerSecond)

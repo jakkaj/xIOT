@@ -4,6 +4,6 @@ namespace XIOTCore.Contract.Interface
 {
     public interface IADS1015
     {
-        Task Init();
+        Task<bool> Init();
     }
 }

@@ -118,6 +118,8 @@
     <Compile Include="ExplorerHATPro\Components\ExplorerHat_GreenLed.cs" />
     <Compile Include="ExplorerHATPro\Components\ExplorerHat_RedLed.cs" />
     <Compile Include="ExplorerHATPro\Components\ExplorerHat_ADS1015.cs" />
+    <Compile Include="ExplorerHATPro\Plugs\ExplorerHat_AnaloguePlug.cs" />
+    <Compile Include="Interface\IExplorerHat_AnaloguePlug.cs" />
     <Compile Include="Interface\IExplorerHat_ADS1015.cs" />
     <Compile Include="ExplorerHATPro\Enum\ExplorerHat_ADS1015_Channel.cs" />
     <Compile Include="Interface\IExplorerHat_GreenLed.cs" />
