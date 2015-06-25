@@ -91,13 +91,15 @@ namespace XIOTCore_Samples
                     _redLed.State = true;
                 }
 
-                Debug.WriteLine($"Plug 1: {v1}, Plug 4: {v4}");
+                //Debug.WriteLine($"Plug 1: {v1}, Plug 4: {v4}");
 
                 _moveEllipse(v1, v4);
 
-                await Task.Yield();
+                await Task.Delay(5);
             }
         }
+
+        private double _lastPos = 0;
 
         void _moveEllipse(double left, double right)
         {
@@ -108,7 +110,13 @@ namespace XIOTCore_Samples
             pos = pos - left;
             pos = pos + right;
 
+            //remove some jitter from the measurements. 
+            if (_lastPos < pos + 8 && _lastPos > pos - 8)
+            {
+                return;
+            }
 
+            _lastPos = pos;
 
             ThingCompositeTransform.TranslateX = pos;
         }
