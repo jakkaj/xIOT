@@ -115,15 +115,15 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExplorerHATPro\ExplorerHatGreenLed.cs" />
+    <Compile Include="ExplorerHATPro\ExplorerHatRedLed.cs" />
     <Compile Include="Interface\IExplorerHatGreenLed.cs" />
     <Compile Include="Interface\IExplorerHatRedLed.cs" />
     <Compile Include="Modules\ExplorerHatProModule.cs" />
     <Compile Include="Modules\RaspberryPi2ModelBModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ExplorerHATPro\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\XIOTCore.Components\XIOTCore.Components.csproj">
       <Project>{E4AC451A-DCDC-4097-9F91-122AA7223FDF}</Project>
@@ -135,8 +135,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.0.0-alpha2\lib\portable-net45+win+wpa81+wp80\Autofac.dll</HintPath>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="UnitsNet, Version=3.12.0.244, Culture=neutral, processorArchitecture=MSIL">

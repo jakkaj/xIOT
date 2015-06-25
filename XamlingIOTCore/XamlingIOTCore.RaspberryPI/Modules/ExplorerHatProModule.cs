@@ -1,5 +1,6 @@
 ﻿using Windows.Devices.Gpio;
 using Autofac;
+using XCore.RaspberryPI.ExplorerHATPro;
 using XCore.RaspberryPI.Interface;
 using XIOTCore.Components.Gpio;
 using XIOTCore.Contract.Interface;
@@ -12,18 +13,18 @@ namespace XCore.RaspberryPI.Modules
         protected override void Load(ContainerBuilder builder)
         {
             builder.Register(_ =>
-                new XGpioLed(
+                new ExplorerHatGreenLed(
                     new XGpio(27,
                         GpioController.GetDefault(),
                         GpioSharingMode.Exclusive,
-                        GpioPinDriveMode.Output))).As<IExplorerHatRedLed>();
+                        GpioPinDriveMode.Output))).As<IExplorerHatGreenLed>();
 
             builder.Register(_ =>
-                new XGpioLed(
+                new ExplorerHatRedLed(
                     new XGpio(5,
                         GpioController.GetDefault(),
                         GpioSharingMode.Exclusive,
-                        GpioPinDriveMode.Output))).As<IExplorerHatGreenLed>();
+                        GpioPinDriveMode.Output))).As<IExplorerHatRedLed>();
 
             base.Load(builder);
         }
