@@ -28,6 +28,64 @@ namespace XCore.RaspberryPI.Modules
                         GpioSharingMode.Exclusive,
                         GpioPinDriveMode.Output))).As<IExplorerHat_RedLed>().SingleInstance();
 
+            builder.Register(_ =>
+                new ExplorerHat_Output1(
+                    new XGpio(6,
+                        GpioController.GetDefault(),
+                        GpioSharingMode.Exclusive,
+                        GpioPinDriveMode.Output))).As<IExplorerHat_Output1>().SingleInstance();
+
+            builder.Register(_ =>
+                new ExplorerHat_Output1(
+                    new XGpio(12,
+                        GpioController.GetDefault(),
+                        GpioSharingMode.Exclusive,
+                        GpioPinDriveMode.Output))).As<IExplorerHat_Output2>().SingleInstance();
+
+            builder.Register(_ =>
+               new ExplorerHat_Output1(
+                   new XGpio(13,
+                       GpioController.GetDefault(),
+                       GpioSharingMode.Exclusive,
+                       GpioPinDriveMode.Output))).As<IExplorerHat_Output3>().SingleInstance();
+
+            builder.Register(_ =>
+               new ExplorerHat_Output1(
+                   new XGpio(16,
+                       GpioController.GetDefault(),
+                       GpioSharingMode.Exclusive,
+                       GpioPinDriveMode.Output))).As<IExplorerHat_Output4>().SingleInstance();
+
+
+            builder.Register(_ =>
+               new ExplorerHat_Input1(
+                   new XGpio(23,
+                       GpioController.GetDefault(),
+                       GpioSharingMode.Exclusive,
+                       GpioPinDriveMode.Input))).As<IExplorerHat_Input1>().SingleInstance();
+
+            builder.Register(_ =>
+               new ExplorerHat_Input2(
+                   new XGpio(22,
+                       GpioController.GetDefault(),
+                       GpioSharingMode.Exclusive,
+                       GpioPinDriveMode.Input))).As<IExplorerHat_Input2>().SingleInstance();
+
+            builder.Register(_ =>
+               new ExplorerHat_Input3(
+                   new XGpio(24,
+                       GpioController.GetDefault(),
+                       GpioSharingMode.Exclusive,
+                       GpioPinDriveMode.Input))).As<IExplorerHat_Input4>().SingleInstance();
+
+            builder.Register(_ =>
+               new ExplorerHat_Input4(
+                   new XGpio(25,
+                       GpioController.GetDefault(),
+                       GpioSharingMode.Exclusive,
+                       GpioPinDriveMode.Input))).As<IExplorerHat_Input4>().SingleInstance();
+
+
             builder.RegisterType<ExplorerHat_AnaloguePlug1>().As<IExplorerHat_AnaloguePlug1>().SingleInstance();
             builder.RegisterType<ExplorerHat_AnaloguePlug2>().As<IExplorerHat_AnaloguePlug2>().SingleInstance();
             builder.RegisterType<ExplorerHat_AnaloguePlug3>().As<IExplorerHat_AnaloguePlug3>().SingleInstance();
