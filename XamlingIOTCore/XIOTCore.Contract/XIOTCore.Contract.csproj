@@ -39,7 +39,7 @@
     <Compile Include="Enum\SamplesPerSecond.cs" />
     <Compile Include="Interface\IADS1015.cs" />
     <Compile Include="Interface\IXGpio.cs" />
-    <Compile Include="Interface\IXLed.cs" />
+    <Compile Include="Interface\IXGpioControl.cs" />
     <Compile Include="Interface\IXIOTCoreFactory.cs" />
     <Compile Include="Platforms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -109,7 +109,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Gpio\XGpioLed.cs" />
+    <Compile Include="Gpio\XGpioControl.cs" />
     <Compile Include="Gpio\XGpio.cs" />
     <Compile Include="I2C\ADC\ADS1015.cs" />
     <Compile Include="I2C\ADC\ADS1015Extensions.cs" />

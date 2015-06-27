@@ -1,6 +1,6 @@
 namespace XIOTCore.Contract.Interface
 {
-    public interface IXLed
+    public interface IXGpioControl
     {
         void On();
         void Off();

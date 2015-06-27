@@ -115,15 +115,17 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExplorerHATPro\Components\ExplorerHat_GreenLed.cs" />
-    <Compile Include="ExplorerHATPro\Components\ExplorerHat_RedLed.cs" />
+    <Compile Include="ExplorerHATPro\Components\ExploereHat_Outputs.cs" />
+    <Compile Include="ExplorerHATPro\Components\ExplorerHat_Leds.cs" />
     <Compile Include="ExplorerHATPro\Components\ExplorerHat_ADS1015.cs" />
+    <Compile Include="ExplorerHATPro\Components\ExploereHat_Inputs.cs" />
     <Compile Include="ExplorerHATPro\Plugs\ExplorerHat_AnaloguePlug.cs" />
+    <Compile Include="Interface\IExploereHat_Outputs.cs" />
+    <Compile Include="Interface\IExploereHat_Inputs.cs" />
     <Compile Include="Interface\IExplorerHat_AnaloguePlug.cs" />
     <Compile Include="Interface\IExplorerHat_ADS1015.cs" />
     <Compile Include="ExplorerHATPro\Enum\ExplorerHat_ADS1015_Channel.cs" />
-    <Compile Include="Interface\IExplorerHat_GreenLed.cs" />
-    <Compile Include="Interface\IExplorerHat_RedLed.cs" />
+    <Compile Include="Interface\IExplorerHat_Leds.cs" />
     <Compile Include="Modules\ExplorerHat_Pro_Module.cs" />
     <Compile Include="Modules\RaspberryPi_2_ModelB_Module.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -4,7 +4,14 @@ using XIOTCore.Contract.Interface;
 
 namespace XCore.RaspberryPI.ExplorerHATPro.Components
 {
-    public class ExplorerHat_GreenLed : XGpioLed, IExplorerHat_GreenLed
+    public class ExplorerHat_RedLed : XGpioControl, IExplorerHat_RedLed
+    {
+        public ExplorerHat_RedLed(IXGpio gpio) : base(gpio)
+        {
+        }
+    }
+
+    public class ExplorerHat_GreenLed : XGpioControl, IExplorerHat_GreenLed
     {
         public ExplorerHat_GreenLed(IXGpio gpio) : base(gpio)
         {

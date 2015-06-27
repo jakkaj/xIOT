@@ -31,8 +31,8 @@ namespace XIOTCore_Samples
         private readonly IXIOTCoreFactory _factory =
             XIOTCoreFactory.Create(Platforms.RaspberryPi2ModelB | Platforms.RaspberryPi2ExporerHatPro);
 
-        private readonly IXLed _redLed;
-        private readonly IXLed _greenLed;
+        private readonly IXGpioControl _redLed;
+        private readonly IXGpioControl _greenLed;
 
         private readonly IExplorerHat_AnaloguePlug _plug1;
         private readonly IExplorerHat_AnaloguePlug _plug4;

@@ -8,6 +8,14 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <!--<MediaElement x:Name="MediaThing"
+            IsLooping="True" 
+            AutoPlay="True" 
+            VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
+            Source="http://sample-videos.com/video/mp4/480/big_buck_bunny_480p_1mb.mp4"
+            
+            />-->
+        <TextBlock Text="Jordan" Foreground="Green" FontSize="40"/>
         <Ellipse x:Name="ThingEllipse" Width="50" Height="50" Fill="Red">
             <Ellipse.RenderTransform>
                 <CompositeTransform x:Name="ThingCompositeTransform"></CompositeTransform>
