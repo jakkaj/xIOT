@@ -1,0 +1,4 @@
+﻿#These are regex
+#Add each filter on a new line
+.cs$
+.csproj$

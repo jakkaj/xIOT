@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>GitAdder</id>
+	<title>Git adder - for those pesky missed files</title>
+    <version>1.0.0</version>
+    <authors>Jordan Knight</authors>
+    <owners>Jordan Knight</owners>
+    <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl>
+    <projectUrl>https://github.com/jakkaj/gitadder</projectUrl>
+    <iconUrl>http://xamling.net/Media/Images/logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Little app to recursively search and add files to Git repositories following simple include and exclude rules</description>
+    <releaseNotes></releaseNotes>
+    <copyright>2015 Jordan Knight available under MS-PL (http://opensource.org/licenses/MS-PL)
+		Uses and includes https://github.com/libgit2/libgit2sharp
+	</copyright>
+    <tags>GIT Missing Add Xamling</tags>
+    <dependencies>
+	  
+    </dependencies>
+  </metadata>
+</package>
