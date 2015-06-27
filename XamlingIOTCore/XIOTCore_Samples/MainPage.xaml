@@ -15,7 +15,8 @@
             Source="http://sample-videos.com/video/mp4/480/big_buck_bunny_480p_1mb.mp4"
             
             />-->
-        <TextBlock Text="Jordan" Foreground="Green" FontSize="40"/>
+        <TextBlock x:Name="MovementText" Text="Movement!!" Foreground="Green" FontSize="40" 
+                   VerticalAlignment="Top" HorizontalAlignment="Center"/>
         <Ellipse x:Name="ThingEllipse" Width="50" Height="50" Fill="Red">
             <Ellipse.RenderTransform>
                 <CompositeTransform x:Name="ThingCompositeTransform"></CompositeTransform>

@@ -37,6 +37,8 @@ namespace XIOTCore_Samples
         private readonly IExplorerHat_AnaloguePlug _plug1;
         private readonly IExplorerHat_AnaloguePlug _plug4;
 
+        private IXGpioControl _input1;
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -48,6 +50,8 @@ namespace XIOTCore_Samples
 
             _plug1 = _factory.GetComponent<IExplorerHat_AnaloguePlug1>();
             _plug4 = _factory.GetComponent<IExplorerHat_AnaloguePlug4>();
+
+            _input1 = _factory.GetComponent<IExplorerHat_Input1>();
 
             _cycle();
         }
@@ -95,7 +99,13 @@ namespace XIOTCore_Samples
 
                 _moveEllipse(v1, v4);
 
-                await Task.Delay(5);
+                var state = _input1.State;
+                
+                Debug.WriteLine($"IR State: {state}");
+
+                MovementText.Visibility = state ? Visibility.Visible : Visibility.Collapsed;
+
+                await Task.Yield();
             }
         }
 

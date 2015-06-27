@@ -48,7 +48,8 @@ namespace XIOTCore.Components.Gpio
 
         public XPinValue GetValue()
         {
-            return _pin.Read() == GpioPinValue.Low ? XPinValue.Low : XPinValue.High;
+            var r=  _pin.Read();
+            return r == GpioPinValue.Low ? XPinValue.Low : XPinValue.High;
         }
     }
 }

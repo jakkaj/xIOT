@@ -36,21 +36,21 @@ namespace XCore.RaspberryPI.Modules
                         GpioPinDriveMode.Output))).As<IExplorerHat_Output1>().SingleInstance();
 
             builder.Register(_ =>
-                new ExplorerHat_Output1(
+                new ExplorerHat_Output2(
                     new XGpio(12,
                         GpioController.GetDefault(),
                         GpioSharingMode.Exclusive,
                         GpioPinDriveMode.Output))).As<IExplorerHat_Output2>().SingleInstance();
 
             builder.Register(_ =>
-               new ExplorerHat_Output1(
+               new ExplorerHat_Output3(
                    new XGpio(13,
                        GpioController.GetDefault(),
                        GpioSharingMode.Exclusive,
                        GpioPinDriveMode.Output))).As<IExplorerHat_Output3>().SingleInstance();
 
             builder.Register(_ =>
-               new ExplorerHat_Output1(
+               new ExplorerHat_Output4(
                    new XGpio(16,
                        GpioController.GetDefault(),
                        GpioSharingMode.Exclusive,
@@ -76,7 +76,7 @@ namespace XCore.RaspberryPI.Modules
                    new XGpio(24,
                        GpioController.GetDefault(),
                        GpioSharingMode.Exclusive,
-                       GpioPinDriveMode.Input))).As<IExplorerHat_Input4>().SingleInstance();
+                       GpioPinDriveMode.Input))).As<IExplorerHat_Input3>().SingleInstance();
 
             builder.Register(_ =>
                new ExplorerHat_Input4(
