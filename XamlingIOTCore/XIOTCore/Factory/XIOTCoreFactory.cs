@@ -8,6 +8,7 @@ using Autofac;
 using XCore.RaspberryPI.Modules;
 using XIOTCore.Contract;
 using XIOTCore.Contract.Interface;
+using XIOTCore.Modules;
 
 namespace XIOTCore.Factory
 {
@@ -29,6 +30,8 @@ namespace XIOTCore.Factory
 
         public void Init()
         {
+            Builder.RegisterModule<XIOTCoreModule>();
+
             if (_platforms.HasFlag(Platforms.RaspberryPi2ModelB))
             {
                 Builder.RegisterModule<RaspberryPi_2_ModelB_Module>();

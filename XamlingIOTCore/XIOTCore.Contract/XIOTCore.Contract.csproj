@@ -40,6 +40,7 @@
     <Compile Include="Interface\IADS1015.cs" />
     <Compile Include="Interface\IXGpio.cs" />
     <Compile Include="Interface\IXGpioControl.cs" />
+    <Compile Include="Interface\IXI2CInfo.cs" />
     <Compile Include="Interface\IXIOTCoreFactory.cs" />
     <Compile Include="Platforms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

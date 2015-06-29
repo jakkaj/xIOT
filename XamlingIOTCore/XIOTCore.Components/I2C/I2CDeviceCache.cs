@@ -34,9 +34,9 @@ namespace XIOTCore.Components.I2C
                 var aqs = I2cDevice.GetDeviceSelector(controllerName);
 
                 var dis = await DeviceInformation.FindAllAsync(aqs);
-
+                
                 var i2Cdevice = await I2cDevice.FromIdAsync(dis[0].Id, settings);
-
+                
                 if (i2Cdevice == null)
                 {
                     return null;

@@ -52,12 +52,16 @@ namespace XIOTCore_Samples
             _plug4 = _factory.GetComponent<IExplorerHat_AnaloguePlug4>();
 
             _input1 = _factory.GetComponent<IExplorerHat_Input1>();
-
+            
             _cycle();
         }
 
         async void _cycle()
         {
+            //var i2cinfo = _factory.GetComponent<IXI2CInfo>();
+            //await i2cinfo.GetAllDevices();
+
+
             var init4 = await _plug4.Init();
             var init1 = await _plug1.Init();
 
