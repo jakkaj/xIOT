@@ -15,12 +15,21 @@
             Source="http://sample-videos.com/video/mp4/480/big_buck_bunny_480p_1mb.mp4"
             
             />-->
-        <TextBlock x:Name="MovementText" Text="Movement!!" Foreground="Green" FontSize="40" 
+        <TextBlock x:Name="MovementText" Text="Movement Detected" Foreground="Green" FontSize="40" 
                    VerticalAlignment="Top" HorizontalAlignment="Center"/>
-        <Ellipse x:Name="ThingEllipse" Width="50" Height="50" Fill="Red">
+        <Ellipse x:Name="ThingEllipse" Width="50" Height="50" Fill="Red" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <Ellipse.RenderTransform>
                 <CompositeTransform x:Name="ThingCompositeTransform"></CompositeTransform>
             </Ellipse.RenderTransform>
         </Ellipse>
+
+        <Ellipse x:Name="DistanceEllipse" Width="50" Height="50" Fill="Green" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <Ellipse.RenderTransform>
+                <CompositeTransform x:Name="DistanceCompositeTransform"></CompositeTransform>
+            </Ellipse.RenderTransform>
+        </Ellipse>
+
+        <TextBlock x:Name="DistanceText" Text="" Foreground="Green" FontSize="40" 
+                   VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
     </Grid>
 </Page>
