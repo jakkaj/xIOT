@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XIOTCore.Contract.Enum
 {
-    public enum SamplesPerSecond
+    public enum XSamplesPerSecond
     {
         SPS128, SPS250, SPS490, SPS920, SPS1600, SPS2400, SPS3300
     }

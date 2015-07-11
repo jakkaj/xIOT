@@ -115,6 +115,7 @@
     <Compile Include="I2C\ADC\ADS1015Extensions.cs" />
     <Compile Include="I2C\I2CDeviceCache.cs" />
     <Compile Include="I2C\XI2CInfo.cs" />
+    <Compile Include="Modules\Range\HC-SR04.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\XamlingCore\XAsyncLock.cs" />
   </ItemGroup>

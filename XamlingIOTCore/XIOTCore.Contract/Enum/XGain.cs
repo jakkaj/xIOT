@@ -1,6 +1,6 @@
 ﻿namespace XIOTCore.Contract.Enum
 {
-    public enum Gain
+    public enum XGain
     {
         Volt5 = 0,  //   PGA_6_144V = 0, //6144,  //0
         Volt33 = 1, //   PGA_4_096V = 1, //4096,  //1

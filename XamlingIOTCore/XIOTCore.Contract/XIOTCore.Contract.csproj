@@ -34,9 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Dto\XPinValue.cs" />
-    <Compile Include="Enum\Gain.cs" />
-    <Compile Include="Enum\SamplesPerSecond.cs" />
+    <Compile Include="Enum\XOutputMode.cs" />
+    <Compile Include="Enum\XPinValue.cs" />
+    <Compile Include="Enum\XGain.cs" />
+    <Compile Include="Enum\XSamplesPerSecond.cs" />
     <Compile Include="Interface\IADS1015.cs" />
     <Compile Include="Interface\IXGpio.cs" />
     <Compile Include="Interface\IXGpioControl.cs" />
