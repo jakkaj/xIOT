@@ -62,8 +62,8 @@
     <PostBuildEvent>copy /y "$(TargetPath)" "$(SolutionDir)\nuget\lib\portable-net45+win+wpa81+wp80+monotouch+monoandroid+Xamarin.iOS"
 xcopy /y "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)\nuget\lib\portable-net45+win+wpa81+wp80+monotouch+monoandroid+Xamarin.iOS"
 
-copy /y "$(TargetPath)" "$(SolutionDir)\nuget\lib\wup"
-xcopy /y "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)\nuget\lib\wup"
+copy /y "$(TargetPath)" "$(SolutionDir)\nuget\lib\win10"
+xcopy /y "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)\nuget\lib\win10"
 
 </PostBuildEvent>
   </PropertyGroup>
