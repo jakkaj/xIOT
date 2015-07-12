@@ -26,8 +26,6 @@ namespace xIOT_Sample_HCSR04
             _init();
         }
 
-       
-
         async void _init()
         {
             await _echoLocationModule.Init();
