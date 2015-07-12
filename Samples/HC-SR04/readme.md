@@ -6,7 +6,9 @@ You can use this sample code, or you can start from scratch! Just install the Xa
 
 ###What you'll need
 
+* Visual Studio 2015
 * Windows 10 IOT Core running on a Raspberry Pi 2
+* Windows 10 IOT Core SDK
 * An [Explorer HAT Pro] (http://shop.pimoroni.com/products/explorer-hat). You can do this without the Explorer, but this example uses it.
 * A PNP transistor. I used a BC328-25 from Jaycar. A 2N2906 will do the trick too. 
 * Some resistors (~500, ~1k, ~4k). 
