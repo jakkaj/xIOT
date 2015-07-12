@@ -17,7 +17,9 @@
     <copyright>Copyright 2015</copyright>
     <tags>Xamling XamlingCore XamlingIOT Portable</tags>
     <dependencies>
-       <dependency id="Autofac" version="3.5.2" />
+       <dependency id="Autofac" version="3.5.2" />   
+	   
+	   
     </dependencies>
   </metadata>
 </package>

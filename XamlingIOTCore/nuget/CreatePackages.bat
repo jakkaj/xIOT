@@ -1,2 +1,2 @@
-..\.nuget\NuGet.exe pack XamlingIOT.nuspec
+NuGet.exe pack XamlingIOT.nuspec
 pause
