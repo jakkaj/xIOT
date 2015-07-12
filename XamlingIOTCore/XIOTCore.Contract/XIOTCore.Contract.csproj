@@ -38,11 +38,12 @@
     <Compile Include="Enum\XPinValue.cs" />
     <Compile Include="Enum\XGain.cs" />
     <Compile Include="Enum\XSamplesPerSecond.cs" />
-    <Compile Include="Interface\IADS1015.cs" />
-    <Compile Include="Interface\IXGpio.cs" />
-    <Compile Include="Interface\IXGpioControl.cs" />
-    <Compile Include="Interface\IXI2CInfo.cs" />
+    <Compile Include="Interface\I2C\IADS1015.cs" />
+    <Compile Include="Interface\Basics\IXGpio.cs" />
+    <Compile Include="Interface\Basics\IXGpioControl.cs" />
+    <Compile Include="Interface\I2C\IXI2CInfo.cs" />
     <Compile Include="Interface\IXIOTCoreFactory.cs" />
+    <Compile Include="Interface\Module\IHC_SR04.cs" />
     <Compile Include="Platforms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
