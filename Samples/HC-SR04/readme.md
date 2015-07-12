@@ -7,13 +7,13 @@ You can use this sample code, or you can start from scratch! Just install the Xa
 ###What you'll need
 
 * Windows 10 IOT Core running on a Raspberry Pi 2
-* An [Explorer HAT Pro] (http://shop.pimoroni.com/products/explorer-hat). You can do this without the Explorer, but this example uses it)
+* An [Explorer HAT Pro] (http://shop.pimoroni.com/products/explorer-hat). You can do this without the Explorer, but this example uses it.
 * A PNP transistor. I used a BC328-25 from Jaycar. A 2N2906 will do the trick too. 
 * Some resistors (~500, ~1k, ~4k). 
 
 ###Wiring
 
-The basic idea of the circuit is that we tell the module to do a ping by running voltage to the tigger lead. We then time how long it takes for the module to signal to rise on the input pin. 
+The basic idea of the circuit is that we tell the module to do a ping by running voltage to the tigger lead. We then time how long it takes for the module signal to rise on the input pin. 
 
 This is all handled by the library - if you want to check out what is going on inside, including the speed of sound measurements, check out the source code in the main Xamling-IOT library here: [HC-SR04.cs](https://github.com/jakkaj/Xamling-IOT/blob/master/XamlingIOTCore/XIOTCore.Components/Modules/Range/HC-SR04.cs).
 
