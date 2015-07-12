@@ -4,9 +4,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using XIOTCore.Contract.Dto;
 using XIOTCore.Contract.Enum;
 using XIOTCore.Contract.Interface;
+using XIOTCore.Contract.Interface.Basics;
+using XIOTCore.Contract.Interface.Module;
 
 namespace XIOTCore.Components.Modules.Range
 {

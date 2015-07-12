@@ -1,4 +1,4 @@
-namespace XIOTCore.Contract.Interface
+namespace XIOTCore.Contract.Interface.Basics
 {
     public interface IXGpioControl
     {

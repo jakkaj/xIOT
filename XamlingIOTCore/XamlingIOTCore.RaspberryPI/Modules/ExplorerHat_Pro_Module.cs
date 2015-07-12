@@ -6,6 +6,7 @@ using XCore.RaspberryPI.ExplorerHATPro.Plugs;
 using XCore.RaspberryPI.Interface;
 using XIOTCore.Components.Gpio;
 using XIOTCore.Contract.Interface;
+using XIOTCore.Contract.Interface.Configs;
 
 
 namespace XCore.RaspberryPI.Modules
@@ -14,6 +15,8 @@ namespace XCore.RaspberryPI.Modules
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<ExplorerHatConfiguration>().As<IPlatformConfiguration>();
+
             builder.Register(_ =>
                 new ExplorerHat_GreenLed(
                     new XGpio(27,

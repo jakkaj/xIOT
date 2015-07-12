@@ -9,6 +9,7 @@ using Windows.Devices.I2c;
 using XamlingCore.Portable.Util.Lock;
 using XIOTCore.Contract.Enum;
 using XIOTCore.Contract.Interface;
+using XIOTCore.Contract.Interface.I2C;
 
 namespace XIOTCore.Components.I2C.ADC
 {

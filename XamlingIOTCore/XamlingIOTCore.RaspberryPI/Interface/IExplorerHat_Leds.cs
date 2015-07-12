@@ -1,4 +1,5 @@
 ﻿using XIOTCore.Contract.Interface;
+using XIOTCore.Contract.Interface.Basics;
 
 namespace XCore.RaspberryPI.Interface
 {

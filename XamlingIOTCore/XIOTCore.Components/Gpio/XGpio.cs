@@ -1,7 +1,8 @@
 ﻿using System;
 using Windows.Devices.Gpio;
-using XIOTCore.Contract.Dto;
+using XIOTCore.Contract.Enum;
 using XIOTCore.Contract.Interface;
+using XIOTCore.Contract.Interface.Basics;
 
 namespace XIOTCore.Components.Gpio
 {

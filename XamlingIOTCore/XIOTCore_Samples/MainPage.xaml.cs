@@ -18,6 +18,8 @@ using XCore.RaspberryPI.Interface;
 using XIOTCore.Components.Modules.Range;
 using XIOTCore.Contract;
 using XIOTCore.Contract.Interface;
+using XIOTCore.Contract.Interface.Basics;
+using XIOTCore.Contract.Interface.Module;
 using XIOTCore.Factory;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409

@@ -1,6 +1,6 @@
-using XIOTCore.Contract.Dto;
+using XIOTCore.Contract.Enum;
 
-namespace XIOTCore.Contract.Interface
+namespace XIOTCore.Contract.Interface.Basics
 {
     public interface IXGpio
     {
