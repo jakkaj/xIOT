@@ -10,6 +10,11 @@ using xIOT_Sample_HCSR04.Annotations;
 using XCore.RaspberryPI.Interface;
 using XIOTCore.Contract.Interface.Module;
 
+//For the wiring diagram see: http://fritzing.org/projects/hc-sr04-echo-range-finder-and-xiot-windows
+//License and other samples / nuget package source: https://github.com/jakkaj/Xamling-IOT
+//This sample doco: https://github.com/jakkaj/Xamling-IOT/tree/master/Samples/HC-SR04
+//Jordan Knight @jakkaj / Xaming 2015. 
+
 namespace xIOT_Sample_HCSR04
 {
     public class MainViewModel : INotifyPropertyChanged
@@ -25,8 +30,6 @@ namespace xIOT_Sample_HCSR04
             _echoLocationModule = echoLocationModule;
             _init();
         }
-
-       
 
         async void _init()
         {
