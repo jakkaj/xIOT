@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>XamlingAzure</id>
+	<title>Xamling Azure</title>
+    <version>1.0.0</version>
+    <authors>Jordan</authors>
+    <owners>Jordan</owners>
+    <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl>
+    <projectUrl>https://github.com/jakkaj/Xamling-Azure</projectUrl>
+    <iconUrl>http://xamling.net/Media/Images/logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Xamling Azure for development the Xamling way</description>
+    <releaseNotes>	
+	Contact Jordan @jakkaj info@xamling.net. 
+	</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>Xamling XamlingCore XamlingAzure Portable</tags>
+    <dependencies>
+       <dependency id="Autofac" version="3.5.2" />      
+       <dependency id="Microsoft.Net.Http" version="2.2.29" />
+       <dependency id="Newtonsoft.Json" version="7.0.1" />
+	   <dependency id="AutoMapper" version="3.3.1" />      
+	   <dependency id="Microsoft.ApplicationInsights" version="1.0.0" />      
+	   <dependency id="Microsoft.WindowsAzure.ConfigurationManager" version="3.1.0" />      
+	   <dependency id="StackExchange.Redis" version="1.0.450" />      
+	   <dependency id="WindowsAzure.ServiceBus" version="2.7.3" />      
+	   <dependency id="WindowsAzure.Storage" version="4.3.0" />      
+	   <dependency id="XamlingCore" version="2.0.141" />  
+	   <dependency id="Microsoft.Azure.DocumentDB" version="1.2.0" />  
+	   
+	   
+    </dependencies>
+  </metadata>
+</package>
