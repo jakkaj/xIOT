@@ -1,6 +1,6 @@
 #Distance measurement using a HC-SR04 Module
 
-This example demonstrates how to use the xIOT library to measure distances using the HC-SR04 echo location module. 
+This example demonstrates how to use the Xamling-IOT library to measure distances using the HC-SR04 echo location module. 
 
 You can use this sample code, or you can start from scratch! Just install the Xamling-IOT Nuget package. 
 
@@ -79,3 +79,89 @@ All that is left is to create a loop and continuously asks the module to ping.
 Rememver to call ```_cycle``` from your constructor **after** you call Init on the factory!
 
 Also remember to create a TextBlock in your XAML code called DistanceText!
+
+####Method 2 - MVVM, IOC, Autofac
+
+First up, you'll need to configure the system to inject your own view model. This is done **before** you call ```Init()``` on the factory. 
+
+```C#
+_factory.Builder.Register(
+  c => new HC_SR04(c.Resolve<IExplorerHat_Output1>(), c.Resolve<IExplorerHat_Input2>())).As<IHC_SR04>();
+_factory.Init();
+```
+
+You'll note here that you can change the input and outputs to suit your wiring. 
+
+The good thing about this is now you can ask for an IHC_SR04 anywhere in your code without having to configure it!
+
+Create a new view model. Ask the system to inject a IHC_SR04 in to your constructor. Most the code from there on is the same as the first example. Trigger the module to do a ping and get the response. 
+
+```C#
+public class MainViewModel : INotifyPropertyChanged
+{
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    private IHC_SR04 _echoLocationModule;
+
+    private string _distance;
+
+    public MainViewModel(IHC_SR04 echoLocationModule)
+    {
+        _echoLocationModule = echoLocationModule;
+        _init();
+    }
+
+    async void _init()
+    {
+        await _echoLocationModule.Init();
+        _loop();
+    }
+
+    private async void _loop()
+    {
+        while (true)
+        {
+            var averageRound = await _echoLocationModule.Measure(true);
+            Distance = averageRound.ToString();
+            await Task.Yield(); //make sure other stuff can do things. 
+        }
+    }
+
+    public string Distance
+    {
+        get { return _distance; }
+        set
+        {
+            _distance = value;
+            OnPropertyChanged();
+        }
+    }
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+}
+```
+
+Back in the MainPage.xaml.cs instanciate the view model and set it to the DataContext. 
+
+```C#
+var vm = _factory.Container.Resolve<MainViewModel>();
+
+DataContext = vm;
+```
+
+Don't forget to add DataBindings on to your TextBlock in the XAML!
+
+```XAML
+ <TextBlock Text="{Binding Distance}" />
+```
+
+##Special note about Autofac. 
+
+If you are using your own Autofac instance - you can easily add the required modules to that, rather than using ```Init()``` on the Factory. 
+
+Add ```ExplorerHat_Pro_Module``` and ```RaspberryPi_2_ModelB_Module```. 
+
