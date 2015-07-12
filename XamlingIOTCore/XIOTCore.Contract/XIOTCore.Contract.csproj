@@ -39,6 +39,7 @@
     <Compile Include="Enum\XGain.cs" />
     <Compile Include="Enum\XSamplesPerSecond.cs" />
     <Compile Include="Interface\IADS1015.cs" />
+    <Compile Include="Interface\IExplorerHatConfiguration.cs" />
     <Compile Include="Interface\IXGpio.cs" />
     <Compile Include="Interface\IXGpioControl.cs" />
     <Compile Include="Interface\IXI2CInfo.cs" />

@@ -12,27 +12,26 @@ namespace XIOTCore.Components.Modules.Range
     public class HC_SR04
     {
         private readonly IXGpioControl _triggerOutput;
-        private XOutputMode _mode = XOutputMode.Vcc;
+        
         public HC_SR04(IXGpioControl triggerOutput)
         {
+            
             _triggerOutput = triggerOutput;
         }
 
         public void Init()
         {
-            
+            _stopTrigger();
         }
 
-        /// <summary>
-        /// Some boards have outputs that don't send VCC, they sink ground instead
-        /// This allows you to trigger output based on that "reversal"
-        /// An example of something that triggers by opening to ground is the 
-        /// Explorer HAT pro on the Raspberry Pi 2. 
-        /// </summary>
-        /// <param name="triggerMode"></param>
-        public void SetOutputTriggerMode(XOutputMode mode)
+        void _stopTrigger()
         {
-            _mode = mode;
+            _triggerOutput.Off();
+        }
+
+        void _startTrigger()
+        {
+            _triggerOutput.On();
         }
     }
 }

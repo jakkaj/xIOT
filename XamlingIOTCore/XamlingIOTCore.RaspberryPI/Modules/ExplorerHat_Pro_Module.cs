@@ -14,6 +14,8 @@ namespace XCore.RaspberryPI.Modules
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<ExplorerHatConfiguration>().As<IPlatformConfiguration>();
+
             builder.Register(_ =>
                 new ExplorerHat_GreenLed(
                     new XGpio(27,
