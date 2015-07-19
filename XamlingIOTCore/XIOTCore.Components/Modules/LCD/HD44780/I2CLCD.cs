@@ -1,10 +1,9 @@
 ﻿using System.Threading.Tasks;
 using XIOTCore.Contract.Enum;
-using XIOTCore.Contract.Interface;
 using XIOTCore.Contract.Interface.Basics;
 using XIOTCore.Contract.Interface.Module;
 
-namespace XIOTCore.Components.LCD.HD44780
+namespace XIOTCore.Components.Modules.LCD.HD44780
 {
     public class I2CLCD : LCD, II2CLCD
     {

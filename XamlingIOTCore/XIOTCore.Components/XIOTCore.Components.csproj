@@ -132,9 +132,9 @@
     <Compile Include="I2C\Windows\I2CDeviceCache.cs" />
     <Compile Include="I2C\Windows\WindowsI2CDevice.cs" />
     <Compile Include="I2C\Windows\XI2CInfo.cs" />
-    <Compile Include="LCD\HD44780\I2CIO.cs" />
-    <Compile Include="LCD\HD44780\I2CLCD.cs" />
-    <Compile Include="LCD\HD44780\LCD.cs" />
+    <Compile Include="Modules\LCD\HD44780\I2CIO.cs" />
+    <Compile Include="Modules\LCD\HD44780\I2CLCD.cs" />
+    <Compile Include="Modules\LCD\HD44780\LCD.cs" />
     <Compile Include="Util\XamlingCore\StopwatchDelay.cs" />
     <Compile Include="Modules\Range\HC-SR04.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
