@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using XIOTCore.Contract.Enum;
 using XIOTCore.Contract.Interface;
+using XIOTCore.Contract.Interface.Basics;
 
 namespace XIOTCore.Components.LCD.HD44780
 {

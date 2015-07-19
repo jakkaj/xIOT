@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace XIOTCore.Contract.Interface
+namespace XIOTCore.Contract.Interface.Basics
 {
     public interface IXI2CDevice : IDisposable
     {

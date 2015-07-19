@@ -8,6 +8,7 @@ using XCore.RaspberryPI.ExplorerHATPro.Enum;
 using XCore.RaspberryPI.Interface;
 using XIOTCore.Contract.Enum;
 using XIOTCore.Contract.Interface;
+using XIOTCore.Contract.Interface.Basics;
 
 namespace XCore.RaspberryPI.ExplorerHATPro.Plugs
 {

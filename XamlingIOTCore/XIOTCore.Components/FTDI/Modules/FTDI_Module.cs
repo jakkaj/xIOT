@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Autofac;
 using XIOTCore.Components.FTDI.I2C;
 using XIOTCore.Contract.Interface;
+using XIOTCore.Contract.Interface.Basics;
 
 namespace XIOTCore.Components.FTDI.Modules
 {

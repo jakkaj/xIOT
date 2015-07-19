@@ -2,7 +2,7 @@
 using XIOTCore.Contract.Enum;
 using Constants = XIOTCore.Contract.Enum.Constants;
 
-namespace XIOTCore.Contract.Interface
+namespace XIOTCore.Contract.Interface.Module
 {
     public interface ILCD
     {

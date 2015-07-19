@@ -2,6 +2,7 @@
 using XIOTCore.Components.Util.XamlingCore;
 using XIOTCore.Contract.Enum;
 using XIOTCore.Contract.Interface;
+using XIOTCore.Contract.Interface.Module;
 
 namespace XIOTCore.Components.LCD.HD44780
 {

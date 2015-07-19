@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using XIOTCore.Components.Util.XamlingCore;
 using XIOTCore.Contract.Interface;
+using XIOTCore.Contract.Interface.Basics;
+using XIOTCore.Contract.Interface.I2C;
 
 namespace XIOTCore.Components.I2C.Components.ADC
 {

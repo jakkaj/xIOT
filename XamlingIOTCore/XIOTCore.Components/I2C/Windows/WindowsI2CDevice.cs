@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Windows.Devices.I2c;
 using XIOTCore.Contract.Interface;
+using XIOTCore.Contract.Interface.Basics;
 
 namespace XIOTCore.Components.I2C.Windows
 {

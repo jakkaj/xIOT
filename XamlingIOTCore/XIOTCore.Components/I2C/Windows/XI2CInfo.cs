@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Windows.Devices.Enumeration;
 using Windows.Devices.I2c;
 using XIOTCore.Contract.Interface;
+using XIOTCore.Contract.Interface.I2C;
 
 namespace XIOTCore.Components.I2C.Windows
 {

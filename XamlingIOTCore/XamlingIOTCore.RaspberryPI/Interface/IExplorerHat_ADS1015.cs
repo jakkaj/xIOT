@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using XCore.RaspberryPI.ExplorerHATPro.Enum;
 using XIOTCore.Contract.Enum;
 using XIOTCore.Contract.Interface;
+using XIOTCore.Contract.Interface.I2C;
 
 namespace XCore.RaspberryPI.Interface
 {

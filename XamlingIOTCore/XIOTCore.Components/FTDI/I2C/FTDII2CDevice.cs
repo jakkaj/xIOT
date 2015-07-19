@@ -5,6 +5,7 @@ using XIOTCore.Components.FTDI.Exceptions;
 using XIOTCore.Components.FTDI.LibMPSSE;
 using XIOTCore.Components.FTDI.Types;
 using XIOTCore.Contract.Interface;
+using XIOTCore.Contract.Interface.Basics;
 
 namespace XIOTCore.Components.FTDI.I2C
 {

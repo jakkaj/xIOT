@@ -7,28 +7,28 @@ namespace XIOTCore.Components.I2C.Components.ADC
 {
     public static class ADS1015Extensions
     {
-        public static ushort ForADS1015(this SamplesPerSecond samples)
+        public static ushort ForADS1015(this XSamplesPerSecond xSamples)
         {
             ushort[] samplePerSecondMap = { 0x0000, 0x0020, 0x0040, 0x0060, 0x0080, 0x00A0, 0x00C0 };
-            return samplePerSecondMap[(int)samples];
+            return samplePerSecondMap[(int)xSamples];
         }
 
-        public static ushort ForADS1015(this Gain gain)
+        public static ushort ForADS1015(this XGain xGain)
         {
             ushort[] programmableGainMap = { 0x0000, 0x0200, 0x0400, 0x0600, 0x0800, 0x0A00 };
-            return programmableGainMap[(int) gain];
+            return programmableGainMap[(int) xGain];
         }
 
-        public static ElectricPotential ToElectricPotenital(this Gain gain)
+        public static ElectricPotential ToElectricPotenital(this XGain xGain)
         {
-            switch (gain)
+            switch (xGain)
             {
-                case Gain.Volt5:
+                case XGain.Volt5:
                     return ElectricPotential.From(5, ElectricPotentialUnit.Volt);
-                case Gain.Volt33:
+                case XGain.Volt33:
                     return ElectricPotential.From(3.3, ElectricPotentialUnit.Volt);
                 default:
-                    throw new NotImplementedException($"No ElectricPotential mapping for {gain}");
+                    throw new NotImplementedException($"No ElectricPotential mapping for {xGain}");
             }
         }
 

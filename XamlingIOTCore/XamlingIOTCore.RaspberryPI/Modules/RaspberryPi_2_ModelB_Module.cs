@@ -2,6 +2,7 @@
 using XIOTCore.Components.I2C;
 using XIOTCore.Components.I2C.Windows;
 using XIOTCore.Contract.Interface;
+using XIOTCore.Contract.Interface.Basics;
 
 namespace XCore.RaspberryPI.Modules
 {

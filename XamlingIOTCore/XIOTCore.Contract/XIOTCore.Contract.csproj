@@ -34,20 +34,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Dto\XPinValue.cs" />
-    <Compile Include="Enum\Gain.cs" />
+    <Compile Include="Enum\XOutputMode.cs" />
     <Compile Include="Enum\LCDEnum.cs" />
-    <Compile Include="Enum\SamplesPerSecond.cs" />
-    <Compile Include="Interface\IADS1015.cs" />
-    <Compile Include="Interface\II2CLCD.cs" />
-    <Compile Include="Interface\ILCD.cs" />
-    <Compile Include="Interface\IXGpio.cs" />
-    <Compile Include="Interface\IXGpioControl.cs" />
-    <Compile Include="Interface\IXI2CDevice.cs" />
-    <Compile Include="Interface\IXI2CInfo.cs" />
+    <Compile Include="Enum\XPinValue.cs" />
+    <Compile Include="Enum\XGain.cs" />
+    <Compile Include="Enum\XSamplesPerSecond.cs" />
+    <Compile Include="Interface\I2C\IADS1015.cs" />
+    <Compile Include="Interface\Basics\IXGpio.cs" />
+    <Compile Include="Interface\Basics\IXGpioControl.cs" />
+    <Compile Include="Interface\I2C\IXI2CInfo.cs" />
+    <Compile Include="Interface\Configs\IPlatoformConfiguration.cs" />
+    <Compile Include="Interface\Basics\IXI2CDevice.cs" />
     <Compile Include="Interface\IXIOTCoreFactory.cs" />
+    <Compile Include="Interface\Module\IHC_SR04.cs" />
     <Compile Include="Platforms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Interface\Module\II2CLCD.cs" />
+    <Compile Include="Interface\Module\ILCD.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
@@ -59,6 +62,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /y "$(TargetPath)" "$(SolutionDir)\nuget\lib\portable-net45+win+wpa81+wp80+monotouch+monoandroid+Xamarin.iOS"
+xcopy /y "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)\nuget\lib\portable-net45+win+wpa81+wp80+monotouch+monoandroid+Xamarin.iOS"
+
+copy /y "$(TargetPath)" "$(SolutionDir)\nuget\lib\win10"
+xcopy /y "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)\nuget\lib\win10"
+
+</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

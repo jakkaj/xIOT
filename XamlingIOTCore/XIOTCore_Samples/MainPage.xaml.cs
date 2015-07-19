@@ -15,8 +15,11 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using XCore.RaspberryPI.Interface;
+using XIOTCore.Components.Modules.Range;
 using XIOTCore.Contract;
 using XIOTCore.Contract.Interface;
+using XIOTCore.Contract.Interface.Basics;
+using XIOTCore.Contract.Interface.Module;
 using XIOTCore.Factory;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -42,6 +45,8 @@ namespace XIOTCore_Samples
 
         private IXGpioControl _input1;
 
+        private IHC_SR04 _echoLocationModule;
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -59,88 +64,23 @@ namespace XIOTCore_Samples
             _input2 = _factory.GetComponent<IExplorerHat_Input2>();
             _output1 = _factory.GetComponent<IExplorerHat_Output1>();
 
+            _echoLocationModule = new HC_SR04(_output1, _input2);
+
             _cycle();
             _cycle2();
         }
 
         private async void _cycle()
         {
-            //var i2cinfo = _factory.GetComponent<IXI2CInfo>();
-            //await i2cinfo.GetAllDevices();
-
-            _output1.On();
-
-            await Task.Delay(1000);
-
-            //return;
-
-            var averages = new List<decimal>();
+            await _echoLocationModule.Init();
 
             while (true)
             {
-                await Task.Delay(20);
-
-                _output1.Off();
-                await Task.Delay(20);
-                _output1.On();
-
-                var sw = new Stopwatch();
-
-                var sw2 = new Stopwatch();
-
-                sw2.Start();
-                while (!_input2.State)
-                {
-                    if (sw2.Elapsed.TotalSeconds > 1)
-                    {
-                        break;
-                    }
-                }
-
-                sw.Start();
-
-                sw2 = new Stopwatch();
-                sw2.Start();
-                while (_input2.State)
-                {
-                    if (sw2.Elapsed.TotalSeconds > 1)
-                    {
-                        break;
-                    }
-                }
-
-                sw.Stop();
-
-                var freq = Stopwatch.Frequency;
-
-                var ts = sw.ElapsedTicks;
-
-                ts = ts / 2;
-
-                Int64 sos = 344000;
-
-                decimal result = ((1M / freq) * ts) * sos;
-
-                if (result > 4000)
-                {
-                    continue;
-                }
-
-                averages.Add(result);
-
-                while (averages.Count > 10)
-                {
-                    averages.RemoveAt(1);
-                }
-
-                var averageResult = averages.Average();
-
-                var averageRound = Math.Round(averageResult, 0);
+                var averageRound = await _echoLocationModule.Measure(true);
 
                 DistanceText.Text = averageRound.ToString();
                 _moveDistanceEllipse(Convert.ToInt32(averageRound));
             }
-
         }
 
         async void _cycle2()
@@ -166,28 +106,6 @@ namespace XIOTCore_Samples
                 var v1 = await _plug4.MeasurePercentage();
 
                 _moveVerticalEllipse(v1);
-
-                //var v4 = await _plug4.MeasurePercentage();
-
-                //if (v1 > v4 + 5)
-                //{
-                //    _greenLed.State = false;
-                //    _redLed.State = true;
-                //}
-                //else if (v4 > v1 + 5)
-                //{
-                //    _greenLed.State = true;
-                //    _redLed.State = false;
-                //}
-                //else
-                //{
-                //    _greenLed.State = true;
-                //    _redLed.State = true;
-                //}
-
-                //Debug.WriteLine($"Plug 1: {v1}, Plug 4: {v4}");
-
-               // _moveEllipse(v1, v4);
 
                 var state = _input1.State;
 

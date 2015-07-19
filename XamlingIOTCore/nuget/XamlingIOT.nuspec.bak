@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>XamlingIOT</id>
+	<title>Xamling IOT</title>
+    <version>1.0.3</version>
+    <authors>Jordan</authors>
+    <owners>Jordan</owners>
+    <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl>
+    <projectUrl>https://github.com/jakkaj/Xamling-IOT</projectUrl>
+    <iconUrl>http://xamling.net/Media/Images/logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Xamling IOT for development the Xamling way</description>
+    <releaseNotes>	
+	Contact Jordan @jakkaj info@xamling.net. 
+	</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>Xamling XamlingCore XamlingIOT Portable</tags>
+    <dependencies>
+       <dependency id="Autofac" version="3.5.2" />
+    </dependencies>
+  </metadata>
+</package>
