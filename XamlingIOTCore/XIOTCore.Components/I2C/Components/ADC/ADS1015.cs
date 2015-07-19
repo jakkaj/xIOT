@@ -17,30 +17,23 @@ namespace XIOTCore.Components.I2C.ADC
         private const int REG_CONV = 0x00;
         private const int REG_CFG = 0x01;
 
-        private I2cDevice _i2Cdevice;
+
+        private readonly IXI2CDevice _i2Cdevice;
         private readonly int _address;
         private readonly string _controllerName;
 
         XAsyncLock _locker = new XAsyncLock();
 
-
-
-        public ADS1015(int address, string controllerName)
+        public ADS1015(IXI2CDevice i2Cdevice, int address, string controllerName)
         {
+            _i2Cdevice = i2Cdevice;
             _address = address;
             _controllerName = controllerName;
         }
 
         public async Task<bool> Init()
         {
-            if (_i2Cdevice != null)
-            {
-                return true;
-            }
-
-            _i2Cdevice = await I2CDeviceCache.GetDevice(_address, _controllerName);
-
-            return _i2Cdevice != null;
+            return await _i2Cdevice.Init(_address, _controllerName);
         }
 
         protected async Task<double> GetMillivolts(ushort channel, ushort gain, ushort samplesPerSecond)

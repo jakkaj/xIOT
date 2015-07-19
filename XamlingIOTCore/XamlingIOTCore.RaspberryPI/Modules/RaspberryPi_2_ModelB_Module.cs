@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using XIOTCore.Components.I2C;
+using XIOTCore.Contract.Interface;
 
 namespace XCore.RaspberryPI.Modules
 {
@@ -6,6 +8,7 @@ namespace XCore.RaspberryPI.Modules
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<WindowsI2CDevice>().As<IXI2CDevice>();
             base.Load(builder);
         }
     }
