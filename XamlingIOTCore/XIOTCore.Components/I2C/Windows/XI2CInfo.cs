@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.Enumeration;
 using Windows.Devices.I2c;
 using XIOTCore.Contract.Interface;
 
-namespace XIOTCore.Components.I2C
+namespace XIOTCore.Components.I2C.Windows
 {
     public class XI2CInfo : IXI2CInfo
     {

@@ -36,8 +36,11 @@
   <ItemGroup>
     <Compile Include="Dto\XPinValue.cs" />
     <Compile Include="Enum\Gain.cs" />
+    <Compile Include="Enum\LCDEnum.cs" />
     <Compile Include="Enum\SamplesPerSecond.cs" />
     <Compile Include="Interface\IADS1015.cs" />
+    <Compile Include="Interface\II2CLCD.cs" />
+    <Compile Include="Interface\ILCD.cs" />
     <Compile Include="Interface\IXGpio.cs" />
     <Compile Include="Interface\IXGpioControl.cs" />
     <Compile Include="Interface\IXI2CDevice.cs" />

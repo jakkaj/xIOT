@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using XIOTCore.Components.I2C;
+using XIOTCore.Components.I2C.Windows;
 using XIOTCore.Contract.Interface;
 
 namespace XCore.RaspberryPI.Modules

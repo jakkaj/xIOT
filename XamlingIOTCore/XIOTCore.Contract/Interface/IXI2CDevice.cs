@@ -5,9 +5,10 @@ namespace XIOTCore.Contract.Interface
 {
     public interface IXI2CDevice : IDisposable
     {
-        Task<bool> Init(int address, string controllerName);
+        Task<bool> Init(int address);
         void WriteRead(byte[] writeBuffer, byte[] readBuffer);
         void Read(byte[] buffer);
-        void Write(byte[] buffer);
+        bool Write(byte[] buffer);
+        bool Write(int value);
     }
 }

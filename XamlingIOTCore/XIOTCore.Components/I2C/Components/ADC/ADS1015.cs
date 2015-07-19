@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Chat;
-using Windows.Devices.Enumeration;
-using Windows.Devices.I2c;
-using XamlingCore.Portable.Util.Lock;
-using XIOTCore.Contract.Enum;
+using XIOTCore.Components.Util.XamlingCore;
 using XIOTCore.Contract.Interface;
 
-namespace XIOTCore.Components.I2C.ADC
+namespace XIOTCore.Components.I2C.Components.ADC
 {
     public class ADS1015 : IADS1015, IDisposable
     {
@@ -20,20 +13,19 @@ namespace XIOTCore.Components.I2C.ADC
 
         private readonly IXI2CDevice _i2Cdevice;
         private readonly int _address;
-        private readonly string _controllerName;
 
         XAsyncLock _locker = new XAsyncLock();
 
-        public ADS1015(IXI2CDevice i2Cdevice, int address, string controllerName)
+        public ADS1015(IXI2CDevice i2Cdevice, int address)
         {
             _i2Cdevice = i2Cdevice;
             _address = address;
-            _controllerName = controllerName;
+           
         }
 
         public async Task<bool> Init()
         {
-            return await _i2Cdevice.Init(_address, _controllerName);
+            return await _i2Cdevice.Init(_address);
         }
 
         protected async Task<double> GetMillivolts(ushort channel, ushort gain, ushort samplesPerSecond)

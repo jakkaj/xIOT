@@ -1,32 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.I2c;
-using Windows.Security.Authentication.OnlineId;
 using XIOTCore.Contract.Interface;
 
-namespace XIOTCore.Components.I2C
+namespace XIOTCore.Components.I2C.Windows
 {
     public class WindowsI2CDevice : IXI2CDevice
     {
         private I2cDevice _i2Cdevice;
 
-        public async Task<bool> Init(int address)
-        {
-            return await Init(address, null);
-        }
+        
 
-        public async Task<bool> Init(int address, string controllerName)
+        public async Task<bool> Init(int address)
         {
             if (_i2Cdevice != null)
             {
                 return true;
             }
 
-            _i2Cdevice = await I2CDeviceCache.GetDevice(address, controllerName);
+            _i2Cdevice = await I2CDeviceCache.GetDevice(address, "I2C1");
 
             return _i2Cdevice != null;
         }
@@ -41,9 +33,19 @@ namespace XIOTCore.Components.I2C
             _i2Cdevice.Read(buffer);
         }
 
-        public void Write(byte[] buffer)
+        public bool Write(byte[] buffer)
         {
             _i2Cdevice.Write(buffer);
+            return true;
+        }
+
+        public bool Write(int value)
+        {
+            var array = new byte[1];
+            array[0] = Convert.ToByte(value);
+            _i2Cdevice.Write(array);
+
+            return true;
         }
 
         public void Dispose()

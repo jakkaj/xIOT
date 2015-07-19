@@ -6,6 +6,7 @@ namespace XIOTCore.Contract
     public enum Platforms
     {
         RaspberryPi2ModelB = 0,
-        RaspberryPi2ExporerHatPro = 1 
+        RaspberryPi2ExporerHatPro = 1,
+        FTDI_USB = 2
     }
 }

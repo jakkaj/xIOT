@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace XamlingCore.Portable.Util.Lock
+namespace XIOTCore.Components.Util.XamlingCore
 {
     //Thanks to Scott Hanselman and Stephen Toubs
     //http://www.hanselman.com/blog/ComparingTwoTechniquesInNETAsynchronousCoordinationPrimitives.aspx

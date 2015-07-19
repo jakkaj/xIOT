@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnitsNet;
 using UnitsNet.Units;
 using XIOTCore.Contract.Enum;
 
-namespace XIOTCore.Components.I2C.ADC
+namespace XIOTCore.Components.I2C.Components.ADC
 {
     public static class ADS1015Extensions
     {

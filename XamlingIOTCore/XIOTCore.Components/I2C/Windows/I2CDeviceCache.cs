@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.Devices.Enumeration;
 using Windows.Devices.I2c;
-using XamlingCore.Portable.Util.Lock;
+using XIOTCore.Components.Util.XamlingCore;
 
-namespace XIOTCore.Components.I2C
+namespace XIOTCore.Components.I2C.Windows
 {
     internal static class I2CDeviceCache
     {

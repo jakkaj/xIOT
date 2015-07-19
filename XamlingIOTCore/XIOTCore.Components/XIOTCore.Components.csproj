@@ -109,6 +109,22 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="FTDI\Exceptions\I2CChannelNotConnectedException.cs" />
+    <Compile Include="FTDI\Exceptions\SpiChannelNotConnectedException.cs" />
+    <Compile Include="FTDI\I2C\I2CConfiguration.cs" />
+    <Compile Include="FTDI\I2C\FTDII2CDevice.cs" />
+    <Compile Include="FTDI\LibMPSSE\LibMpsse.cs" />
+    <Compile Include="FTDI\LibMPSSE\LibMpsseI2C.cs" />
+    <Compile Include="FTDI\LibMPSSE\LibMpsseSPI.cs" />
+    <Compile Include="FTDI\Modules\FTDI_Module.cs" />
+    <Compile Include="FTDI\SPI\SpiConfiguration.cs" />
+    <Compile Include="FTDI\SPI\SpiDevice.cs" />
+    <Compile Include="FTDI\Types\FtChannelConfig.cs" />
+    <Compile Include="FTDI\Types\FtConfigOptions.cs" />
+    <Compile Include="FTDI\Types\FtDeviceInfo.cs" />
+    <Compile Include="FTDI\Types\FtI2CTransferOptions.cs" />
+    <Compile Include="FTDI\Types\FtResult.cs" />
+    <Compile Include="FTDI\Types\FtSpiTransferOptions.cs" />
     <Compile Include="Gpio\XGpioControl.cs" />
     <Compile Include="Gpio\XGpio.cs" />
     <Compile Include="I2C\Components\ADC\ADS1015.cs" />
@@ -116,6 +132,10 @@
     <Compile Include="I2C\Windows\I2CDeviceCache.cs" />
     <Compile Include="I2C\Windows\WindowsI2CDevice.cs" />
     <Compile Include="I2C\Windows\XI2CInfo.cs" />
+    <Compile Include="LCD\HD44780\I2CIO.cs" />
+    <Compile Include="LCD\HD44780\I2CLCD.cs" />
+    <Compile Include="LCD\HD44780\LCD.cs" />
+    <Compile Include="Util\XamlingCore\StopwatchDelay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\XamlingCore\XAsyncLock.cs" />
   </ItemGroup>
@@ -151,9 +171,7 @@
       <Name>Windows IoT Extension SDK</Name>
     </SDKReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="FTDI\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
