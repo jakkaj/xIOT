@@ -37,35 +37,40 @@ namespace XIOTCore.Components.Modules.LCD.HD44780
             _config(address, EN, RW, RS, D4, D5, D6, D7);
         }
 
-        public I2CLCD(int address, int backlightPin, BacklightPolarity pol)
+        public I2CLCD(IXI2CDevice i2CDevice, int address, int backlightPin, BacklightPolarity pol)
         {
+            _i2CDevice = i2CDevice;
             _config(address, EN, RW, RS, D4, D5, D6, D7);
             SetBacklightPin(backlightPin, pol);
         }
 
-        public I2CLCD(int address, int en, int rw, int rs)
+        public I2CLCD(IXI2CDevice i2CDevice, int address, int en, int rw, int rs)
         {
+            _i2CDevice = i2CDevice;
             _config(address, en, rw, rs, D4, D5, D6, D7);
         }
 
-        public I2CLCD(int address, int en, int rw, int rs, int backlightPin, BacklightPolarity pol)
+        public I2CLCD(IXI2CDevice i2CDevice, int address, int en, int rw, int rs, int backlightPin, BacklightPolarity pol)
         {
+            _i2CDevice = i2CDevice;
             _config(address, en, rw, rs, D4, D5, D6, D7);
             SetBacklightPin(backlightPin, pol);
         }
 
-        public I2CLCD(int address, int en, int rw, int rs, int d4, int d5, int d6, int d7)
+        public I2CLCD(IXI2CDevice i2CDevice, int address, int en, int rw, int rs, int d4, int d5, int d6, int d7)
         {
+            _i2CDevice = i2CDevice;
             _config(address, en, rw, rs, d4, d5, d6, d7);
         }
 
-        public I2CLCD(int address, int en, int rw, int rs, int d4, int d5, int d6, int d7, int backlightPin, BacklightPolarity pol)
+        public I2CLCD(IXI2CDevice i2CDevice, int address, int en, int rw, int rs, int d4, int d5, int d6, int d7, int backlightPin, BacklightPolarity pol)
         {
+            _i2CDevice = i2CDevice;
             _config(address, en, rw, rs, d4, d5, d6, d7);
             SetBacklightPin(backlightPin, pol);
         }
 
-        public async Task<bool> Init()
+        private async Task<bool> _init()
         {
             if (_i2cio == null)
             {
@@ -135,7 +140,7 @@ namespace XIOTCore.Components.Modules.LCD.HD44780
 
         public override async Task Begin(int cols, int rows, int charSize = Constants.LCD_5x8DOTS)
         {
-            await Init();
+            await _init();
             await base.Begin(cols, rows, charSize);
         }
 

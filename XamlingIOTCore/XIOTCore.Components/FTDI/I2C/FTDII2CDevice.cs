@@ -43,7 +43,7 @@ namespace XIOTCore.Components.FTDI.I2C
         {
             FtResult result;
 
-            if (_handle != IntPtr.Zero)
+            if (_handle != IntPtr.Zero) 
                 return;
 
             LibMpsse.Init();

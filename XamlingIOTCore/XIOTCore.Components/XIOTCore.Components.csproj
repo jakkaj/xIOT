@@ -173,7 +173,9 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FTDI\LibMPSSE\Lib\libMPSSE.dll" />
+    <Content Include="FTDI\LibMPSSE\Lib\libMPSSE.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

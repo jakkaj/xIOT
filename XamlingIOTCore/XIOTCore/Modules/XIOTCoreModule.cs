@@ -15,7 +15,7 @@ namespace XIOTCore.Modules
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<XI2CInfo>().As<IXI2CInfo>();
+            //builder.RegisterType<XI2CInfo>().As<IXI2CInfo>();
             base.Load(builder);
         }
     }

@@ -21,6 +21,7 @@ using XIOTCore.Contract.Interface;
 using XIOTCore.Contract.Interface.Basics;
 using XIOTCore.Contract.Interface.Module;
 using XIOTCore.Factory;
+using XIOTCore_Samples.LCD;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -51,6 +52,13 @@ namespace XIOTCore_Samples
         {
             this.InitializeComponent();
 
+            //var _lcdExamples = new LcdExamples_FTDI();
+
+            var _lcdExamples = new LcdExamples_Rpi();
+
+            _lcdExamples.Init();
+
+            return;
             _factory.Init();
 
             _redLed = _factory.GetComponent<IExplorerHat_RedLed>();
