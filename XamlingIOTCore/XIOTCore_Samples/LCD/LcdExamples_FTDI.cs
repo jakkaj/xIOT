@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Autofac;
-using XIOTCore.Components.Modules.LCD.HD44780;
-using XIOTCore.Components.Util.XamlingCore;
 using XIOTCore.Contract;
 using XIOTCore.Contract.Enum;
 using XIOTCore.Contract.Interface;
 using XIOTCore.Contract.Interface.Basics;
 using XIOTCore.Contract.Interface.Module;
 using XIOTCore.Factory;
+using XIOTCore.Portable.Components.LCD.HD44780;
+using XIOTCore.Portable.Factory;
+using XIOTCore.Portable.Util.XamlingCore;
 
 namespace XIOTCore_Samples.LCD
 {

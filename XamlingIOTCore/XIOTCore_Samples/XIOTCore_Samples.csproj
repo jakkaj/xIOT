@@ -158,16 +158,20 @@
       <Project>{8bc1b215-8c4a-4fad-b139-2049410c7be9}</Project>
       <Name>XIOTCore.RaspberryPI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XIOTCore.Components\XIOTCore.Components.csproj">
-      <Project>{e4ac451a-dcdc-4097-9f91-122aa7223fdf}</Project>
-      <Name>XIOTCore.Components</Name>
-    </ProjectReference>
     <ProjectReference Include="..\XIOTCore.Contract\XIOTCore.Contract.csproj">
       <Project>{9f92aba8-71dc-4583-bd4d-349dcbb6bd87}</Project>
       <Name>XIOTCore.Contract</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XIOTCore\XIOTCore.csproj">
+    <ProjectReference Include="..\XIOTCore.Portable\XIOTCore.Portable.csproj">
+      <Project>{91902D55-BA04-4391-B565-02521F1EECF4}</Project>
+      <Name>XIOTCore.Portable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XIOTCore.Windows\XIOTCore.Windows.csproj">
       <Project>{f7606d33-4fe8-46a3-8f4e-745a86800d82}</Project>
+      <Name>XIOTCore.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XIOTCore\XIOTCore.csproj">
+      <Project>{FCFFD7F7-3B0E-4EC5-97FA-099900528800}</Project>
       <Name>XIOTCore</Name>
     </ProjectReference>
   </ItemGroup>

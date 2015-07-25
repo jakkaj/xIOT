@@ -1,10 +1,9 @@
 ﻿using System.Threading.Tasks;
 using XCore.RaspberryPI.ExplorerHATPro.Enum;
 using XCore.RaspberryPI.Interface;
-using XIOTCore.Components.I2C.Components.ADC;
 using XIOTCore.Contract.Enum;
-using XIOTCore.Contract.Interface;
 using XIOTCore.Contract.Interface.Basics;
+using XIOTCore.Portable.Components.I2C.ADC;
 
 namespace XCore.RaspberryPI.ExplorerHATPro.Components
 {

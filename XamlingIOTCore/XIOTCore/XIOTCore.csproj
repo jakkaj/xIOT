@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F7606D33-4FE8-46A3-8F4E-745A86800D82}</ProjectGuid>
+    <ProjectGuid>{FCFFD7F7-3B0E-4EC5-97FA-099900528800}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>XIOTCore</RootNamespace>
@@ -109,8 +109,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Factory\XIOTCoreFactory.cs" />
-    <Compile Include="Modules\XIOTCoreModule.cs" />
+    <Compile Include="Factory\XIOTCoreWindowsFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -128,32 +127,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XamlingIOTCore.RaspberryPI\XIOTCore.RaspberryPI.csproj">
       <Project>{8BC1B215-8C4A-4FAD-B139-2049410C7BE9}</Project>
       <Name>XIOTCore.RaspberryPI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XIOTCore.Components\XIOTCore.Components.csproj">
-      <Project>{E4AC451A-DCDC-4097-9F91-122AA7223FDF}</Project>
-      <Name>XIOTCore.Components</Name>
-    </ProjectReference>
     <ProjectReference Include="..\XIOTCore.Contract\XIOTCore.Contract.csproj">
       <Project>{9F92ABA8-71DC-4583-BD4D-349DCBB6BD87}</Project>
       <Name>XIOTCore.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XIOTCore.FTDI\XIOTCore.FTDI.csproj">
+      <Project>{FA791085-FCD7-46A8-A87B-B112CD1D26AA}</Project>
+      <Name>XIOTCore.FTDI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XIOTCore.Portable\XIOTCore.Portable.csproj">
+      <Project>{91902D55-BA04-4391-B565-02521F1EECF4}</Project>
+      <Name>XIOTCore.Portable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XIOTCore.Windows\XIOTCore.Windows.csproj">
+      <Project>{F7606D33-4FE8-46A3-8F4E-745A86800D82}</Project>
+      <Name>XIOTCore.Windows</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>copy /y "$(TargetPath)" "$(SolutionDir)\nuget\lib\win10"
-xcopy /y "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)\nuget\lib\win10"</PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

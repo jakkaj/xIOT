@@ -10,6 +10,11 @@ namespace XIOTCore_Samples_Console
     {
         static void Main(string[] args)
         {
+            var sampleLCD = new LCD.LcdExamples_FTDI();
+
+            var t = sampleLCD.Init();
+
+            t.Wait();
         }
     }
 }

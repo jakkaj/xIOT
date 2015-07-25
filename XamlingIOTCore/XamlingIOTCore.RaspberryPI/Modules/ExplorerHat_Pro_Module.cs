@@ -4,10 +4,8 @@ using XCore.RaspberryPI.ExplorerHATPro;
 using XCore.RaspberryPI.ExplorerHATPro.Components;
 using XCore.RaspberryPI.ExplorerHATPro.Plugs;
 using XCore.RaspberryPI.Interface;
-using XIOTCore.Components.Gpio;
-using XIOTCore.Contract.Interface;
 using XIOTCore.Contract.Interface.Configs;
-
+using XIOTCore.Windows.Gpio;
 
 namespace XCore.RaspberryPI.Modules
 {
