@@ -20,24 +20,26 @@ Configure the factor for base Raspberry PI 2 operation.
 
 ```C#
 private readonly IXIOTCoreFactory _factory = 
-    XIOTCoreFactory.Create(Platforms.RaspberryPi2ModelB);
+    XIOTCoreWindowsFactory.Create(Platforms.RaspberryPi2ModelB);
 ```
 
 Configure for Raspberry PI 2 with an Explorer HAT Pro on top.
 
 ```C#
 private readonly IXIOTCoreFactory _factory = 
-    XIOTCoreFactory.Create(Platforms.RaspberryPi2ModelB | Platforms.RaspberryPi2ExporerHatPro);
+    XIOTCoreWindowsFactory.Create(Platforms.RaspberryPi2ModelB | Platforms.RaspberryPi2ExporerHatPro);
 ```
 
 Configure for an FTDI based USB thingo - we use a FT232H
 
 ```C#
 private readonly IXIOTCoreFactory _factory =
-    XIOTCoreFactory.Create(Platforms.FTDI_USB);
+    XIOTCoreWindowsFactory.Create(Platforms.FTDI_USB);
 ````
 
 Important: Before you can start requesting things, you need to Init() the factory!
+
+Note: You can use the FTDI bits in normal .NET (non Windows) projects, like console apps. The FTDI parts are in a PCL. Use XIOTCoreFactory as opposed to XIOTCoreWindowsFactory.
 
 ```C#
 _factory.Init();
