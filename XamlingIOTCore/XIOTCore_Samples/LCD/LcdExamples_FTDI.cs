@@ -19,7 +19,7 @@ namespace XIOTCore_Samples.LCD
     public class LcdExamples_FTDI
     {
         private readonly IXIOTCoreFactory _factory =
-          XIOTCoreFactory.Create(Platforms.FTDI_USB);
+          XIOTCoreWindowsFactory.Create(Platforms.FTDI_USB);
 
         private II2CLCD _lcd;
 

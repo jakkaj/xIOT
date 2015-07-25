@@ -34,7 +34,7 @@ namespace XIOTCore_Samples
     public sealed partial class MainPage : Page
     {
         private readonly IXIOTCoreFactory _factory =
-            XIOTCoreFactory.Create(Platforms.RaspberryPi2ModelB | Platforms.RaspberryPi2ExporerHatPro);
+            XIOTCoreWindowsFactory.Create(Platforms.RaspberryPi2ModelB | Platforms.RaspberryPi2ExporerHatPro);
 
         private readonly IXGpioControl _redLed;
         private readonly IXGpioControl _greenLed;
