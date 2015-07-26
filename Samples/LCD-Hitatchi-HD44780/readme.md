@@ -27,6 +27,16 @@ You'll need a couple of 5V pull up resistors. I2C requires these but they are no
 
 Once you have all this conneced, you can connect the USB connection to your PC. The LCD should illuminiate immediately. 
 
+###Raspberry Pi 2 Wiring
+
+Unlike the FT232H, you do not need any pull up resistors, you can connect the LCD to the pins on the Pi directly. 
+
+![Writing Diagram](https://raw.githubusercontent.com/jakkaj/Xamling-IOT/master/Samples/LCD-Hitatchi-HD44780/FT242H%20to%20I2C%20LCD_PI2.png "Wiring Diagram")
+
+From left to right on the LCD are SCL (I2C Clock), SDA (I2C Data), VCC (+5v) and GND. 
+
+That's it... Super simple!
+
 ###Code
 Note: For the PC version you will need to install the [FTDI D2XX drivers](http://www.ftdichip.com/Drivers/D2XX.htm) before any of that stuff work will :) If you're starting from scratch, or you're working in your own project, remember to include the [libMPSSE.dll](http://www.ftdichip.com/Support/SoftwareExamples/MPSSE/LibMPSSE-I2C.htm) file and have it copy to the output dir in its properties. 
 
@@ -45,8 +55,10 @@ or for running on the PI2 ->
 
 ```C#
 private readonly IXIOTCoreFactory _factory =
-          XIOTCoreFactory.Create(Platforms.RaspberryPi2ModelB);
+          XIOTCoreWindowsFactory.Create(Platforms.RaspberryPi2ModelB);
 ```
+
+Note: On Windows you need to call the XIOTCoreWindowsFactory. We're considering how to make this the same call as the .NET version - but for now this is what we have.
 
 Before you can use the factory you need to call Init() on it. 
 
@@ -81,7 +93,7 @@ Check out the source code in the main Xamling-IOT library here: [LCD Bits](https
 
 ###About
 
-At present the framework supports I2C, SPI. We're working on GPIO too very soon. 
+At present the FTDI parts of the framework supports I2C and SPI. We're working on adding GPIO too very soon. 
 
 We started with DVDPT's [libMPSSEWrapper](https://github.com/DVDPT/libMPSSE-.Net-Wrapper) project and extended from there to add I2C support using FTDI's libMPSSE (which is required). Our fork of that project is [here](https://github.com/jakkaj/libMPSSE-.Net-Wrapper) but the code in XIOT is now separate (as we've made it injectable etc). 
 
