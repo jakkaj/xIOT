@@ -27,6 +27,16 @@ You'll need a couple of 5V pull up resistors. I2C requires these but they are no
 
 Once you have all this conneced, you can connect the USB connection to your PC. The LCD should illuminiate immediately. 
 
+###Raspberry Pi 2 Wiring
+
+Unlike the FT232H, you do not need any pull up resistors, you can connect the LCD to the pins on the Pi directly. 
+
+![Writing Diagram](https://raw.githubusercontent.com/jakkaj/Xamling-IOT/master/Samples/LCD-Hitatchi-HD44780/FT242H%20to%20I2C%20LCD_PI2.png "Wiring Diagram")
+
+From left to right on the LCD are SCL (I2C Clock), SDA (I2C Data), VCC (+5v) and GND. 
+
+That's it... Super simple!
+
 ###Code
 Note: For the PC version you will need to install the [FTDI D2XX drivers](http://www.ftdichip.com/Drivers/D2XX.htm) before any of that stuff work will :) If you're starting from scratch, or you're working in your own project, remember to include the [libMPSSE.dll](http://www.ftdichip.com/Support/SoftwareExamples/MPSSE/LibMPSSE-I2C.htm) file and have it copy to the output dir in its properties. 
 
