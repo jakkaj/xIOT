@@ -30,9 +30,9 @@ namespace XIOTCore_Samples_Console.OLED
 
             oled.Init();
 
-            for (var i = 0; i < 32; i++)
+            for (var i = 0; i < 64; i++)
             {
-                oled.DrawPixel(i, i, 2);
+                oled.DrawPixel(i, i, 1);
             }
 
 //            oled.DrawPixel(1,1,1);

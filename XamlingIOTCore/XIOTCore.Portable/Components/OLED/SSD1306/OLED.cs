@@ -15,13 +15,49 @@ namespace XIOTCore.Portable.Components.OLED.SSD1306
 
         private int _width;
         private int _height;
+        private int _pages;
 
-        private int[] _buffer;
+        private byte[] _buffer;
 
         public OLED(ISimpleWriter writer, OLEDDisplaySize displaySize)
         {
             _writer = writer;
             _displaySize = displaySize;
+        }
+
+        public void Init2()
+        {
+            Command(OLEDConstants.SSD1306_DISPLAYOFF);
+            Command(OLEDConstants.SSD1306_SETDISPLAYCLOCKDIV);
+            Command(0x80);
+            Command(OLEDConstants.SSD1306_SETMULTIPLEX);
+            Command(0x3F);
+            Command(OLEDConstants.SSD1306_SETDISPLAYOFFSET);
+            Command(0x00);
+            Command(OLEDConstants.SSD1306_SETSTARTLINE);
+            Command(OLEDConstants.SSD1306_CHARGEPUMP);
+            Command(0x14);
+            Command(OLEDConstants.SSD1306_MEMORYMODE);
+            Command(0x00);
+            Command(OLEDConstants.SSD1306_SEGREMAP);
+            Command(OLEDConstants.SSD1306_COMSCANDEC);
+            Command(OLEDConstants.SSD1306_SETCOMPINS);
+            Command(0x12);
+            Command(OLEDConstants.SSD1306_SETCONTRAST);
+            Command(0xCF);
+            Command(OLEDConstants.SSD1306_SETPRECHARGE);
+            Command(0xF1);
+
+            Command(OLEDConstants.SSD1306_SETVCOMDETECT);
+            Command(0x40);
+            Command(OLEDConstants.SSD1306_DISPLAYALLON_RESUME);
+            Command(OLEDConstants.SSD1306_NORMALDISPLAY);
+            Command(OLEDConstants.SSD1306_DISPLAYON);
+            _width = 128;
+            _height = 64;
+
+            _pages = _height / 8;
+            _buffer = new byte[_height * _width / 8];
         }
 
         public void Init()
@@ -176,8 +212,8 @@ namespace XIOTCore.Portable.Components.OLED.SSD1306
             }
 
             Command(OLEDConstants.SSD1306_DISPLAYON);//--turn on oled panel
-
-            _buffer = new int[_height * _width / 8];
+            _pages = _height / 8;
+            _buffer = new byte[_height * _width / 8];
         }
 
 
@@ -188,7 +224,7 @@ namespace XIOTCore.Portable.Components.OLED.SSD1306
                 return;
 
             // check rotation, move pixel around if necessary
-            switch (1)
+            switch (0)
             {
                 case 1:
                     var xtemp = y;
@@ -212,9 +248,9 @@ namespace XIOTCore.Portable.Components.OLED.SSD1306
             // x is which column
             switch (color)
             {
-                case OLEDConstants.WHITE: _buffer[x + (y / 8) * _width] |= (1 << (y & 7)); break;
-                case OLEDConstants.BLACK: _buffer[x + (y / 8) * _width] &= ~(1 << (y & 7)); break;
-                case OLEDConstants.INVERSE: _buffer[x + (y / 8) * _width] ^= (1 << (y & 7)); break;
+                case OLEDConstants.WHITE: { _buffer[x + (y / 8) * _width] |= (byte)(1 << (y & 7)); break;}
+                case OLEDConstants.BLACK: _buffer[x + (y / 8) * _width] &= (byte)(1 << (y & 7)); break;
+                case OLEDConstants.INVERSE: _buffer[x + (y / 8) * _width] ^= (byte)(1 << (y & 7)); break;
             }
 
         }
@@ -222,26 +258,57 @@ namespace XIOTCore.Portable.Components.OLED.SSD1306
         public void Display()
         {
             Command(OLEDConstants.SSD1306_COLUMNADDR);
-            Command(0);   // Column start address (0 = reset)
-            Command(_width - 1); // Column end address (127 = reset)
+            Command(0x00);   // Column start address (0 = reset)
+            Command(Convert.ToByte(_width - 1)); // Column end address (127 = reset)
 
             Command(OLEDConstants.SSD1306_PAGEADDR);
-            Command(0); // Page start address (0 = reset)
-            if (_height == 64)
-                Command(7); // Page end address
-
-            if (_height == 32)
-                Command(3); // Page end address
-
-            if (_height == 16)
-                Command(1); // Page end address
+            Command(0x00); // Page start address (0 = reset)
+            Command(Convert.ToByte(_pages - 1));
 
 
+            //var step = _width*8;
+            //var buf = new List<int>();
+
+            //for(int y = 0; y < _pages * step; y += step)
+            //{
+            //    var i = y + _width - 1;
+            //    while (i >= y)
+            //    {
+            //        var b = 0x00;
+            //        for (int n = 0; n < step; n += _width)
+            //        {
+            //            b |= (byte)(_buffer[i] & 0x0) << 8;
+            //            b >>= 1;
+            //        }
+
+            //        buf.Add(b);
+            //        i -= 1;
+            //    }
+            //}
+
+            //foreach (var bSend in buf)
+            //{
+            //    _writer.Write(bSend);
+            //}
+
+            /*
+            for y in xrange(0, self.pages * step, step):
+            i = y + self.width - 1
+            while i >= y:
+                byte = 0
+                for n in xrange(0, step, self.width):
+                    byte |= (pix[i + n] & 0x01) << 8
+                    byte >>= 1
+
+                buf.append(byte)
+                i -= 1
+
+        self.data(buf)*/
 
             for (int i = 0; i < (_width * +_height / 8); i++)
             {
                 // send a bunch of data in one xmission
-                
+
                 _writer.Write(0x40);
                 for (int x = 0; x < 16; x++)
                 {
@@ -253,12 +320,12 @@ namespace XIOTCore.Portable.Components.OLED.SSD1306
         }
 
 
-        public void Command(int c)
+        public void Command(byte c)
         {
             _writer.Write(0x00, c);
         }
 
-        public void Data(int c)
+        public void Data(byte c)
         {
             _writer.Write(0x40, c);
         }

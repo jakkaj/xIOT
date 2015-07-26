@@ -8,8 +8,11 @@ namespace XIOTCore.Contract.Interface.Basics
 {
     public interface ISimpleWriter
     {
-        bool Write(int value);
 
-        bool Write(int value1, int value2);
+        bool Write(byte[] buffer);
+
+        bool Write(byte value);
+
+        bool Write(byte value1, byte value2);
     }
 }

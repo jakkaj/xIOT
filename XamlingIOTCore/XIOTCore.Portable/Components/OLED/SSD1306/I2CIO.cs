@@ -36,7 +36,7 @@ namespace XIOTCore.Portable.Components.OLED.SSD1306
             return true;
         }
 
-        public bool Write(int value)
+        public bool Write(byte[] value)
         {
             if (_initialised)
             {
@@ -47,7 +47,18 @@ namespace XIOTCore.Portable.Components.OLED.SSD1306
             return false;
         }
 
-        public bool Write(int value1, int value2)
+        public bool Write(byte value)
+        {
+            if (_initialised)
+            {
+                var result = _i2cDevice.Write(value);
+                return result;
+            }
+
+            return false;
+        }
+
+        public bool Write(byte value1, byte value2)
         {
             if (_initialised)
             {

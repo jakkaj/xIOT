@@ -19,7 +19,7 @@ namespace XIOTCore.FTDI.I2C
         private bool _isDisposed;
         private I2CConfiguration _i2cConfig;
 
-        private const int ConnectionSpeed = 40000; // Hz
+        private const int ConnectionSpeed = 400000; // Hz
         private const int LatencyTimer = 255; // Hz
 
         public async Task<bool> Init(int deviceAddress)
@@ -93,7 +93,7 @@ namespace XIOTCore.FTDI.I2C
         {
             int writtenAmount;
 
-            var result = Write(array, array.Length, out writtenAmount, FtI2CTransferOptions.StartBit);
+            var result = Write(array, array.Length, out writtenAmount, FtI2CTransferOptions.StartBit | FtI2CTransferOptions.StopBit);
 
             return result == FtResult.Ok;
         }
