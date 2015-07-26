@@ -8,7 +8,7 @@ using XIOTCore.Portable.Components.LCD.HD44780;
 using XIOTCore.Portable.Factory;
 using XIOTCore.Portable.Util.XamlingCore;
 
-namespace XIOTCore_Samples_Console.LCD
+namespace LCD_Sample_Console
 {
     public class LcdExamples_FTDI
     {
@@ -26,6 +26,7 @@ namespace XIOTCore_Samples_Console.LCD
 
             _lcd = new I2CLCD(i2c, 0x27, 2, 1, 0, 4, 5, 6, 7, 3, BacklightPolarity.Positive);
 
+            //initiate this guy as a 16x2. Other dimensions probably work :)
             await _lcd.Begin(16,2);
 
             for (int i = 0; i < 3; i++)
