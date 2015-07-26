@@ -309,13 +309,16 @@ namespace XIOTCore.Portable.Components.OLED.SSD1306
             {
                 // send a bunch of data in one xmission
 
-                _writer.Write(0x40);
+                var sendBuffer = new List<byte>();
+                sendBuffer.Add(0x40);
+               
                 for (int x = 0; x < 16; x++)
                 {
-                    _writer.Write(_buffer[i]);
+                    sendBuffer.Add(_buffer[1]);
                     i++;
                 }
                 i--;
+                _writer.Write(sendBuffer.ToArray());
             }
         }
 
