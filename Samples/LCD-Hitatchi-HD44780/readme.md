@@ -55,8 +55,10 @@ or for running on the PI2 ->
 
 ```C#
 private readonly IXIOTCoreFactory _factory =
-          XIOTCoreFactory.Create(Platforms.RaspberryPi2ModelB);
+          XIOTCoreWindowsFactory.Create(Platforms.RaspberryPi2ModelB);
 ```
+
+Note: On Windows you need to call the XIOTCoreWindowsFactory. We're considering how to make this the same call as the .NET version - but for now this is what we have.
 
 Before you can use the factory you need to call Init() on it. 
 
