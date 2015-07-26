@@ -28,6 +28,7 @@ namespace LCD_Sample_Universal
             this.InitializeComponent();
 
             _lcdSample = new LcdExamples_WindowsUniversal();
+            _init();
         }
 
         async void _init()
