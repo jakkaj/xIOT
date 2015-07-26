@@ -19,7 +19,7 @@ namespace XIOTCore.FTDI.I2C
         private bool _isDisposed;
         private I2CConfiguration _i2cConfig;
 
-        private const int ConnectionSpeed = (int)I2CModes.I2C_CLOCK_STANDARD_MODE; // Hz
+        private const int ConnectionSpeed = (int)I2CModes.I2C_CLOCK_FAST_MODE; // Hz
         private const int LatencyTimer = 255; // Hz
 
         public async Task<bool> Init(int deviceAddress)
@@ -53,22 +53,22 @@ namespace XIOTCore.FTDI.I2C
 
             CheckResult(channels);
 
-            if (num_channels > 0)
-            {
-                for (var i = 0; i < num_channels; i++)
-                {
-                    FtDeviceInfo cInfo;
-                    var channelInfoStatus = LibMpsseI2C.I2C_GetChannelInfo(i, out cInfo);
-                    CheckResult(channelInfoStatus);
-                    Debug.WriteLine($"Flags: {cInfo.Flags}");
-                    Debug.WriteLine($"Type: {cInfo.Type}");
-                    Debug.WriteLine($"ID: {cInfo.ID}");
-                    Debug.WriteLine($"LocId: {cInfo.LocId}");
-                    Debug.WriteLine($"SerialNumber: {cInfo.SerialNumber}");
-                    Debug.WriteLine($"Description: {cInfo.Description}");
-                    Debug.WriteLine($"ftHandle: {cInfo.ftHandle}");
-                }
-            }
+            //if (num_channels > 0)
+            //{
+            //    for (var i = 0; i < num_channels; i++)
+            //    {
+            //        FtDeviceInfo cInfo;
+            //        var channelInfoStatus = LibMpsseI2C.I2C_GetChannelInfo(i, out cInfo);
+            //        CheckResult(channelInfoStatus);
+            //        Debug.WriteLine($"Flags: {cInfo.Flags}");
+            //        Debug.WriteLine($"Type: {cInfo.Type}");
+            //        Debug.WriteLine($"ID: {cInfo.ID}");
+            //        Debug.WriteLine($"LocId: {cInfo.LocId}");
+            //        Debug.WriteLine($"SerialNumber: {cInfo.SerialNumber}");
+            //        Debug.WriteLine($"Description: {cInfo.Description}");
+            //        Debug.WriteLine($"ftHandle: {cInfo.ftHandle}");
+            //    }
+            //}
 
             result = LibMpsseI2C.I2C_OpenChannel(_i2cConfig.ChannelIndex, out _handle);
 

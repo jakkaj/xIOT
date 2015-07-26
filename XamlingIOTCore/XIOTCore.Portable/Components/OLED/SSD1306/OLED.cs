@@ -215,9 +215,6 @@ namespace XIOTCore.Portable.Components.OLED.SSD1306
             _pages = _height / 8;
             _buffer = new byte[_height * _width / 8];
         }
-
-
-
         public void DrawPixel(int x, int y, int color)
         {
             if ((x < 0) || (x >= _width) || (y < 0) || (y >= _height))
@@ -248,7 +245,7 @@ namespace XIOTCore.Portable.Components.OLED.SSD1306
             // x is which column
             switch (color)
             {
-                case OLEDConstants.WHITE: { _buffer[x + (y / 8) * _width] |= (byte)(1 << (y & 7)); break;}
+                case OLEDConstants.WHITE:  _buffer[x + (y / 8) * _width] |= (byte)(1 << (y & 7)); break; 
                 case OLEDConstants.BLACK: _buffer[x + (y / 8) * _width] &= (byte)(1 << (y & 7)); break;
                 case OLEDConstants.INVERSE: _buffer[x + (y / 8) * _width] ^= (byte)(1 << (y & 7)); break;
             }
@@ -266,55 +263,16 @@ namespace XIOTCore.Portable.Components.OLED.SSD1306
             Command(Convert.ToByte(_pages - 1));
 
 
-            //var step = _width*8;
-            //var buf = new List<int>();
-
-            //for(int y = 0; y < _pages * step; y += step)
-            //{
-            //    var i = y + _width - 1;
-            //    while (i >= y)
-            //    {
-            //        var b = 0x00;
-            //        for (int n = 0; n < step; n += _width)
-            //        {
-            //            b |= (byte)(_buffer[i] & 0x0) << 8;
-            //            b >>= 1;
-            //        }
-
-            //        buf.Add(b);
-            //        i -= 1;
-            //    }
-            //}
-
-            //foreach (var bSend in buf)
-            //{
-            //    _writer.Write(bSend);
-            //}
-
-            /*
-            for y in xrange(0, self.pages * step, step):
-            i = y + self.width - 1
-            while i >= y:
-                byte = 0
-                for n in xrange(0, step, self.width):
-                    byte |= (pix[i + n] & 0x01) << 8
-                    byte >>= 1
-
-                buf.append(byte)
-                i -= 1
-
-        self.data(buf)*/
-
-            for (int i = 0; i < (_width * +_height / 8); i++)
+            for (int i = 0; i < (_width * _height / 8); i++)
             {
                 // send a bunch of data in one xmission
 
                 var sendBuffer = new List<byte>();
                 sendBuffer.Add(0x40);
-               
+
                 for (int x = 0; x < 16; x++)
                 {
-                    sendBuffer.Add(_buffer[1]);
+                    sendBuffer.Add(_buffer[i]);
                     i++;
                 }
                 i--;

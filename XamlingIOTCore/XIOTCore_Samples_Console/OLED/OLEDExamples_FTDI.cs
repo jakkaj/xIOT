@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,19 +28,34 @@ namespace XIOTCore_Samples_Console.OLED
             var iTask = writer.Init(OLEDConstants.SSD1306_I2C_ADDRESS);
             iTask.Wait();
             var oled = new XIOTCore.Portable.Components.OLED.SSD1306.OLED(writer, OLEDDisplaySize.SSD1306_128_64);
-
-
-
+            
             oled.Init();
+            
+            //return;
+            var b = new Bitmap(128, 64);
 
-            for (var i = 0; i < 64; i++)
+            var g = Graphics.FromImage(b);
+
+            g.DrawString("IOT", new Font("Consolas", 30), new SolidBrush(Color.White), 45, 15);
+            g.DrawString("Y", new Font("Webdings", 30), new SolidBrush(Color.White),0, 15);
+
+            g.Save();
+
+            for (var i = 0; i < b.Height; i++)
             {
-                oled.DrawPixel(i, i, 1);
+                for (var x = 0; x < b.Width; x++)
+                {
+                    var p = b.GetPixel(x, i);
+                    var average = (p.R + p.G + p.G)/3;
+
+                    if (average != 0)
+                    {
+                        oled.DrawPixel((ushort)x, (ushort)i, 1);
+                    }
+                }
             }
 
-//            oled.DrawPixel(1,1,1);
-
-            oled.Display();
+           oled.Display();
         }
     }
 }
