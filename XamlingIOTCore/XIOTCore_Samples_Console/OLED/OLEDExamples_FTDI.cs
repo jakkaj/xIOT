@@ -30,11 +30,15 @@ namespace XIOTCore_Samples_Console.OLED
             var oled = new XIOTCore.Portable.Components.OLED.SSD1306.OLED(writer, OLEDDisplaySize.SSD1306_128_64);
             
             oled.Init();
+
+            //oled.Display();
             
             //return;
-            var b = new Bitmap(128, 64);
+                    var b = new Bitmap(128, 64);
 
             var g = Graphics.FromImage(b);
+
+            g.DrawString("Xamling-IOT", new Font("Consolas", 11), new SolidBrush(Color.White), 0, 0);
 
             g.DrawString("IOT", new Font("Consolas", 30), new SolidBrush(Color.White), 45, 15);
             g.DrawString("Y", new Font("Webdings", 30), new SolidBrush(Color.White),0, 15);
