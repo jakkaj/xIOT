@@ -1,169 +1,74 @@
-#Distance measurement using a HC-SR04 Module
+#Driving an I2C LCD (Hitatchi HD44780 based)
 
-This example demonstrates how to use the Xamling-IOT library to measure distances using the HC-SR04 echo location module. 
+This example demonstrates how to use the Xamling-IOT library to drive an LCD display. 
 
 You can use this sample code, or you can start from scratch! Just install the Xamling-IOT Nuget package. 
 
 ###What you'll need
 
 * Visual Studio 2015
-* Windows 10 IOT Core running on a Raspberry Pi 2
-* Windows 10 IOT Core SDK
-* An [Explorer HAT Pro] (http://shop.pimoroni.com/products/explorer-hat). You can do this without the Explorer, but this example uses it.
-* A PNP transistor. I used a BC328-25 from Jaycar. A 2N2906 will do the trick too. 
-* Some resistors (~500, ~1k, ~4k). 
+* An FT232H USB breakout or similar
+* Two resistors (~4.5k). 
+
+XIOT supports FTDI based devices, such as [FT232H breakout] (https://learn.adafruit.com/adafruit-ft232h-breakout/overview) from Adafruit. This device can plug straight in to your PC, meaning you can very quickly develop your code and design your circuits before taking them to the PI (and possible others later) for completion. 
 
 ###Wiring
 
-The basic idea of the circuit is that we tell the module to do a ping by running voltage to the tigger lead. We then time how long it takes for the module signal to rise on the input pin. 
+This circuit connects the I2C based LCD display to the FT212H.
 
-This is all handled by the library - if you want to check out what is going on inside, including the speed of sound measurements, check out the source code in the main Xamling-IOT library here: [HC-SR04.cs](https://github.com/jakkaj/Xamling-IOT/blob/master/XamlingIOTCore/XIOTCore.Components/Modules/Range/HC-SR04.cs).
+![Writing Diagram](https://raw.githubusercontent.com/jakkaj/Xamling-IOT/master/Samples/LCD-Hitatchi-HD44780/FT242H%20to%20I2C%20LCD_bb.png "Wiring Diagram")
 
+From left to right on the LCD are SCL (I2C Clock), SDA (I2C Data), ) VCC (+5v) and GND. 
 
-![Writing Diagram](https://raw.githubusercontent.com/jakkaj/Xamling-IOT/master/Samples/HC-SR04/HC-SR04%20on%20Explorer%20HAT%20Pro_bb.png "Wiring Diagram")
+SCL and SDA both connect to the board in the same row as the appropriate connection from the FTDI board. D0 on the FT232H will be the SCL, and SDA will map to both D1 and D2 (one for receive and one for send). The software driver handles this for you. This is due to the FT232H being a very general purpose device. 
 
-**Please note:** The transitor here is shown is EBC from the left.
+You'll need a couple of 5V pullups. I2C requires these but they are not built in to the FT232H - again becasue it's a very generalised device.
 
-We use a transistor because the Explorer HAT outputs are a bit different than you might expect. When you turn on an output pin on the Explorer, it does not pop some voltage to it, it instead links it to ground. We connect the base pin on the PNP to the output, which will open to ground when we set the output pin on, allowing voltage to flow from E to C on the PNP. 
+Once you have all this conneced, you can connect the USB connection to your PC. The LCD should illuminiate immediately. 
 
 ###Code
+Note: You will need to install the [FTDI D2XX drivers](http://www.ftdichip.com/Drivers/D2XX.htm) before any of that stuff work will :) If you're starting from scratch, or you're working in your own project, remember to include the (libMPSSE.dll)[http://www.ftdichip.com/Support/SoftwareExamples/MPSSE/LibMPSSE-I2C.htm] file and have it copy to the output dir.
 
-Create a new Windows Universal App (WUP) for Windows 10 or use the sample included here. If you do create a new App youself, make sure you include the Xamling-IOT Nuget package and add a reference ot the Windows IOT Extension SDK. 
+Add the XamlingIOT nuget package. 
 
-First you'll start by initialising the framework. The framework will support more boards and platforms, so it need to be told what it's going to be running on. 
-
-```C#
-private readonly IXIOTCoreFactory _factory =
-  XIOTCoreFactory.Create(Platforms.RaspberryPi2ModelB | Platforms.RaspberryPi2ExporerHatPro);
-```
-
-Then you have to initialise the library. 
+    PM> Install-Package XamlingIOT
+  
+The actual code is faily simple. In this example we turn on the backlight then write out some text. 
 
 ```C#
-private IHC_SR04 _echoLocationModule;
+ var i2c = _factory.GetComponent<IXI2CDevice>(); //Grab an I2C device
 
-public MainPage()
-{
-  this.InitializeComponent();
-  _factory.Init();
+//Create an I2C LCD, pass in the I2C device. 
+//You could set up the factory to grab this using Autofac injection (see advanced examples - TODO :P). 
+var _lcd = new I2CLCD(i2c, 0x27, 2, 1, 0, 4, 5, 6, 7, 3, BacklightPolarity.Positive);
 
-```
+await _lcd.Begin(16,2); //fire it up as a 16x2 LCD
 
-Now there are a couple of ways you can proceed. You can instanciate the objects in a manual fashion, or you can configure the IOC container to instantiate your objects and inject them for you. 
+_lcd.BackLight(); //Turn on the backlight. .NoBacklight() will disable it
+_lcd.Home(); 
+_lcd.SetCursor(0, 0); //Start at character 4 on line 0
+_lcd.Write("RPi 2, LCD, C#");
+StopwatchDelay.Delay(250);
+_lcd.SetCursor(0, 1);
+_lcd.Write("git.io/vmEdE");
+```       
 
-####Method 1 - Manual instantiation
+Cool eh?!
 
-First, choose your pins. In this example we are using Output 1 and Input 2. 
+Check out the source code in the main Xamling-IOT library here: [LCD Bits](https://github.com/jakkaj/Xamling-IOT/tree/master/XamlingIOTCore/XIOTCore.Portable/Components/LCD/HD44780).
 
-```C#
-var input2 = _factory.GetComponent<IExplorerHat_Input2>(); //Get the digital input 2 from the Explorer HAT
-var output1 = _factory.GetComponent<IExplorerHat_Output1>(); //Get the digital output 1 from the Explorer HAT. 
-_echoLocationModule = new HC_SR04(output1, input2);
-```
+###About
 
-All that is left is to create a loop and continuously asks the module to ping. 
+At present the framework supports I2C, SPI. We're working on GPIO too very soon. 
 
-```C#
- private async void _cycle()
-{
-    await _echoLocationModule.Init();
+We started with DVDPT's [libMPSSEWrapper](https://github.com/DVDPT/libMPSSE-.Net-Wrapper) project and extended from there to add I2C support using FTDI's libMPSSE (which is required). Our fork of that project is [here](https://github.com/jakkaj/libMPSSE-.Net-Wrapper) but the code in XIOT is now separate (as we've made it injectable etc). 
 
-    while (true)
-    {
-        var averageRound = await _echoLocationModule.Measure(true);
+We ported the LCD library from [here](https://bitbucket.org/fmalpartida/new-liquidcrystal/wiki/Home) (thanks fmalpartida for a great lib) - itself a port from the in built Arduino LCD library. 
 
-        DistanceText.Text = averageRound.ToString();
-       
-    }
-}
-```
+We've only implemnted the I2C version of the LCD library. Using FTDI it will run from USB - or you can run directly from your
 
-Rememver to call ```_cycle``` from your constructor **after** you call Init on the factory!
+###Further Reading
 
-Also remember to create a TextBlock in your XAML code called DistanceText!
+Information on the LCD display, wiring and Arduino samples [https://arduino-info.wikispaces.com/LCD-Blue-I2C](https://arduino-info.wikispaces.com/LCD-Blue-I2C). 
 
-####Method 2 - MVVM, IOC, Autofac
-
-First up, you'll need to configure the system to inject your own view model. This is done **before** you call ```Init()``` on the factory. 
-
-```C#
-_factory.Builder.Register(
-  c => new HC_SR04(c.Resolve<IExplorerHat_Output1>(), c.Resolve<IExplorerHat_Input2>())).As<IHC_SR04>();
-_factory.Init();
-```
-
-You'll note here that you can change the input and outputs to suit your wiring. 
-
-The good thing about this is now you can ask for an IHC_SR04 anywhere in your code without having to configure it!
-
-Create a new view model. Ask the system to inject a IHC_SR04 in to your constructor. Most the code from there on is the same as the first example. Trigger the module to do a ping and get the response. 
-
-```C#
-public class MainViewModel : INotifyPropertyChanged
-{
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    private IHC_SR04 _echoLocationModule;
-
-    private string _distance;
-
-    public MainViewModel(IHC_SR04 echoLocationModule)
-    {
-        _echoLocationModule = echoLocationModule;
-        _init();
-    }
-
-    async void _init()
-    {
-        await _echoLocationModule.Init();
-        _loop();
-    }
-
-    private async void _loop()
-    {
-        while (true)
-        {
-            var averageRound = await _echoLocationModule.Measure(true);
-            Distance = averageRound.ToString();
-            await Task.Yield(); //make sure other stuff can do things. 
-        }
-    }
-
-    public string Distance
-    {
-        get { return _distance; }
-        set
-        {
-            _distance = value;
-            OnPropertyChanged();
-        }
-    }
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-}
-```
-
-Back in the MainPage.xaml.cs instanciate the view model and set it to the DataContext. 
-
-```C#
-var vm = _factory.Container.Resolve<MainViewModel>();
-
-DataContext = vm;
-```
-
-Don't forget to add DataBindings on to your TextBlock in the XAML!
-
-```XAML
- <TextBlock Text="{Binding Distance}" />
-```
-
-##Special note about Autofac. 
-
-If you are using your own Autofac instance - you can easily add the required modules to that, rather than using ```Init()``` on the Factory. 
-
-Add ```ExplorerHat_Pro_Module``` and ```RaspberryPi_2_ModelB_Module```. 
-
+[FT232H on Adafruit](https://learn.adafruit.com/adafruit-ft232h-breakout/overview) - or skup to the [I2C section](https://learn.adafruit.com/adafruit-ft232h-breakout/i2c)
