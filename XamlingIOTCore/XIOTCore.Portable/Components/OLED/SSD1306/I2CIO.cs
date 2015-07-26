@@ -62,12 +62,12 @@ namespace XIOTCore.Portable.Components.OLED.SSD1306
         {
             if (_initialised)
             {
-                var resultControl = _i2cDevice.Write(value1);
-                if (!resultControl)
-                {
-                    return false;
-                }
-                var result = _i2cDevice.Write(value2);
+                var b = new byte[2];
+                b[0] = value1;
+                b[1] = value2;
+
+                
+                var result = _i2cDevice.Write(b);
                 return result;
             }
 

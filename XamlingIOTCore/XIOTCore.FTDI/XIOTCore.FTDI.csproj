@@ -44,6 +44,7 @@
     <Compile Include="Exceptions\SpiChannelNotConnectedException.cs" />
     <Compile Include="I2C\FTDII2CDevice.cs" />
     <Compile Include="I2C\I2CConfiguration.cs" />
+    <Compile Include="I2C\I2CModes.cs" />
     <Compile Include="LibMPSSE\LibMpsse.cs" />
     <Compile Include="LibMPSSE\LibMpsseI2C.cs" />
     <Compile Include="LibMPSSE\LibMpsseSPI.cs" />
