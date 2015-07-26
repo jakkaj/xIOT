@@ -9,7 +9,7 @@ namespace XIOTCore.Portable.Components.LCD.HD44780
     {
         private readonly IXI2CDevice _i2CDevice;
         private const int LCD_NOBACKLIGHT = 0x00;
-        private const int LCD_BACKLIGHT = 0xff;
+        private const int LCD_BACKLIGHT =0xff;
 
         private const int EN = 6;
         private const int RW = 5;
@@ -77,8 +77,8 @@ namespace XIOTCore.Portable.Components.LCD.HD44780
                 _i2cio = new I2CIO(_i2CDevice);
                 if (await _i2cio.Init(_address))
                 {
-                    _i2cio.PortMode(Constants.OUTPUT);  // Set the entire IO extender to OUTPUT
-                    _displayFunction = Constants.LCD_4BITMODE | Constants.LCD_1LINE | Constants.LCD_5x8DOTS;
+                    _i2cio.PortMode(LCDConstants.OUTPUT);  // Set the entire IO extender to OUTPUT
+                    _displayFunction = LCDConstants.LCD_4BITMODE | LCDConstants.LCD_1LINE | LCDConstants.LCD_5x8DOTS;
                     _i2cio.Write(0);  // Set the entire port to LOW
                 }
             }
@@ -122,7 +122,7 @@ namespace XIOTCore.Portable.Components.LCD.HD44780
 
             // Is it a command or data
             // -----------------------
-            if (mode == Constants.DATA)
+            if (mode == LCDConstants.DATA)
             {
                 mode = _rs;
             }
@@ -138,7 +138,7 @@ namespace XIOTCore.Portable.Components.LCD.HD44780
             _i2cio.Write(data & ~_en);  // En LOW
         }
 
-        public override async Task Begin(int cols, int rows, int charSize = Constants.LCD_5x8DOTS)
+        public override async Task Begin(int cols, int rows, int charSize = LCDConstants.LCD_5x8DOTS)
         {
             await _init();
             await base.Begin(cols, rows, charSize);
@@ -147,9 +147,9 @@ namespace XIOTCore.Portable.Components.LCD.HD44780
 
         protected override void Send(int value, int mode)
         {
-            if (mode == Constants.FOUR_BITS)
+            if (mode == LCDConstants.FOUR_BITS)
             {
-                write4bits((value & 0x0F), Constants.COMMAND);
+                write4bits((value & 0x0F), LCDConstants.COMMAND);
             }
             else
             {
@@ -186,7 +186,7 @@ namespace XIOTCore.Portable.Components.LCD.HD44780
         {
             _backlightPinMask = (1 << value);
             _polarity = pol;
-            SetBacklight(Constants.BackLightOff);
+            SetBacklight(LCDConstants.BackLightOff);
         }
 
      

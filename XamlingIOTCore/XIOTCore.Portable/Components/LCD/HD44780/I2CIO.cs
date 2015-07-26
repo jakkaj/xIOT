@@ -48,7 +48,7 @@ namespace XIOTCore.Portable.Components.LCD.HD44780
         {
             if (_initialised)
             {
-                if (Constants.OUTPUT == dir)
+                if (LCDConstants.OUTPUT == dir)
                 {
                     _dirMask &= ~(1 << pin);
                 }
@@ -63,7 +63,7 @@ namespace XIOTCore.Portable.Components.LCD.HD44780
         {
             if (_initialised)
             {
-                if (dir == Constants.INPUT)
+                if (dir == LCDConstants.INPUT)
                 {
                     _dirMask = 0xFF;
                 }

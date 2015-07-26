@@ -17,16 +17,16 @@ namespace XIOTCore.Portable.Components.LCD.HD44780
 
         private void _command(int value)
         {
-            Send(value, Constants.COMMAND);
+            Send(value, LCDConstants.COMMAND);
         }
 
         protected abstract void Send(int value, int mode);
 
-        public virtual async Task Begin(int cols, int rows, int charSize = Constants.LCD_5x8DOTS)
+        public virtual async Task Begin(int cols, int rows, int charSize = LCDConstants.LCD_5x8DOTS)
         {
             if (rows > 1)
             {
-                _displayFunction |= Constants.LCD_2LINE;
+                _displayFunction |= LCDConstants.LCD_2LINE;
             }
 
             _numlines = rows;
@@ -34,25 +34,25 @@ namespace XIOTCore.Portable.Components.LCD.HD44780
 
             StopwatchDelay.Delay(100);
 
-            if ((_displayFunction & Constants.LCD_8BITMODE) == 0)
+            if ((_displayFunction & LCDConstants.LCD_8BITMODE) == 0)
             {
                 // this is according to the hitachi HD44780 datasheet
                 // figure 24, pg 46
 
                 // we start in 8bit mode, try to set 4 bit mode
-                Send(0x03, Constants.FOUR_BITS);
+                Send(0x03, LCDConstants.FOUR_BITS);
                 StopwatchDelay.DelayMicroSeconds(4500); // wait min 4.1ms
 
                 // second try
-                Send(0x03, Constants.FOUR_BITS);
+                Send(0x03, LCDConstants.FOUR_BITS);
                 StopwatchDelay.DelayMicroSeconds(4500); // wait min 4.1ms
 
                 // third go!
-                Send(0x03, Constants.FOUR_BITS);
+                Send(0x03, LCDConstants.FOUR_BITS);
                 StopwatchDelay.DelayMicroSeconds(150);
 
                 // finally, set to 4-bit interface
-                Send(0x02, Constants.FOUR_BITS);
+                Send(0x02, LCDConstants.FOUR_BITS);
             }
             else
             {
@@ -60,132 +60,132 @@ namespace XIOTCore.Portable.Components.LCD.HD44780
                 // page 45 figure 23
 
                 // Send function set command sequence
-                _command(Constants.FunctionSet | _displayFunction);
+                _command(LCDConstants.FunctionSet | _displayFunction);
                 StopwatchDelay.DelayMicroSeconds(4500);  // wait more than 4.1ms
 
                 // second try
-                _command(Constants.FunctionSet | _displayFunction);
+                _command(LCDConstants.FunctionSet | _displayFunction);
                 StopwatchDelay.DelayMicroSeconds(150);
 
                 // third go
-                _command(Constants.FunctionSet | _displayFunction);
+                _command(LCDConstants.FunctionSet | _displayFunction);
             }
 
             // finally, set # lines, font size, etc.
-            _command(Constants.FunctionSet | _displayFunction);
+            _command(LCDConstants.FunctionSet | _displayFunction);
 
             // turn the display on with no cursor or blinking default
-            _displaycontrol = Constants.DisplayOn | Constants.CursorOff | Constants.BlinkOff;
+            _displaycontrol = LCDConstants.DisplayOn | LCDConstants.CursorOff | LCDConstants.BlinkOff;
             Display();
 
             // clear the LCD
             Clear();
 
             // Initialize to default text direction (for romance languages)
-            _displaymode = Constants.EntryLeft | Constants.ShiftDecrement;
+            _displaymode = LCDConstants.EntryLeft | LCDConstants.ShiftDecrement;
             // set the entry mode
-            _command(Constants.EntryModeSet | _displaymode);
+            _command(LCDConstants.EntryModeSet | _displaymode);
 
             BackLight();
         }
 
         public void Clear()
         {
-            _command(Constants.ClearDisplay);
-            StopwatchDelay.DelayMicroSeconds(Constants.HomeClearExec);
+            _command(LCDConstants.ClearDisplay);
+            StopwatchDelay.DelayMicroSeconds(LCDConstants.HomeClearExec);
         }
 
         public void Home()
         {
-            _command(Constants.ReturnHome);
-            StopwatchDelay.DelayMicroSeconds(Constants.HomeClearExec);
+            _command(LCDConstants.ReturnHome);
+            StopwatchDelay.DelayMicroSeconds(LCDConstants.HomeClearExec);
         }
 
         public void Display()
         {
-            _displaycontrol &= Constants.DisplayOn;
-            _command(Constants.DisplayControl | _displaycontrol);
+            _displaycontrol &= LCDConstants.DisplayOn;
+            _command(LCDConstants.DisplayControl | _displaycontrol);
         }
 
         public void NoDisplay()
         {
-            _displaycontrol &= ~Constants.DisplayOn;
-            _command(Constants.DisplayControl | _displaycontrol);
+            _displaycontrol &= ~LCDConstants.DisplayOn;
+            _command(LCDConstants.DisplayControl | _displaycontrol);
         }
 
         public void Blink()
         {
-            _displaycontrol &= Constants.BlinkOn;
-            _command(Constants.DisplayControl | _displaycontrol);
+            _displaycontrol &= LCDConstants.BlinkOn;
+            _command(LCDConstants.DisplayControl | _displaycontrol);
         }
 
         public void NoBlink()
         {
-            _displaycontrol &= ~Constants.BlinkOn;
-            _command(Constants.DisplayControl | _displaycontrol);
+            _displaycontrol &= ~LCDConstants.BlinkOn;
+            _command(LCDConstants.DisplayControl | _displaycontrol);
         }
 
         public void NoCursor()
         {
-            _displaycontrol &= ~Constants.CursorOn;
-            _command(Constants.DisplayControl | _displaycontrol);
+            _displaycontrol &= ~LCDConstants.CursorOn;
+            _command(LCDConstants.DisplayControl | _displaycontrol);
         }
 
         public void Cursor()
         {
-            _displaycontrol &= Constants.CursorOn;
-            _command(Constants.DisplayControl | _displaycontrol);
+            _displaycontrol &= LCDConstants.CursorOn;
+            _command(LCDConstants.DisplayControl | _displaycontrol);
         }
 
         public void ScollDisplayLeft()
         {
-            _command(Constants.CursorShift | Constants.DisplayMove | Constants.MoveLeft);
+            _command(LCDConstants.CursorShift | LCDConstants.DisplayMove | LCDConstants.MoveLeft);
         }
 
         public void ScrollDisplayRight()
         {
-            _command(Constants.CursorShift | Constants.DisplayMove | Constants.MoveRight);
+            _command(LCDConstants.CursorShift | LCDConstants.DisplayMove | LCDConstants.MoveRight);
         }
 
         public void LeftToRight()
         {
-            _displaymode |= Constants.EntryLeft;
-            _command(Constants.EntryModeSet | _displaymode);
+            _displaymode |= LCDConstants.EntryLeft;
+            _command(LCDConstants.EntryModeSet | _displaymode);
         }
 
         public void RightToLeft()
         {
-            _displaymode |= ~Constants.EntryLeft;
-            _command(Constants.EntryModeSet | _displaymode);
+            _displaymode |= ~LCDConstants.EntryLeft;
+            _command(LCDConstants.EntryModeSet | _displaymode);
         }
 
         public void MoveCursorLeft()
         {
-            _command(Constants.CursorShift | Constants.CursorMove | Constants.MoveLeft);
+            _command(LCDConstants.CursorShift | LCDConstants.CursorMove | LCDConstants.MoveLeft);
         }
 
         public void MoveCursorRight()
         {
-            _command(Constants.CursorShift | Constants.CursorMove | Constants.MoveRight);
+            _command(LCDConstants.CursorShift | LCDConstants.CursorMove | LCDConstants.MoveRight);
         }
 
         public void AutoScroll()
         {
-            _displaymode |= Constants.ShiftIncrement;
-            _command(Constants.EntryModeSet | _displaymode);
+            _displaymode |= LCDConstants.ShiftIncrement;
+            _command(LCDConstants.EntryModeSet | _displaymode);
         }
 
         public void NoAutoScroll()
         {
-            _displaymode |= ~Constants.ShiftIncrement;
-            _command(Constants.EntryModeSet | _displaymode);
+            _displaymode |= ~LCDConstants.ShiftIncrement;
+            _command(LCDConstants.EntryModeSet | _displaymode);
         }
 
         public void CreateChar(int location, int[] charMap)
         {
             location &= 0x7;            // we only have 8 locations 0-7
 
-            _command(Constants.SetCGRAMAddr | (location << 3));
+            _command(LCDConstants.SetCGRAMAddr | (location << 3));
             StopwatchDelay.DelayMicroSeconds(30);
 
             for (int i = 0; i < 8; i++)
@@ -209,11 +209,11 @@ namespace XIOTCore.Portable.Components.LCD.HD44780
             // ----------------------------------------
             if (_cols == 16 && _numlines == 4)
             {
-                _command(Constants.SetDDRAMAddr | (col + row_offsetsLarge[row]));
+                _command(LCDConstants.SetDDRAMAddr | (col + row_offsetsLarge[row]));
             }
             else
             {
-                _command(Constants.SetDDRAMAddr | (col + row_offsetsDef[row]));
+                _command(LCDConstants.SetDDRAMAddr | (col + row_offsetsDef[row]));
             }
         }
 
@@ -255,7 +255,7 @@ namespace XIOTCore.Portable.Components.LCD.HD44780
             {
                 var i = (int) d;
                 var i2 = (uint) d;
-                Send(i, Constants.DATA);
+                Send(i, LCDConstants.DATA);
             }
            
             return 1;
@@ -263,7 +263,7 @@ namespace XIOTCore.Portable.Components.LCD.HD44780
 
         public virtual int Write(int value)
         {
-            Send(value, Constants.DATA);
+            Send(value, LCDConstants.DATA);
             return 1;
         }
     }

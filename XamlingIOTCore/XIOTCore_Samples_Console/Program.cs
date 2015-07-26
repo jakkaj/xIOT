@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XIOTCore_Samples_Console.OLED;
 
 namespace XIOTCore_Samples_Console
 {
@@ -12,11 +13,17 @@ namespace XIOTCore_Samples_Console
     {
         static void Main(string[] args)
         {
-            var sampleLCD = new LCD.LcdExamples_FTDI();
+            var sample = new OLEDExamples_FTDI();
 
-            var t = sampleLCD.Init();
+            var t = sample.Init();
 
             t.Wait();
+
+            //var sampleLCD = new LCD.LcdExamples_FTDI();
+
+            //var t = sampleLCD.Init();
+
+            //t.Wait();
         }
     }
 }

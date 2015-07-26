@@ -1,6 +1,6 @@
 ﻿namespace XIOTCore.Contract.Enum
 {
-    public static class Constants
+    public static class LCDConstants
     {
         public const int OUTPUT = 1;
         public const int INPUT = 0;

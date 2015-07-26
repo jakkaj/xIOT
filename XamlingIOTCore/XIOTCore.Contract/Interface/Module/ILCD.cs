@@ -1,12 +1,11 @@
 ﻿using System.Threading.Tasks;
 using XIOTCore.Contract.Enum;
-using Constants = XIOTCore.Contract.Enum.Constants;
 
 namespace XIOTCore.Contract.Interface.Module
 {
     public interface ILCD
     {
-        Task Begin(int cols, int rows, int charSize = Constants.LCD_5x8DOTS);
+        Task Begin(int cols, int rows, int charSize = LCDConstants.LCD_5x8DOTS);
         void Clear();
         void Home();
         void Display();

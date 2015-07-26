@@ -24,7 +24,7 @@ namespace XIOTCore_Samples_Console.LCD
 
             var i2c = _factory.GetComponent<IXI2CDevice>();
 
-            _lcd = new I2CLCD(i2c, 0x27, 2, 1, 0, 4, 5, 6, 7, 3, BacklightPolarity.Positive);
+            var _lcd = new I2CLCD(i2c, 0x27, 2, 1, 0, 4, 5, 6, 7, 3, BacklightPolarity.Positive);
 
             await _lcd.Begin(16,2);
 

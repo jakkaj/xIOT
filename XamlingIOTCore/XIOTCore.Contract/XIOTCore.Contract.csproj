@@ -34,11 +34,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Enum\LCDConstants.cs" />
+    <Compile Include="Enum\OLEDConstants.cs" />
     <Compile Include="Enum\XOutputMode.cs" />
-    <Compile Include="Enum\LCDEnum.cs" />
     <Compile Include="Enum\XPinValue.cs" />
     <Compile Include="Enum\XGain.cs" />
     <Compile Include="Enum\XSamplesPerSecond.cs" />
+    <Compile Include="Interface\Basics\ISimpleWriter.cs" />
     <Compile Include="Interface\I2C\IADS1015.cs" />
     <Compile Include="Interface\Basics\IXGpio.cs" />
     <Compile Include="Interface\Basics\IXGpioControl.cs" />
