@@ -15,7 +15,7 @@ namespace XIOTCore_Samples_Console.LCD
         private readonly IXIOTCoreFactory _factory =
           XIOTCoreFactory.Create(Platforms.FTDI_USB);
 
-        private II2CLCD _lcd;
+        //private II2CLCD _lcd;
 
       
         public async Task Init()

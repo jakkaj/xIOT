@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace XIOTCore_Samples_Console
 {
+    //Please note - this sample is a bit rough and not intented to be teh *real* sample. 
+    //See https://github.com/jakkaj/Xamling-IOT/tree/master/Samples for better stuff :)
     class Program
     {
         static void Main(string[] args)
