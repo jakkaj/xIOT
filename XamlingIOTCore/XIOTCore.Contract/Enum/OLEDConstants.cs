@@ -15,6 +15,10 @@ namespace XIOTCore.Contract.Enum
 
     public static class OLEDConstants
     {
+        public const int BLACK = 0;
+        public const int WHITE = 1;
+        public const int INVERSE = 2;
+
         public const int SSD1306_I2C_ADDRESS = 0x3C;
 
         public const int SSD1306_SETCONTRAST = 0x81;

@@ -46,5 +46,21 @@ namespace XIOTCore.Portable.Components.OLED.SSD1306
 
             return false;
         }
+
+        public bool Write(int value1, int value2)
+        {
+            if (_initialised)
+            {
+                var resultControl = _i2cDevice.Write(value1);
+                if (!resultControl)
+                {
+                    return false;
+                }
+                var result = _i2cDevice.Write(value2);
+                return result;
+            }
+
+            return false;
+        }
     }
 }

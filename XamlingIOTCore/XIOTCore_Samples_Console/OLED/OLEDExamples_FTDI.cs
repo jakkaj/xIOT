@@ -26,7 +26,18 @@ namespace XIOTCore_Samples_Console.OLED
             iTask.Wait();
             var oled = new XIOTCore.Portable.Components.OLED.SSD1306.OLED(writer, OLEDDisplaySize.SSD1306_128_64);
 
+
+
             oled.Init();
+
+            for (var i = 0; i < 32; i++)
+            {
+                oled.DrawPixel(i, i, 2);
+            }
+
+//            oled.DrawPixel(1,1,1);
+
+            oled.Display();
         }
     }
 }
