@@ -13,7 +13,7 @@ You can use this sample code, or you can start from scratch! Just install the Xa
 
 XIOT supports FTDI based devices, such as [FT232H breakout] (https://learn.adafruit.com/adafruit-ft232h-breakout/overview) from Adafruit. This device can plug straight in to your PC, meaning you can very quickly develop your code and design your circuits before taking them to the PI (and possible others later) for completion. 
 
-###Wiring
+###FT232H Wiring
 
 This circuit connects the I2C based LCD display to the FT212H.
 
