@@ -11,6 +11,8 @@ a large custom library. You can use all Windows and custom fonts, shapes and the
 
 <img src="https://raw.githubusercontent.com/jakkaj/Xamling-IOT/master/Samples/OLED_SSD1306/OLED_Image.jpg" width="300" height="300"/>
 
+With special thanks to the guys at Adafruit for their Arduino code - some of which we ported here. [https://github.com/adafruit/Adafruit_SSD1306](https://github.com/adafruit/Adafruit_SSD1306)
+
 ###What you'll need
 
 * Visual Studio 2015
