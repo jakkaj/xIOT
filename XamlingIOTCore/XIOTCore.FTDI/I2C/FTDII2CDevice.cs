@@ -27,7 +27,7 @@ namespace XIOTCore.FTDI.I2C
         private byte _gpo;
         private object _lock = new object();
 
-        public async Task<bool> Init(int deviceAddress)
+        public async Task<bool> Init()
         {
             var config = new FtChannelConfig
             {
@@ -37,10 +37,16 @@ namespace XIOTCore.FTDI.I2C
 
             _i2cConfig = _i2cConfig ?? I2CConfiguration.ChannelZeroConfiguration;
             _cfg = config;
-            _deviceAddress = deviceAddress;
+           
             InitLibAndHandle();
 
             return true;
+        }
+
+        public async Task<bool> Init(int deviceAddress)
+        {
+            _deviceAddress = deviceAddress;
+            return await Init();
         }
 
         void InitLibAndHandle()

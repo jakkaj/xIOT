@@ -14,5 +14,6 @@ namespace XIOTCore.Contract.Interface.Basics
         bool SetGPIOOn(byte pin);
         bool SetGPIOOff(byte pin);
         bool ReadGPIO(byte pin, out bool value);
+        Task<bool> Init();
     }
 }

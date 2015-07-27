@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GPIO\GPIOExamples_FTDI.cs" />
     <Compile Include="LCD\LcdExamples_FTDI.cs" />
     <Compile Include="OLED\OLEDExamples_FTDI.cs" />
     <Compile Include="Program.cs" />
@@ -60,6 +61,10 @@
     <ProjectReference Include="..\XIOTCore.Contract\XIOTCore.Contract.csproj">
       <Project>{9F92ABA8-71DC-4583-BD4D-349DCBB6BD87}</Project>
       <Name>XIOTCore.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XIOTCore.FTDI\XIOTCore.FTDI.csproj">
+      <Project>{FA791085-FCD7-46A8-A87B-B112CD1D26AA}</Project>
+      <Name>XIOTCore.FTDI</Name>
     </ProjectReference>
     <ProjectReference Include="..\XIOTCore.Portable\XIOTCore.Portable.csproj">
       <Project>{91902D55-BA04-4391-B565-02521F1EECF4}</Project>
