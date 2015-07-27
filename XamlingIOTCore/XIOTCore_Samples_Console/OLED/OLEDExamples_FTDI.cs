@@ -28,7 +28,7 @@ namespace XIOTCore_Samples_Console.OLED
             var oledTask = OLED_SSD1306.Get_I2C_OLED(i2c, OLEDConstants.SSD1306_I2C_ADDRESS, OLEDDisplaySize.SSD1306_128_64);
             oledTask.Wait();
             var oled = oledTask.Result;
-            oled.Init();
+            
 
             oled.Display();
             
