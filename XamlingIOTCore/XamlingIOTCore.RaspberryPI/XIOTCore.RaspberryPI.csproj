@@ -121,8 +121,8 @@
     <Compile Include="ExplorerHATPro\Components\ExplorerHat_Inputs.cs" />
     <Compile Include="ExplorerHATPro\ExplorerHatConfiguration.cs" />
     <Compile Include="ExplorerHATPro\Plugs\ExplorerHat_AnaloguePlug.cs" />
-    <Compile Include="Interface\IExploereHat_Outputs.cs" />
-    <Compile Include="Interface\IExploereHat_Inputs.cs" />
+    <Compile Include="Interface\IExplorerHat_Outputs.cs" />
+    <Compile Include="Interface\IExplorerHat_Inputs.cs" />
     <Compile Include="Interface\IExplorerHat_AnaloguePlug.cs" />
     <Compile Include="Interface\IExplorerHat_ADS1015.cs" />
     <Compile Include="ExplorerHATPro\Enum\ExplorerHat_ADS1015_Channel.cs" />
