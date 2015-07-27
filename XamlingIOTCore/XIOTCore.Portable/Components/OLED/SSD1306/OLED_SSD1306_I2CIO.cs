@@ -6,14 +6,14 @@ using XIOTCore.Portable.Components.LCD.HD44780;
 
 namespace XIOTCore.Portable.Components.OLED.SSD1306
 {
-    public class I2CIO : ISimpleWriter
+    public class OLED_SSD1306_I2CIO : ISimpleWriter
     {
         
         private bool _initialised;
 
         private IXI2CDevice _i2cDevice;
 
-        public I2CIO(IXI2CDevice i2cDevice)
+        public OLED_SSD1306_I2CIO(IXI2CDevice i2cDevice)
         {
             _i2cDevice = i2cDevice;
             _initialised = false;

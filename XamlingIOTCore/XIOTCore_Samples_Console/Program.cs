@@ -14,7 +14,7 @@ namespace XIOTCore_Samples_Console
     {
         static void Main(string[] args)
         {
-            var sample = new GPIOExamples_FTDI();
+            var sample = new OLEDExamples_FTDI();
 
             var t = sample.Init();
 

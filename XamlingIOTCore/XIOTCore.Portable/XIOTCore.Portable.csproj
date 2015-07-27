@@ -39,8 +39,8 @@
     <Compile Include="Components\LCD\HD44780\I2CIO.cs" />
     <Compile Include="Components\LCD\HD44780\I2CLCD.cs" />
     <Compile Include="Components\LCD\HD44780\LCD.cs" />
-    <Compile Include="Components\OLED\SSD1306\I2CIO.cs" />
-    <Compile Include="Components\OLED\SSD1306\OLED.cs" />
+    <Compile Include="Components\OLED\SSD1306\OLED_SSD1306_I2CIO.cs" />
+    <Compile Include="Components\OLED\SSD1306\OLED_SSD1306.cs" />
     <Compile Include="Components\Range\HC-SR04.cs" />
     <Compile Include="Factory\PortableFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

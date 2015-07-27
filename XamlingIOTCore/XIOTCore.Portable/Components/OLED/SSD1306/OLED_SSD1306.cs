@@ -10,8 +10,17 @@ using XIOTCore.Contract.Interface.Basics;
 
 namespace XIOTCore.Portable.Components.OLED.SSD1306
 {
-    public class OLED
+    public class OLED_SSD1306
     {
+        public static async Task<OLED_SSD1306> Get_I2C_OLED(IXI2CDevice device, int address, OLEDDisplaySize size)
+        {
+            var writer = new OLED_SSD1306_I2CIO(device);
+            await writer.Init(address);
+            var o = new OLED_SSD1306(writer, size);
+            o.Init();
+            return o;
+        }
+
         private readonly ISimpleWriter _writer;
         private readonly OLEDDisplaySize _displaySize;
 
@@ -21,7 +30,7 @@ namespace XIOTCore.Portable.Components.OLED.SSD1306
 
         private byte[] _buffer;
 
-        public OLED(ISimpleWriter writer, OLEDDisplaySize displaySize)
+        public OLED_SSD1306(ISimpleWriter writer, OLEDDisplaySize displaySize)
         {
             _writer = writer;
             _displaySize = displaySize;

@@ -23,15 +23,14 @@ namespace XIOTCore_Samples_Console.OLED
         public async Task Init()
         {
             _factory.Init();
+
             var i2c = _factory.GetComponent<IXI2CDevice>();
-            var writer = new I2CIO(i2c);
-            var iTask = writer.Init(OLEDConstants.SSD1306_I2C_ADDRESS);
-            iTask.Wait();
-            var oled = new XIOTCore.Portable.Components.OLED.SSD1306.OLED(writer, OLEDDisplaySize.SSD1306_128_64);
-            
+            var oledTask = OLED_SSD1306.Get_I2C_OLED(i2c, OLEDConstants.SSD1306_I2C_ADDRESS, OLEDDisplaySize.SSD1306_128_64);
+            oledTask.Wait();
+            var oled = oledTask.Result;
             oled.Init();
 
-            //oled.Display();
+            oled.Display();
             
             //return;
                     var b = new Bitmap(128, 64);
