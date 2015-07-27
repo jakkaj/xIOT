@@ -4,6 +4,9 @@ This example demonstrates how to use the Xamling-IOT library to drive an LCD dis
 
 You can use this sample code, or you can start from scratch! Just install the Xamling-IOT Nuget package. 
 
+    PM> Install-Package XamlingIOT
+  
+
 ###What you'll need
 
 * Visual Studio 2015
