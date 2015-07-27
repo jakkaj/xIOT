@@ -25,15 +25,27 @@ namespace XIOTCore_Samples_Console.GPIO
             
             var gpio = _factory.GetComponent<IXGpio_0>();
 
-            gpio.SetDirection(XGpioDirection.Output);
+            gpio.SetDirection(XGpioDirection.Input);
 
             while (true)
             {
-                gpio.On();
-                await Task.Delay(250);
-                gpio.Off();
-                await Task.Delay(150);
+                await Task.Delay(1000);
+                if (gpio.State)
+                {
+                    Debug.WriteLine("Hight");
+                }
+                else
+                {
+                    Debug.WriteLine("Low");
+                }
+
+                //gpio.On();
+                //await Task.Delay(250);
+                //gpio.Off();
+                //await Task.Delay(150);
             }
+
+
         }
     }
 }
