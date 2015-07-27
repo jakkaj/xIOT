@@ -2,6 +2,7 @@
 using XIOTCore.Contract;
 using XIOTCore.Contract.Interface;
 using XIOTCore.FTDI.Modules;
+using XIOTCore.Portable.Modules;
 
 namespace XIOTCore.Portable.Factory
 {
@@ -22,6 +23,8 @@ namespace XIOTCore.Portable.Factory
 
         public virtual void Init()
         {
+            Builder.RegisterModule<PortableModule>();
+
             if (_platforms.HasFlag(Platforms.FTDI_USB))
             {
                 Builder.RegisterModule<FTDI_Module>();

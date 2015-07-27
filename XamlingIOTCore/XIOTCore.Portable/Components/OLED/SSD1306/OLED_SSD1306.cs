@@ -7,72 +7,44 @@ using System.Text;
 using System.Threading.Tasks;
 using XIOTCore.Contract.Enum;
 using XIOTCore.Contract.Interface.Basics;
+using XIOTCore.Contract.Interface.Devices;
 
 namespace XIOTCore.Portable.Components.OLED.SSD1306
 {
-    public class OLED_SSD1306
+    public class OLDED_SSD1306_I2C : OLED_SSD1306, IOLED_SSD1306_I2C
     {
-        public static async Task<OLED_SSD1306> Get_I2C_OLED(IXI2CDevice device, int address, OLEDDisplaySize size)
+        private readonly IXI2CDevice _device;
+
+        public OLDED_SSD1306_I2C(IXI2CDevice device)
         {
-            var writer = new OLED_SSD1306_I2CIO(device);
-            await writer.Init(address);
-            var o = new OLED_SSD1306(writer, size);
-            o.Init();
-            return o;
+            _device = device;
         }
 
-        private readonly ISimpleWriter _writer;
-        private readonly OLEDDisplaySize _displaySize;
+        public async Task<IOLED_SSD1306_I2C> Init(int address, OLEDDisplaySize displaySize)
+        {
+            var writer = new OLED_SSD1306_I2CIO(_device);
+            await writer.Init(address);
+            _writer = writer;
+            Init(displaySize);
+            return this;
+        }
+    }
+
+    public class OLED_SSD1306 : IOLED_SSD1306
+    {
+        protected ISimpleWriter _writer;
+        private OLEDDisplaySize _displaySize;
 
         private int _width;
         private int _height;
         private int _pages;
 
         private byte[] _buffer;
+        
 
-        public OLED_SSD1306(ISimpleWriter writer, OLEDDisplaySize displaySize)
+        public void Init(OLEDDisplaySize displaySize)
         {
-            _writer = writer;
             _displaySize = displaySize;
-        }
-
-        public void Init2()
-        {
-            Command(OLEDConstants.SSD1306_DISPLAYOFF);
-            Command(OLEDConstants.SSD1306_SETDISPLAYCLOCKDIV);
-            Command(0x80);
-            Command(OLEDConstants.SSD1306_SETMULTIPLEX);
-            Command(0x3F);
-            Command(OLEDConstants.SSD1306_SETDISPLAYOFFSET);
-            Command(0x00);
-            Command(OLEDConstants.SSD1306_SETSTARTLINE);
-            Command(OLEDConstants.SSD1306_CHARGEPUMP);
-            Command(0x14);
-            Command(OLEDConstants.SSD1306_MEMORYMODE);
-            Command(0x00);
-            Command(OLEDConstants.SSD1306_SEGREMAP);
-            Command(OLEDConstants.SSD1306_COMSCANDEC);
-            Command(OLEDConstants.SSD1306_SETCOMPINS);
-            Command(0x12);
-            Command(OLEDConstants.SSD1306_SETCONTRAST);
-            Command(0xCF);
-            Command(OLEDConstants.SSD1306_SETPRECHARGE);
-            Command(0xF1);
-
-            Command(OLEDConstants.SSD1306_SETVCOMDETECT);
-            Command(0x40);
-            Command(OLEDConstants.SSD1306_DISPLAYALLON_RESUME);
-            Command(OLEDConstants.SSD1306_NORMALDISPLAY);
-            Command(OLEDConstants.SSD1306_DISPLAYON);
-            _width = 128;
-            _height = 64;
-
-            _pages = _height / 8;
-            _buffer = new byte[_height * _width / 8];
-        }
-
-        public void Init()
-        {
             if (_displaySize == OLEDDisplaySize.SSD1306_128_32)
             {
                 _width = 128;
