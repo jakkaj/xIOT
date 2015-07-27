@@ -115,12 +115,16 @@ XIOT is built around Windows 10 Universal Apps. The framework works for UI based
 ###Support for special components
 As time goes on we'll add support for lots of components that you can inject in to your code and start using straight away. For now we've added some things to get started. 
 
-Right now we support the [HC-SR04](http://www.micropik.com/PDF/HCSR04.pdf) sonic distance sensor ([sample](https://github.com/jakkaj/Xamling-IOT/tree/master/Samples/HC-SR04)  and Hitachi (HD44780) based LCD displays. 
+####Bits that are supported
+- [HC-SR04](http://www.micropik.com/PDF/HCSR04.pdf) sonic distance sensor ([sample](https://github.com/jakkaj/Xamling-IOT/tree/master/Samples/HC-SR04))  
+- Hitachi (HD44780) based LCD displays ([sample](https://github.com/jakkaj/Xamling-IOT/tree/master/Samples/LCD-Hitatchi-HD44780)
+- OLED (SSD1306) based displays ([sample](https://github.com/jakkaj/Xamling-IOT/tree/master/Samples/OLED_SSD1306))
 
 We ported the LCD library from [here](https://bitbucket.org/fmalpartida/new-liquidcrystal/wiki/Home) (thanks fmalpartida for a great lib) - itself a port from the in built Arduino LCD library. 
 
 We've only implemnted the I2C version of the LCD library. Using FTDI it will run from USB - or you can run directly from your PI by changing aroudn the factory config. 
 
+We ported parts of the OLED library from Adafruit [here](https://github.com/adafruit/Adafruit_SSD1306).
 
 * Support for Raspberry PI2 running Windows 10 IOT Core
 * Support for FTDI (FT232H) USB for rapid development of circuits and logic from your PC
