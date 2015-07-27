@@ -152,27 +152,27 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="XIOTCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XamlingIOT.1.0.6\lib\win10\XIOTCore.dll</HintPath>
+      <HintPath>..\packages\XamlingIOT.1.0.7\lib\win10\XIOTCore.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="XIOTCore.Contract, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XamlingIOT.1.0.6\lib\win10\XIOTCore.Contract.dll</HintPath>
+      <HintPath>..\packages\XamlingIOT.1.0.7\lib\win10\XIOTCore.Contract.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="XIOTCore.FTDI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XamlingIOT.1.0.6\lib\win10\XIOTCore.FTDI.dll</HintPath>
+      <HintPath>..\packages\XamlingIOT.1.0.7\lib\win10\XIOTCore.FTDI.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="XIOTCore.Portable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XamlingIOT.1.0.6\lib\win10\XIOTCore.Portable.dll</HintPath>
+      <HintPath>..\packages\XamlingIOT.1.0.7\lib\win10\XIOTCore.Portable.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="XIOTCore.Windows, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XamlingIOT.1.0.6\lib\win10\XIOTCore.Windows.dll</HintPath>
+      <HintPath>..\packages\XamlingIOT.1.0.7\lib\win10\XIOTCore.Windows.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="XOTCore.RaspberryPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XamlingIOT.1.0.6\lib\win10\XOTCore.RaspberryPI.dll</HintPath>
+      <HintPath>..\packages\XamlingIOT.1.0.7\lib\win10\XOTCore.RaspberryPI.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
