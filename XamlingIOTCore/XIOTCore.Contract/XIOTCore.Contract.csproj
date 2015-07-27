@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="Enum\LCDConstants.cs" />
     <Compile Include="Enum\OLEDConstants.cs" />
+    <Compile Include="Enum\XGpioDirection.cs" />
     <Compile Include="Enum\XOutputMode.cs" />
     <Compile Include="Enum\XPinValue.cs" />
     <Compile Include="Enum\XGain.cs" />

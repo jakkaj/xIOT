@@ -23,6 +23,11 @@ namespace XIOTCore.FTDI.LibMPSSE
         [DllImport(LibMpsse.DllName, SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
         public static extern FtResult I2C_DeviceWrite(System.IntPtr handle, int deviceAddress, int sizeToTransfer, byte[] buffer, out int sizeTransfered, FtI2CTransferOptions options);
 
+        [DllImport(LibMpsse.DllName, SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
+        public static extern FtResult FT_WriteGPIO(System.IntPtr handle, byte dir, byte value);
+
+        [DllImport(LibMpsse.DllName, SetLastError = true, CallingConvention = CallingConvention.Cdecl)]
+        public static extern FtResult FT_ReadGPIO(System.IntPtr handle, out int value);
 
     }
 }

@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Exceptions\I2CChannelNotConnectedException.cs" />
     <Compile Include="Exceptions\SpiChannelNotConnectedException.cs" />
+    <Compile Include="GPIO\GPIODevice.cs" />
     <Compile Include="I2C\FTDII2CDevice.cs" />
     <Compile Include="I2C\I2CConfiguration.cs" />
     <Compile Include="I2C\I2CModes.cs" />

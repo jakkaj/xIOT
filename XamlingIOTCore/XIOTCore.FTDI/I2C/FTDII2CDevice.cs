@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 using XIOTCore.Contract.Interface.Basics;
 using XIOTCore.FTDI.Exceptions;
@@ -21,6 +22,10 @@ namespace XIOTCore.FTDI.I2C
 
         private const int ConnectionSpeed = (int)I2CModes.I2C_CLOCK_FAST_MODE; // Hz
         private const int LatencyTimer = 255; // Hz
+
+        private byte _direction;
+        private byte _gpo;
+        private object _lock = new object();
 
         public async Task<bool> Init(int deviceAddress)
         {
@@ -136,7 +141,91 @@ namespace XIOTCore.FTDI.I2C
             if (result != FtResult.Ok)
                 throw new I2CChannelNotConnectedException(result);
         }
-       
+
+        //Parts of this code are from http://www.chd.at/sites/default/files/files/FTDI.cs
+        //pin = pin number; dir = 0:=input; 1:=output
+        public bool SetGPIODirection(byte pin, byte dir)
+        {
+            if (_handle == IntPtr.Zero)
+            {
+                return false;
+            }
+            if (dir == 1)
+            {
+                _direction |= (byte)(1 << pin);
+            }
+            else
+            {
+                _direction &= ((byte)~(1 << pin));
+            }
+            _gpo &= ((byte)~(1 << pin));
+
+            lock (_lock)
+            {
+                var status = LibMpsseI2C.FT_WriteGPIO(_handle, _direction, _gpo);
+                CheckResult(status);
+            }
+            return true;
+        }
+
+        public bool SetGPIOOn(byte pin)
+        {
+            if (_handle == IntPtr.Zero)
+            {
+                return false;
+            }
+            _gpo = (byte)(_gpo | (byte)(1 << pin));
+
+            lock (_lock)
+            {
+                var status = LibMpsseI2C.FT_WriteGPIO(_handle, _direction, _gpo);
+                CheckResult(status);
+            }
+            return true;
+        }
+
+        public bool SetGPIOOff(byte pin)
+        {
+            if (_handle == IntPtr.Zero)
+            {
+                return false;
+            }
+
+            _gpo &= ((byte)~(1 << pin));
+
+            lock (_lock)
+            {
+               var status = LibMpsseI2C.FT_WriteGPIO(_handle, _direction, _gpo);
+                CheckResult(status);
+            }
+            return true;
+        }
+
+        public bool ReadGPIO(byte pin, out bool value)
+        {
+            if (_handle == IntPtr.Zero)
+            {
+                value = false;
+                return false;
+            }
+
+            lock (_lock)
+            {
+                int valTest;
+
+                var status = LibMpsseI2C.FT_ReadGPIO(_handle, out valTest);
+
+                var valShift = (valTest >> pin) & 1;
+
+                value = valShift == 1;
+
+                CheckResult(status);
+            }
+
+            return true;
+        }
+
+
         public void Dispose()
         {
             throw new NotImplementedException();
