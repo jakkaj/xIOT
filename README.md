@@ -128,8 +128,8 @@ We ported parts of the OLED library from Adafruit [here](https://github.com/adaf
 
 * Support for Raspberry PI2 running Windows 10 IOT Core
 * Support for FTDI (FT232H) USB for rapid development of circuits and logic from your PC
-..* I2C, SPI (GPIO coming soon)
-..* Soon this will work from console apps too, so you could create Unit Test for circuits - cool eh. We'll do an example on how to unit test circuits soon!
+..* I2C, SPI and GPIO
+..* It works from console apps - you could even create unit tests to run against circuits you have set up!
 * Supports the built in Windows 10 IOT classes like I2C, GPIO etc
 * Supports Explorer HAT Pro for Raspberry Pi 2
 * Supports HC-SR04 ultrasonic distance sensor
