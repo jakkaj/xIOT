@@ -96,7 +96,7 @@ Check out the source code in the main Xamling-IOT library here: [LCD Bits](https
 
 ###About
 
-At present the FTDI parts of the framework supports I2C and SPI. We're working on adding GPIO too very soon. 
+At present the FTDI parts of the framework supports I2C, SPI and GPIO.
 
 We started with DVDPT's [libMPSSEWrapper](https://github.com/DVDPT/libMPSSE-.Net-Wrapper) project and extended from there to add I2C support using FTDI's libMPSSE (which is required). Our fork of that project is [here](https://github.com/jakkaj/libMPSSE-.Net-Wrapper) but the code in XIOT is now separate (as we've made it injectable etc). 
 
