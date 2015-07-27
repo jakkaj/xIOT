@@ -117,7 +117,7 @@ As time goes on we'll add support for lots of components that you can inject in 
 
 ####Bits that are supported
 - [HC-SR04](http://www.micropik.com/PDF/HCSR04.pdf) sonic distance sensor ([sample](https://github.com/jakkaj/Xamling-IOT/tree/master/Samples/HC-SR04))  
-- Hitachi (HD44780) based LCD displays ([sample](https://github.com/jakkaj/Xamling-IOT/tree/master/Samples/LCD-Hitatchi-HD44780)
+- Hitachi (HD44780) based LCD displays ([sample](https://github.com/jakkaj/Xamling-IOT/tree/master/Samples/LCD-Hitatchi-HD44780))
 - OLED (SSD1306) based displays ([sample](https://github.com/jakkaj/Xamling-IOT/tree/master/Samples/OLED_SSD1306))
 
 We ported the LCD library from [here](https://bitbucket.org/fmalpartida/new-liquidcrystal/wiki/Home) (thanks fmalpartida for a great lib) - itself a port from the in built Arduino LCD library. 
@@ -128,8 +128,8 @@ We ported parts of the OLED library from Adafruit [here](https://github.com/adaf
 
 * Support for Raspberry PI2 running Windows 10 IOT Core
 * Support for FTDI (FT232H) USB for rapid development of circuits and logic from your PC
-..* I2C, SPI and GPIO
-..* It works from console apps - you could even create unit tests to run against circuits you have set up!
+* Works with I2C, SPI and GPIO
+* It works from console apps (using FTDI FT232 etc.) - you could even create unit tests to run against circuits you have set up!
 * Supports the built in Windows 10 IOT classes like I2C, GPIO etc
 * Supports Explorer HAT Pro for Raspberry Pi 2
 * Supports HC-SR04 ultrasonic distance sensor
