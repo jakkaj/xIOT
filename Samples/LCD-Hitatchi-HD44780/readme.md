@@ -102,7 +102,7 @@ We started with DVDPT's [libMPSSEWrapper](https://github.com/DVDPT/libMPSSE-.Net
 
 We ported the LCD library from [here](https://bitbucket.org/fmalpartida/new-liquidcrystal/wiki/Home) (thanks fmalpartida for a great lib) - itself a port from the in built Arduino LCD library. 
 
-We've only implemnted the I2C version of the LCD library. Using FTDI it will run from USB - or you can run directly from your
+We've only implemnted the I2C version of the LCD library. Using FTDI it will run from USB - or you can run directly from your PC.
 
 ###Further Reading
 
