@@ -1,9 +1,10 @@
 ﻿using XIOTCore.Contract.Enum;
 using XIOTCore.Contract.Interface.Basics;
+using XIOTCore.Contract.Interface.GPIO;
 
-namespace XIOTCore.Windows.Gpio
+namespace XIOTCore.Contract.Components.GPIO
 {
-    public class XGpioControl : IXGpioControl
+    public class XGpioControl : IXGpioControl, IXGpio_0, IXGpio_1, IXGpio_2, IXGpio_3, IXGpio_4, IXGpio_5, IXGpio_6, IXGpio_7, IXGpio_8, IXGpio_9, IXGpio_10
     {
         private readonly IXGpio _gpio;
 
@@ -36,6 +37,11 @@ namespace XIOTCore.Windows.Gpio
                     Off();
                 }
             }
+        }
+
+        public void SetDirection(XGpioDirection direction)
+        {
+            _gpio.SetDirection(direction);
         }
     }
 }

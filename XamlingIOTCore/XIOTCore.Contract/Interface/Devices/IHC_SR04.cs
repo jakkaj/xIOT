@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace XIOTCore.Contract.Interface.Module
+namespace XIOTCore.Contract.Interface.Devices
 {
     public interface IHC_SR04
     {

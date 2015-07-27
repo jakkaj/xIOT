@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
 using XIOTCore.Contract.Enum;
-using XIOTCore.Contract.Interface.Module;
+using XIOTCore.Contract.Interface.Devices;
 using XIOTCore.Portable.Util.XamlingCore;
 
 namespace XIOTCore.Portable.Components.LCD.HD44780
 {
-    public abstract class LCD : ILCD
+    public abstract class LCD_Hitatchi : ILCD_Hitatchi
     {
         protected int _displayFunction;
         protected int _displaycontrol;

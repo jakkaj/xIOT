@@ -5,7 +5,7 @@ using XIOTCore.Contract.Interface.Basics;
 
 namespace XIOTCore.Portable.Components.LCD.HD44780
 {
-    public class I2CIO
+    public class LCD_Hitachi_I2CIO
     {
         int _shadow;      // Shadow output
         int _dirMask;     // Direction mask
@@ -13,12 +13,8 @@ namespace XIOTCore.Portable.Components.LCD.HD44780
         private bool _initialised;
 
         private IXI2CDevice _i2cDevice;
-
-        private const int ConnectionSpeed = 40000; // Hz
-        private const int LatencyTimer = 255; // Hz
-
-
-        public I2CIO(IXI2CDevice i2cDevice)
+        
+        public LCD_Hitachi_I2CIO(IXI2CDevice i2cDevice)
         {
             _i2cDevice = i2cDevice;
              

@@ -18,7 +18,8 @@ using XCore.RaspberryPI.Interface;
 using XIOTCore.Contract;
 using XIOTCore.Contract.Interface;
 using XIOTCore.Contract.Interface.Basics;
-using XIOTCore.Contract.Interface.Module;
+using XIOTCore.Contract.Interface.Devices;
+using XIOTCore.Contract.Interface.GPIO;
 using XIOTCore.Factory;
 using XIOTCore.Portable.Components.Range;
 using XIOTCore.Portable.Factory;
@@ -55,7 +56,7 @@ namespace XIOTCore_Samples
 
             //var _lcdExamples = new LcdExamples_FTDI();
 
-            var _lcdExamples = new LcdExamples_Rpi();
+            var _lcdExamples = new LcdExamples_Rpi2();
 
             _lcdExamples.Init();
 

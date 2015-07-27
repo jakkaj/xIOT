@@ -4,7 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using XIOTCore.Contract.Interface.Basics;
-using XIOTCore.Contract.Interface.Module;
+using XIOTCore.Contract.Interface.Devices;
+using XIOTCore.Contract.Interface.GPIO;
 
 namespace XIOTCore.Portable.Components.Range
 {

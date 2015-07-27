@@ -36,9 +36,9 @@
   <ItemGroup>
     <Compile Include="Components\I2C\ADC\ADS1015.cs" />
     <Compile Include="Components\I2C\ADC\ADS1015Extensions.cs" />
-    <Compile Include="Components\LCD\HD44780\I2CIO.cs" />
-    <Compile Include="Components\LCD\HD44780\I2CLCD.cs" />
-    <Compile Include="Components\LCD\HD44780\LCD.cs" />
+    <Compile Include="Components\LCD\HD44780\LCD_Hitachi_I2CIO.cs" />
+    <Compile Include="Components\LCD\HD44780\LCD_Hitatchi_I2C.cs" />
+    <Compile Include="Components\LCD\HD44780\LCD_Hitatchi.cs" />
     <Compile Include="Components\OLED\SSD1306\OLED_SSD1306_I2CIO.cs" />
     <Compile Include="Components\OLED\SSD1306\OLED_SSD1306.cs" />
     <Compile Include="Components\Range\HC-SR04.cs" />
@@ -71,9 +71,7 @@
       <Name>XIOTCore.FTDI</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Components\GPIO\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy /y "$(TargetPath)" "$(SolutionDir)\nuget\lib\portable-net45+win+wpa81+wp80+monotouch+monoandroid+Xamarin.iOS"

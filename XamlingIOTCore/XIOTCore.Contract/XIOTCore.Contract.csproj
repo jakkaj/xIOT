@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Components\GPIO\XGpioControl.cs" />
     <Compile Include="Enum\LCDConstants.cs" />
     <Compile Include="Enum\OLEDConstants.cs" />
     <Compile Include="Enum\XGpioDirection.cs" />
@@ -43,9 +44,10 @@
     <Compile Include="Enum\XSamplesPerSecond.cs" />
     <Compile Include="Interface\Basics\ISimpleWriter.cs" />
     <Compile Include="Interface\Devices\IOLED_SSD1306.cs" />
+    <Compile Include="Interface\GPIO\IXGpioPins.cs" />
     <Compile Include="Interface\I2C\IADS1015.cs" />
-    <Compile Include="Interface\Basics\IXGpio.cs" />
-    <Compile Include="Interface\Basics\IXGpioControl.cs" />
+    <Compile Include="Interface\GPIO\IXGpio.cs" />
+    <Compile Include="Interface\GPIO\IXGpioControl.cs" />
     <Compile Include="Interface\I2C\IXI2CInfo.cs" />
     <Compile Include="Interface\Configs\IPlatoformConfiguration.cs" />
     <Compile Include="Interface\Basics\IXI2CDevice.cs" />
@@ -53,8 +55,8 @@
     <Compile Include="Interface\Devices\IHC_SR04.cs" />
     <Compile Include="Platforms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Interface\Devices\II2CLCD.cs" />
-    <Compile Include="Interface\Devices\ILCD.cs" />
+    <Compile Include="Interface\Devices\LCD_Hitatchi_I2C.cs" />
+    <Compile Include="Interface\Devices\ILCD_Hitatchi.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">

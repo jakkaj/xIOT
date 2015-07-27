@@ -1,53 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Autofac;
+﻿using System.Threading.Tasks;
 using XIOTCore.Contract;
 using XIOTCore.Contract.Enum;
 using XIOTCore.Contract.Interface;
-using XIOTCore.Contract.Interface.Basics;
-using XIOTCore.Contract.Interface.Module;
+using XIOTCore.Contract.Interface.Devices;
 using XIOTCore.Factory;
-using XIOTCore.Portable.Components.LCD.HD44780;
 using XIOTCore.Portable.Util.XamlingCore;
 
 namespace XIOTCore_Samples.LCD
 {
-    public class LcdExamples_Rpi
+    public class LcdExamples_Rpi2
     {
         private readonly IXIOTCoreFactory _factory =
           XIOTCoreWindowsFactory.Create(Platforms.RaspberryPi2ModelB);
 
-        private II2CLCD _lcd;
-
-      
-        public async void Init()
+        public async Task Init()
         {
             _factory.Init();
 
-            var i2c = _factory.GetComponent<IXI2CDevice>();
+            var lcd = _factory.GetComponent<ILCD_Hitatchi_I2C>();
 
-            _lcd = new I2CLCD(i2c, 0x27, 2, 1, 0, 4, 5, 6, 7, 3, BacklightPolarity.Positive);
+            //We got the pin config from here:
+            //https://arduino-info.wikispaces.com/LCD-Blue-I2C
+            //You'll have to find your own mapping for your device!
 
-            await _lcd.Begin(16,2);
+            await lcd.Init(0x27, 16, 2,
+                LCDConstants.LCD_5x8DOTS,
+                2, 1, 0, 4, 5, 6, 7, 3, BacklightPolarity.Positive);
 
             for (int i = 0; i < 3; i++)
             {
-                _lcd.BackLight();
+                lcd.BackLight();
                 StopwatchDelay.Delay(100);
-                _lcd.NoBacklight();
+                lcd.NoBacklight();
                 StopwatchDelay.Delay(100);
             }
 
-            _lcd.BackLight();
-            _lcd.Home();
-            _lcd.SetCursor(0, 0); //Start at character 4 on line 0
-            _lcd.Write("RPi 2, LCD, C#");
+            lcd.BackLight();
+            lcd.Home();
+            lcd.SetCursor(0, 0); //Start at character 4 on line 0
+            lcd.Write("FT232H, LCD, C#");
             StopwatchDelay.Delay(250);
-            _lcd.SetCursor(0, 1);
-            _lcd.Write("git.io/vmEdE");
+            lcd.SetCursor(0, 1);
+            lcd.Write("git.io/vmEdE");
         }
     }
 }

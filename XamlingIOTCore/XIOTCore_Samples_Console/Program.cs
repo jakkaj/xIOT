@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XIOTCore_Samples_Console.GPIO;
+using XIOTCore_Samples_Console.LCD;
 using XIOTCore_Samples_Console.OLED;
 
 namespace XIOTCore_Samples_Console
@@ -14,8 +15,9 @@ namespace XIOTCore_Samples_Console
     {
         static void Main(string[] args)
         {
-            var sample = new OLEDExamples_FTDI();
-
+            var sample = new LcdExamples_FTDI();
+            //var sample = new OLEDExamples_FTDI();
+            //var sample = new GPIOExamples_FTDI();
             var t = sample.Init();
 
             t.Wait();

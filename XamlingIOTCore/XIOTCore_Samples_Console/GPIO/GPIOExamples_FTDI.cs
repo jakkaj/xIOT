@@ -6,6 +6,8 @@ using XIOTCore.Contract;
 using XIOTCore.Contract.Enum;
 using XIOTCore.Contract.Interface;
 using XIOTCore.Contract.Interface.Basics;
+using XIOTCore.Contract.Interface.GPIO;
+using XIOTCore.FTDI.Contract;
 using XIOTCore.FTDI.GPIO;
 using XIOTCore.Portable.Components.OLED.SSD1306;
 using XIOTCore.Portable.Factory;
@@ -20,10 +22,8 @@ namespace XIOTCore_Samples_Console.GPIO
         public async Task Init()
         {
             _factory.Init();
-            var i2c = _factory.GetComponent<IXI2CDevice>();
-            await i2c.Init();
-
-            var gpio = new GPIODevice(i2c, 0); //Pin C0
+            
+            var gpio = _factory.GetComponent<IXGpio_0>();
 
             gpio.SetDirection(XGpioDirection.Output);
 

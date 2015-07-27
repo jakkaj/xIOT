@@ -110,7 +110,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Gpio\XGpio.cs" />
-    <Compile Include="Gpio\XGpioControl.cs" />
     <Compile Include="I2C\I2CDeviceCache.cs" />
     <Compile Include="I2C\WindowsI2CDevice.cs" />
     <Compile Include="I2C\XI2CInfo.cs" />

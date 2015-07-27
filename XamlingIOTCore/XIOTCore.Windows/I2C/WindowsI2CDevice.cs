@@ -9,8 +9,6 @@ namespace XIOTCore.Windows.I2C
     {
         private I2cDevice _i2Cdevice;
 
-        
-
         public async Task<bool> Init(int address)
         {
             if (_i2Cdevice != null)

@@ -1,7 +1,6 @@
-using System.Diagnostics.Contracts;
 using XIOTCore.Contract.Enum;
 
-namespace XIOTCore.Contract.Interface.Basics
+namespace XIOTCore.Contract.Interface.GPIO
 {
     public interface IXGpioControl
     {

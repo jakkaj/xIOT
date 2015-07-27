@@ -2,6 +2,7 @@
 using Windows.Devices.Gpio;
 using XIOTCore.Contract.Enum;
 using XIOTCore.Contract.Interface.Basics;
+using XIOTCore.Contract.Interface.GPIO;
 
 namespace XIOTCore.Windows.Gpio
 {
@@ -10,7 +11,8 @@ namespace XIOTCore.Windows.Gpio
         private readonly int _pinNumber;
         private readonly GpioController _gpio;
         private readonly GpioSharingMode _sharingMode;
-        private readonly GpioPinDriveMode _driveMode;
+
+        private GpioPinDriveMode _driveMode;
 
         private GpioPin _pin;
 
@@ -34,6 +36,29 @@ namespace XIOTCore.Windows.Gpio
             }
 
             _pin.SetDriveMode(_driveMode);
+        }
+
+        public void SetDirection(XGpioDirection direction)
+        {
+            GpioPinDriveMode mode;
+
+            if (direction == XGpioDirection.Input)
+            {
+                mode = GpioPinDriveMode.Input;
+            }
+            else
+            {
+                mode = GpioPinDriveMode.Output;
+            }
+
+            if (!_pin.IsDriveModeSupported(mode))
+            {
+                throw new NotSupportedException($"Drive mode {mode} not supported on pin {_pinNumber}");
+            }
+
+            _pin.SetDriveMode(mode);
+
+            _driveMode = mode;
         }
 
         public void SetLow()

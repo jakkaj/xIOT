@@ -1,6 +1,7 @@
 ﻿using XCore.RaspberryPI.Interface;
+using XIOTCore.Contract.Components.GPIO;
 using XIOTCore.Contract.Interface.Basics;
-using XIOTCore.Windows.Gpio;
+using XIOTCore.Contract.Interface.GPIO;
 
 namespace XCore.RaspberryPI.ExplorerHATPro.Components
 {

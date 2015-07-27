@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using XIOTCore.Contract.Enum;
 
-namespace XIOTCore.Contract.Interface.Module
+namespace XIOTCore.Contract.Interface.Devices
 {
-    public interface ILCD
+    public interface ILCD_Hitatchi
     {
         Task Begin(int cols, int rows, int charSize = LCDConstants.LCD_5x8DOTS);
         void Clear();

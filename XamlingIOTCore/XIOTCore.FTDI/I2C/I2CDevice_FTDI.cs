@@ -3,13 +3,14 @@ using System.Diagnostics;
 using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 using XIOTCore.Contract.Interface.Basics;
+using XIOTCore.FTDI.Contract;
 using XIOTCore.FTDI.Exceptions;
 using XIOTCore.FTDI.LibMPSSE;
 using XIOTCore.FTDI.Types;
 
 namespace XIOTCore.FTDI.I2C
 {
-    public class FTDII2CDevice : IXI2CDevice
+    public class I2CDevice_FTDI : IXI2CDevice_FTDI
     {
         private static IntPtr _handle = IntPtr.Zero;
         private static FtChannelConfig _currentGlobalConfig;
