@@ -30,8 +30,8 @@ namespace XIOTCore.Samples.Universal
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private readonly IXIOTCoreFactory _factory =
-            XIOTCoreWindowsFactory.Create(Platforms.RaspberryPi2ModelB | Platforms.RaspberryPi2ExporerHatPro);
+        //private readonly IXIOTCoreFactory _factory =
+        //    XIOTCoreWindowsFactory.Create(Platforms.RaspberryPi2ModelB | Platforms.RaspberryPi2ExporerHatPro);
 
         private readonly IXGpioControl _redLed;
         private readonly IXGpioControl _greenLed;
@@ -50,7 +50,7 @@ namespace XIOTCore.Samples.Universal
             this.InitializeComponent();
 
 
-            var _lcdExamples = new LcdExamples_Rpi2();
+            var _lcdExamples = new LcdExamples_FTDI();
 
             _lcdExamples.Init();
 
