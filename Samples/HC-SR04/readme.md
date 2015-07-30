@@ -1,5 +1,7 @@
 #Distance measurement using a HC-SR04 Module
 
+    PM> Install-Package xIOT
+
 This example demonstrates how to use the Xamling-IOT library to measure distances using the HC-SR04 echo location module. 
 
 You can use this sample code, or you can start from scratch! Just install the Xamling-IOT Nuget package. 
