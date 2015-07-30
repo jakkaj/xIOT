@@ -104,7 +104,11 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OLED\OLEDExamples_Pi.cs" />
     <Compile Include="OLED\OLEDExamples_FTDI.cs" />
+    <Compile Include="OLED\OLEDRenderView.xaml.cs">
+      <DependentUpon>OLEDRenderView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="OLED\OLEDRenderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XIOTCore.Contract\XIOTCore.Contract.csproj">
@@ -148,6 +156,10 @@
     <ProjectReference Include="..\XIOTCore.Universal.RaspberryPi\XIOTCore.Universal.RaspberryPi.csproj">
       <Project>{3182012A-5EDC-4D95-8ACA-3EED219C6523}</Project>
       <Name>XIOTCore.Universal.RaspberryPi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XIOTCore.Universal.Windows\XIOTCore.Universal.Windows.csproj">
+      <Project>{51F92112-659E-4CC6-A5D8-277C95D6E95E}</Project>
+      <Name>XIOTCore.Universal.Windows</Name>
     </ProjectReference>
     <ProjectReference Include="..\XIOTCore.Universal\XIOTCore.Universal.csproj">
       <Project>{3FE7B55F-F8F7-4157-B567-5E6C76A9D2B1}</Project>

@@ -29,13 +29,13 @@ namespace XIOTCore.Universal.Windows.I2C
                     return _deviceCache[key];
                 }
 
-                var settings = new I2cConnectionSettings(address) { BusSpeed = I2cBusSpeed.StandardMode };
+                var settings = new I2cConnectionSettings(address) { BusSpeed = I2cBusSpeed.FastMode };
 
                 var aqs = I2cDevice.GetDeviceSelector(controllerName);
 
                 var dis = await DeviceInformation.FindAllAsync(aqs);
                 
-                var i2Cdevice = await I2cDevice.FromIdAsync(dis[0].Id, settings);
+                var i2Cdevice = await I2cDevice.FromIdAsync(dis[0].Id, settings);       
                 
                 if (i2Cdevice == null)
                 {

@@ -229,7 +229,7 @@ namespace XIOTCore.Portable.Components.OLED.SSD1306
             switch (color)
             {
                 case OLEDConstants.WHITE:  _buffer[x + (y / 8) * _width] |= (byte)(1 << (y & 7)); break; 
-                case OLEDConstants.BLACK: _buffer[x + (y / 8) * _width] &= (byte)(1 << (y & 7)); break;
+                case OLEDConstants.BLACK: _buffer[x + (y / 8) * _width] &= (byte)~(1 << (y & 7)); break;
                 case OLEDConstants.INVERSE: _buffer[x + (y / 8) * _width] ^= (byte)(1 << (y & 7)); break;
             }
 

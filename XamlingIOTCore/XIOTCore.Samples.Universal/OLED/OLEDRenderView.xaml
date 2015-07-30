@@ -1,0 +1,47 @@
+﻿<UserControl
+    x:Class="XIOTCore.Samples.Universal.OLED.OLEDRenderView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:XIOTCore.Samples.Universal.OLED"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400" Width="128" Height="64" Background="Black">
+
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="Bounce">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0:0:4">
+                        <VisualTransition.GeneratedEasingFunction>
+                            <CubicEase EasingMode="EaseOut"/>
+                        </VisualTransition.GeneratedEasingFunction>
+                    </VisualTransition>
+                </VisualStateGroup.Transitions>
+                <VisualState x:Name="Upped">
+                    <Storyboard>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="TheText">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="180"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:4" Value="179"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationX)" Storyboard.TargetName="TheText">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="180"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:4" Value="179"/>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Downed">
+                 </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <TextBlock x:Name="TheText" Text="Jordan" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" FontSize="18">
+            <TextBlock.RenderTransform>
+                <CompositeTransform/>
+            </TextBlock.RenderTransform>
+            <TextBlock.Projection>
+                <PlaneProjection/>
+            </TextBlock.Projection>
+        </TextBlock>
+    </Grid>
+</UserControl>

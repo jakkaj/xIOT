@@ -119,6 +119,7 @@
     <Compile Include="I2C\XI2CInfo.cs" />
     <Compile Include="Modules\WindowsModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\PixelRender.cs" />
     <Content Include="Properties\XIOTCore.Universal.Windows.rd.xml" />
   </ItemGroup>
   <ItemGroup>
