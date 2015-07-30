@@ -8,7 +8,11 @@ Note: You will need [FTDI D2XX drivers](http://www.ftdichip.com/Drivers/D2XX.htm
 
 XIOTCore is a framework to assist you to develop IOT applications on Windows 10 IOT Core. It allows you to get your projects up and running very quickly so you can concentrate on your thing rather than being bogged down with boilerplate code. 
 
-Note: At the moment the full version of VS2015 RTM does not support Windows 10 apps - it's coming on July 29th! Use RC version for now!
+###Samples
+
+Check out the samples [here](https://github.com/jakkaj/Xamling-IOT/tree/master/Samples) for a good starting point!
+
+Note: The samples in the main library project are for dev - they change and are not really what you're looking for! 
 
 ###Getting Started
 
