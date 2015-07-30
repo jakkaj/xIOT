@@ -4,6 +4,8 @@ An injectable framework for GPIO, I2C, SPI and other bits on Windows 10 IOT core
 
     PM> Install-Package XamlingIOT
   
+Note: as of 1.0.11 we support the new Universal App Nuget version.
+
 Note: You will need [FTDI D2XX drivers](http://www.ftdichip.com/Drivers/D2XX.htm) if you're using an FTDI based break out (not required for Rasberry Pi 2 deployments). 
 
 XIOTCore is a framework to assist you to develop IOT applications on Windows 10 IOT Core. It allows you to get your projects up and running very quickly so you can concentrate on your thing rather than being bogged down with boilerplate code. 
