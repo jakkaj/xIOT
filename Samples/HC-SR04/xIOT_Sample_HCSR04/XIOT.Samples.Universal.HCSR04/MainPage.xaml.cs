@@ -1,12 +1,12 @@
 ﻿using Windows.UI.Xaml.Controls;
 using Autofac;
 using xIOT_Sample_HCSR04;
-using XCore.RaspberryPI.Interface;
 using XIOTCore.Contract;
 using XIOTCore.Contract.Interface;
 using XIOTCore.Contract.Interface.Devices;
-using XIOTCore.Factory;
 using XIOTCore.Portable.Components.Range;
+using XIOTCore.Universal.Factory;
+using XIOTCore.Universal.RaspberryPi.Interface;
 
 //For the wiring diagram see: http://fritzing.org/projects/hc-sr04-echo-range-finder-and-xiot-windows
 //License and other samples / nuget package source: https://github.com/jakkaj/Xamling-IOT
@@ -30,7 +30,7 @@ namespace XIOT.Samples.Universal.HCSR04
         {
             this.InitializeComponent();
 
-
+            
 
             //Uncomment out this sample for straight, non MVVM, non dependency injection style
             /*
