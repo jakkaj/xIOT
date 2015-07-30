@@ -50,7 +50,7 @@ namespace XIOTCore.Samples.Universal
             this.InitializeComponent();
 
 
-            var _lcdExamples = new LcdExamples_FTDI();
+            var _lcdExamples = new LcdExamples_Rpi2();
 
             _lcdExamples.Init();
 
