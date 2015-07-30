@@ -1,8 +1,8 @@
-# XIOTCore
+# xIOT
 
 An injectable framework for GPIO, I2C, SPI and other bits on Windows 10 IOT core for Rasberry Pi 2 and FTDI based USB devices. 
 
-    PM> Install-Package XamlingIOT
+    PM> Install-Package xIOT
   
 Note: as of 1.0.11 we support the new Universal App Nuget version.
 
@@ -122,9 +122,9 @@ XIOT is built around Windows 10 Universal Apps. The framework works for UI based
 As time goes on we'll add support for lots of components that you can inject in to your code and start using straight away. For now we've added some things to get started. 
 
 ####Bits that are supported
-- [HC-SR04](http://www.micropik.com/PDF/HCSR04.pdf) sonic distance sensor ([sample](https://github.com/jakkaj/Xamling-IOT/tree/master/Samples/HC-SR04))  
-- Hitachi (HD44780) based LCD displays ([sample](https://github.com/jakkaj/Xamling-IOT/tree/master/Samples/LCD-Hitatchi-HD44780))
-- OLED (SSD1306) based displays ([sample](https://github.com/jakkaj/Xamling-IOT/tree/master/Samples/OLED_SSD1306))
+- [HC-SR04](http://www.micropik.com/PDF/HCSR04.pdf) sonic distance sensor ([sample](https://github.com/jakkaj/xIOT/tree/master/Samples/HC-SR04))  
+- Hitachi (HD44780) based LCD displays ([sample](https://github.com/jakkaj/xIOT/tree/master/Samples/LCD-Hitatchi-HD44780))
+- OLED (SSD1306) based displays ([sample](https://github.com/jakkaj/xIOT/tree/master/Samples/OLED_SSD1306))
 
 We ported the LCD library from [here](https://bitbucket.org/fmalpartida/new-liquidcrystal/wiki/Home) (thanks fmalpartida for a great lib) - itself a port from the in built Arduino LCD library. 
 
