@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22823.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xIOT_Sample_HCSR04", "xIOT_Sample_HCSR04\xIOT_Sample_HCSR04.csproj", "{0999F1CB-003F-4314-A390-B0A2570597FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XIOT.Samples.Universal.HCSR04", "XIOT.Samples.Universal.HCSR04\XIOT.Samples.Universal.HCSR04.csproj", "{48F5684A-7161-4BD8-8F1C-0F3C2C94AA00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,24 +15,24 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0999F1CB-003F-4314-A390-B0A2570597FA}.Debug|ARM.ActiveCfg = Debug|ARM
-		{0999F1CB-003F-4314-A390-B0A2570597FA}.Debug|ARM.Build.0 = Debug|ARM
-		{0999F1CB-003F-4314-A390-B0A2570597FA}.Debug|ARM.Deploy.0 = Debug|ARM
-		{0999F1CB-003F-4314-A390-B0A2570597FA}.Debug|x64.ActiveCfg = Debug|x64
-		{0999F1CB-003F-4314-A390-B0A2570597FA}.Debug|x64.Build.0 = Debug|x64
-		{0999F1CB-003F-4314-A390-B0A2570597FA}.Debug|x64.Deploy.0 = Debug|x64
-		{0999F1CB-003F-4314-A390-B0A2570597FA}.Debug|x86.ActiveCfg = Debug|x86
-		{0999F1CB-003F-4314-A390-B0A2570597FA}.Debug|x86.Build.0 = Debug|x86
-		{0999F1CB-003F-4314-A390-B0A2570597FA}.Debug|x86.Deploy.0 = Debug|x86
-		{0999F1CB-003F-4314-A390-B0A2570597FA}.Release|ARM.ActiveCfg = Release|ARM
-		{0999F1CB-003F-4314-A390-B0A2570597FA}.Release|ARM.Build.0 = Release|ARM
-		{0999F1CB-003F-4314-A390-B0A2570597FA}.Release|ARM.Deploy.0 = Release|ARM
-		{0999F1CB-003F-4314-A390-B0A2570597FA}.Release|x64.ActiveCfg = Release|x64
-		{0999F1CB-003F-4314-A390-B0A2570597FA}.Release|x64.Build.0 = Release|x64
-		{0999F1CB-003F-4314-A390-B0A2570597FA}.Release|x64.Deploy.0 = Release|x64
-		{0999F1CB-003F-4314-A390-B0A2570597FA}.Release|x86.ActiveCfg = Release|x86
-		{0999F1CB-003F-4314-A390-B0A2570597FA}.Release|x86.Build.0 = Release|x86
-		{0999F1CB-003F-4314-A390-B0A2570597FA}.Release|x86.Deploy.0 = Release|x86
+		{48F5684A-7161-4BD8-8F1C-0F3C2C94AA00}.Debug|ARM.ActiveCfg = Debug|ARM
+		{48F5684A-7161-4BD8-8F1C-0F3C2C94AA00}.Debug|ARM.Build.0 = Debug|ARM
+		{48F5684A-7161-4BD8-8F1C-0F3C2C94AA00}.Debug|ARM.Deploy.0 = Debug|ARM
+		{48F5684A-7161-4BD8-8F1C-0F3C2C94AA00}.Debug|x64.ActiveCfg = Debug|x64
+		{48F5684A-7161-4BD8-8F1C-0F3C2C94AA00}.Debug|x64.Build.0 = Debug|x64
+		{48F5684A-7161-4BD8-8F1C-0F3C2C94AA00}.Debug|x64.Deploy.0 = Debug|x64
+		{48F5684A-7161-4BD8-8F1C-0F3C2C94AA00}.Debug|x86.ActiveCfg = Debug|x86
+		{48F5684A-7161-4BD8-8F1C-0F3C2C94AA00}.Debug|x86.Build.0 = Debug|x86
+		{48F5684A-7161-4BD8-8F1C-0F3C2C94AA00}.Debug|x86.Deploy.0 = Debug|x86
+		{48F5684A-7161-4BD8-8F1C-0F3C2C94AA00}.Release|ARM.ActiveCfg = Release|ARM
+		{48F5684A-7161-4BD8-8F1C-0F3C2C94AA00}.Release|ARM.Build.0 = Release|ARM
+		{48F5684A-7161-4BD8-8F1C-0F3C2C94AA00}.Release|ARM.Deploy.0 = Release|ARM
+		{48F5684A-7161-4BD8-8F1C-0F3C2C94AA00}.Release|x64.ActiveCfg = Release|x64
+		{48F5684A-7161-4BD8-8F1C-0F3C2C94AA00}.Release|x64.Build.0 = Release|x64
+		{48F5684A-7161-4BD8-8F1C-0F3C2C94AA00}.Release|x64.Deploy.0 = Release|x64
+		{48F5684A-7161-4BD8-8F1C-0F3C2C94AA00}.Release|x86.ActiveCfg = Release|x86
+		{48F5684A-7161-4BD8-8F1C-0F3C2C94AA00}.Release|x86.Build.0 = Release|x86
+		{48F5684A-7161-4BD8-8F1C-0F3C2C94AA00}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
