@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using Autofac;
 using XIOTCore.Contract;
 using XIOTCore.Contract.Enum;
 using XIOTCore.Contract.Interface;
@@ -38,7 +39,9 @@ namespace XIOTCore.Samples.Universal
     public sealed partial class MainPage : Page
     {
         private readonly IXIOTCoreFactory _factory =
-            XIOTCoreWindowsFactory.Create(Platforms.RaspberryPi2ModelB);
+            XIOTCoreWindowsFactory.Create(Platforms.RaspberryPi2ModelB | Platforms.RaspberryPi2ExporerHatPro);
+
+        private IHC_SR04 _hc;
         public MainPage()
         {
             this.InitializeComponent();
@@ -53,12 +56,22 @@ namespace XIOTCore.Samples.Universal
 
             // _lcdExamples.Init();
 
-           // var oledExmples = new OLEDExamples_Pi();
-           // await oledExmples.Init();
+            // var oledExmples = new OLEDExamples_Pi();
+            // await oledExmples.Init();
 
 
             //return;
+            _factory.Builder.Register(
+               c => new HC_SR04(c.Resolve<IExplorerHat_Output1>(), c.Resolve<IExplorerHat_Input2>())).As<IHC_SR04>();
+
             _factory.Init();
+
+            _hc = _factory.GetComponent<IHC_SR04>();
+            await _hc.Init();
+
+            _loop();
+
+            return;
 
             var oled = _factory.GetComponent<IOLED_SSD1306_I2C>();
 
@@ -100,7 +113,18 @@ namespace XIOTCore.Samples.Universal
 
             
         }
-       
+
+        private async void _loop()
+        {
+            while (true)
+            {
+                var averageRound = await _hc.Measure(true);
+                var d = averageRound.ToString();
+                Debug.WriteLine(d);
+                await Task.Yield(); //make sure other stuff can do things. 
+            }
+        }
+
     }
 
 
