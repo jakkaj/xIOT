@@ -118,6 +118,7 @@
     <None Include="XIOTCore.Samples.Universal_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Xamling_Logo_Standard_MONOTONE-200.png" />
     <Content Include="libMPSSE.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

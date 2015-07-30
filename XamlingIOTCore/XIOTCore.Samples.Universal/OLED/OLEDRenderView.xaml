@@ -9,7 +9,13 @@
     d:DesignHeight="300"
     d:DesignWidth="400" Width="128" Height="64" Background="Black">
 
-    <Grid>
+    <Grid x:Name="TheGrid" Width="128" Height="64">
+        <Grid.RenderTransform>
+            <CompositeTransform/>
+        </Grid.RenderTransform>
+        <Grid.Projection>
+            <PlaneProjection/>
+        </Grid.Projection>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="Bounce">
                 <VisualStateGroup.Transitions>
@@ -21,27 +27,21 @@
                 </VisualStateGroup.Transitions>
                 <VisualState x:Name="Upped">
                     <Storyboard>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="TheText">
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="TheGrid">
                             <EasingDoubleKeyFrame KeyTime="0" Value="180"/>
                             <EasingDoubleKeyFrame KeyTime="0:0:4" Value="179"/>
                         </DoubleAnimationUsingKeyFrames>
-                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationX)" Storyboard.TargetName="TheText">
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationX)" Storyboard.TargetName="TheGrid">
                             <EasingDoubleKeyFrame KeyTime="0" Value="180"/>
                             <EasingDoubleKeyFrame KeyTime="0:0:4" Value="179"/>
                         </DoubleAnimationUsingKeyFrames>
                     </Storyboard>
                 </VisualState>
                 <VisualState x:Name="Downed">
-                 </VisualState>
+                </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <TextBlock x:Name="TheText" Text="Jordan" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" FontSize="18">
-            <TextBlock.RenderTransform>
-                <CompositeTransform/>
-            </TextBlock.RenderTransform>
-            <TextBlock.Projection>
-                <PlaneProjection/>
-            </TextBlock.Projection>
-        </TextBlock>
+        <Image x:Name="XamlingLogo" Source="ms-appx:///Assets/Xamling_Logo_Standard_MONOTONE-200.png" Stretch="Fill"/>
+        <TextBlock x:Name="TheText" Text="Jordan" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" FontSize="18" Visibility="Collapsed"/>
     </Grid>
 </UserControl>
