@@ -105,7 +105,6 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="OLED\OLEDExamples_Pi.cs" />
-    <Compile Include="OLED\OLEDExamples_FTDI.cs" />
     <Compile Include="OLED\OLEDRenderView.xaml.cs">
       <DependentUpon>OLEDRenderView.xaml</DependentUpon>
     </Compile>

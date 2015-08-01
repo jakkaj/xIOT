@@ -61,18 +61,18 @@ namespace XIOTCore.Samples.Universal
 
 
             //return;
-            _factory.Builder.Register(
-               c => new HC_SR04(c.Resolve<IExplorerHat_Output1>(), c.Resolve<IExplorerHat_Input2>())).As<IHC_SR04>();
+            //_factory.Builder.Register(
+            //   c => new HC_SR04(c.Resolve<IExplorerHat_Output1>(), c.Resolve<IExplorerHat_Input2>())).As<IHC_SR04>();
 
+            //_factory.Init();
+
+            //_hc = _factory.GetComponent<IHC_SR04>();
+            //await _hc.Init();
+
+            //_loop();
+
+            //return;
             _factory.Init();
-
-            _hc = _factory.GetComponent<IHC_SR04>();
-            await _hc.Init();
-
-            _loop();
-
-            return;
-
             var oled = _factory.GetComponent<IOLED_SSD1306_I2C>();
 
             await oled.Init(OLEDConstants.SSD1306_I2C_ADDRESS, OLEDDisplaySize.SSD1306_128_64);
