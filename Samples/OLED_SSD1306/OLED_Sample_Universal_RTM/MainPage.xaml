@@ -1,0 +1,14 @@
+﻿<Page
+    x:Class="OLED_Sample_Universal_RTM.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OLED_Sample_Universal_RTM"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:view="using:OLED_Sample_Universal_RTM.View"
+    mc:Ignorable="d">
+
+    <Grid Background="Black" x:Name="OLEDRenderer" Width="128" Height="64">
+        <view:OLEDRenderView Width="128" Height="64"/>
+    </Grid>
+</Page>
