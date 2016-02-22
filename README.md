@@ -8,35 +8,35 @@ Note: as of 1.0.11 we support the new Universal App Nuget version.
 
 Note: You will need [FTDI D2XX drivers](http://www.ftdichip.com/Drivers/D2XX.htm) if you're using an FTDI based break out (not required for Rasberry Pi 2 deployments). 
 
-XIOTCore is a framework to assist you to develop IOT applications on Windows 10 IOT Core. It allows you to get your projects up and running very quickly so you can concentrate on your thing rather than being bogged down with boilerplate code. 
+XIOTCore is a framework to assist you in developing IOT applications on Windows 10 IoT Core. It allows you to get your projects up and running very quickly so you can concentrate on your thing rather than being bogged down with boilerplate code. 
 
 ###Samples
 
 Check out the samples [here](https://github.com/jakkaj/Xamling-IOT/tree/master/Samples) for a good starting point!
 
-Note: The samples in the main library project are for dev - they change and are not really what you're looking for! 
+Note: The samples in the main library project are for developers - they change often and are not really what you're looking for! 
 
 ###Getting Started
 
-Once you've installed the Nuget package you can get started by configuring the factory and requesting objects from it. You can request I2C devices, or GPIO devices for example. By configuring the factory you can tell the framework which platform you'd like to operate on, like Raspberry Pi2 or FTDI. 
+Once you've installed the Nuget package you can get started by configuring the factory and requesting objects from it. You can request I2C devices, or GPIO devices for example. By configuring the factory you can tell the framework which platform you'd like to operate on, like the Raspberry Pi 2 or FTDI. 
 
-The framework can also supports HATs (Hardware Attached on Top - like an Arduino shield) and other extensions. At the moment it supports features from the [Explorer HAT Pro](http://shop.pimoroni.com/products/explorer-hat).  
+The framework can also support HATs (Hardware Attached on Top - like an Arduino shield) and other extensions. At the moment it supports features from the [Explorer HAT Pro](http://shop.pimoroni.com/products/explorer-hat).  
 
-Configure the factor for base Raspberry PI 2 operation. 
+Configure the factory for base Raspberry Pi 2 operation. 
 
 ```C#
 private readonly IXIOTCoreFactory _factory = 
     XIOTCoreWindowsFactory.Create(Platforms.RaspberryPi2ModelB);
 ```
 
-Configure for Raspberry PI 2 with an Explorer HAT Pro on top.
+Configure for Raspberry Pi 2 with an Explorer HAT Pro on top.
 
 ```C#
 private readonly IXIOTCoreFactory _factory = 
     XIOTCoreWindowsFactory.Create(Platforms.RaspberryPi2ModelB | Platforms.RaspberryPi2ExporerHatPro);
 ```
 
-Configure for an FTDI based USB thingo - we use a FT232H
+Configure for an FTDI based USB thing - we use a FT232H
 
 ```C#
 private readonly IXIOTCoreFactory _factory =
@@ -53,7 +53,7 @@ _factory.Init();
 
 Now that the factory is configured you can start asking for things!
 
-Get the Red Led from the Explorer HAT Pro and turn it off and on
+Get the Red LED from the Explorer HAT Pro and turn it off and on
 
 ```C#
 var _redLed = _factory.GetComponent<IExplorerHat_RedLed>();
@@ -62,7 +62,7 @@ await Task.Delay(2000);
 _redLed.Off();
 ```
 
-IEXplorerHat_RedLed is based on the IXGpioControl which you can use to do straight GPIO style contorl on any pin. The interface which looks like this.
+IEXplorerHat_RedLed is based on the IXGpioControl which you can use to do straight GPIO style control on any pin. The interface which looks like this.
 
 ```C#
 public interface IXGpioControl
@@ -73,7 +73,7 @@ public interface IXGpioControl
 }
 ```
 
-What about somethign a little more advanced, like controlling a LCD connected via I2C. Note, change the factory creation settings and this exact same code will work on an FT232H or a Rasberry PI 2! 
+What about something a little more advanced, like controlling an LCD connected via I2C. Note, change the factory creation settings and this exact same code will work on an FT232H or a Rasberry Pi 2! 
 
 Note: The framework supports the common Hitachi HD44780 based displays on I2C only. 
 
@@ -100,22 +100,22 @@ Cool eh?! For wiring and examples see the LCD samples section (TODO :P).
 ###Flexible Framework
 XIOT is based around [Autofac](http://autofac.org/) dependency injection, so you can build simple apps right up to the most advanced applications without having to add any complexity. Just inject your device and start using it!
 
-Becasue of XIOT's design around [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection) it can support multiple different platforms wihtout you having to change your code (much!). At this time the framework supports FTDI and Raspberry PI2. 
+Becasue of XIOT's design around [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection) it can support multiple different platforms without you having to change your code (much!). At this time the framework supports FTDI and Raspberry Pi 2.
 
 ###Rapid development
-Sometimes building for IOT devices is slow and time consuming. That's due in part to slow build, deployment and debug cycles.
+Sometimes building for IoT devices is slow and time consuming. That's due in part to slow build, deployment and debug cycles.
 
-XIOT supports FTDI based devices, such as [FT232H breakout] (https://learn.adafruit.com/adafruit-ft232h-breakout/overview) from Adafruit. This device can plug straight in to your PC, meaning you can very quickly develop your code and design your circuits before taking them to the PI (and possible others later) for completion. 
+XIOT supports FTDI based devices, such as [FT232H breakout] (https://learn.adafruit.com/adafruit-ft232h-breakout/overview) from Adafruit. This device can plug straight in to your PC, meaning you can very quickly develop your code and design your circuits before taking them to the Pi (and possibly others later) for completion. 
 
-At present the framework supports I2C, SPI. We're working on GPIO too very soon. 
+At present the framework supports I2C and SPI. We're working on GPIO too very soon. 
 
 We started with DVDPT's [libMPSSEWrapper](https://github.com/DVDPT/libMPSSE-.Net-Wrapper) project and extended from there to add I2C support using FTDI's libMPSSE (which is required). Our fork of that project is [here](https://github.com/jakkaj/libMPSSE-.Net-Wrapper) but the code in XIOT is now separate (as we've made it injectable etc). 
 
-You will need to install the [FTDI D2XX drivers](http://www.ftdichip.com/Drivers/D2XX.htm) before any of that stuff work will :)
+You will need to install the [FTDI D2XX drivers](http://www.ftdichip.com/Drivers/D2XX.htm) before any of that stuff will work :)
 
-Please our the FTDI examples for more information on how to get it up and running!
+Please see our the FTDI examples for more information on how to get it up and running!
 
-###Runs on PI2 and your PC
+###Runs on Pi 2 and your PC
 XIOT is built around Windows 10 Universal Apps. The framework works for UI based apps and headless background apps. It will run on your PC or Surface (using FTDI based USB breakout) or your PI2. Write once, run anywhere (okay, run on some things anyway).
 
 ###Support for special components
@@ -132,7 +132,7 @@ We've only implemnted the I2C version of the LCD library. Using FTDI it will run
 
 We ported parts of the OLED library from Adafruit [here](https://github.com/adafruit/Adafruit_SSD1306).
 
-* Support for Raspberry PI2 running Windows 10 IOT Core
+* Support for Raspberry Pi 2 running Windows 10 IoT Core
 * Support for FTDI (FT232H) USB for rapid development of circuits and logic from your PC
 * Works with I2C, SPI and GPIO
 * It works from console apps (using FTDI FT232 etc.) - you could even create unit tests to run against circuits you have set up!
