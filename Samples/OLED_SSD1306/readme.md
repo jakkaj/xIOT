@@ -4,6 +4,11 @@ To jump straight in install the Xamling-IOT Nuget package.
 
     PM> Install-Package XamlingIOT
   
+Update: You can render to a supported display (OLED over I2C for example) from [XAML](https://github.com/jakkaj/xIOT/blob/master/Samples/OLED_SSD1306/OLED_Sample_Universal_RTM/MainPage.xaml.cs) in UWP on Raspeberry Pi!
+
+Video of XAML rendering in action on [YouTube](https://www.youtube.com/watch?v=YOPAqjO0HVU).
+
+
 Using the Xamling-IOT library you can easily drive an OLED display in a variety of resolutions. 
 
 The best part about using .NET is you can use System.Drawing to draw advanced imagery on the display without the need for 
